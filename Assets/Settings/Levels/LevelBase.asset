@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 846ee7a288e46e945b585146aa62d252, type: 3}
+  m_Name: LevelBase
+  m_EditorClassIdentifier: 
+  lvlName: []
+  BossName: []
+  bossModel:
+  - {fileID: 6720578019258621749, guid: 48baa1e3adb806c49a4b8eb9abb8716a, type: 3}
+  - {fileID: 6848824013785315341, guid: fc7b2dd803a30344a87341594fff2200, type: 3}
+  - {fileID: 6848824013785315341, guid: 820e3b51b8fbbbf4898b872bfdc5d70d, type: 3}
+  - {fileID: 6848824013785315341, guid: f3be2c62e6cafb34b9b3b0adb236257a, type: 3}
+  arenaModel:
+  - {fileID: 4795325248787626587, guid: ded783b2d1c0285478a0ec62d9909200, type: 3}
+  - {fileID: 3719411770506552011, guid: e0dcaa83a542bb54fa418c6e32efb662, type: 3}
+  - {fileID: 3719411770506552011, guid: b3c11edf95d395642b19950fe823ce24, type: 3}
