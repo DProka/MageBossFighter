@@ -6,11 +6,11 @@ public class ProjectileManager
 {
     public List<Projectile> projectilesList;
 
-    private Projectile projectilePrefab;
+    private ProjectileBase projBase;
 
-    public ProjectileManager(Projectile _projectilePrefab)
+    public ProjectileManager(ProjectileBase _projBase)
     {
-        projectilePrefab = _projectilePrefab;
+        projBase = _projBase;
         projectilesList = new List<Projectile>();
     }
 
@@ -25,10 +25,12 @@ public class ProjectileManager
         }
     }
 
-    public void InstantiateProjectile(Vector3 position, UnitGeneral target)
+    public void InstantiateProjectile(Vector3 position, UnitGeneral target, bool isPlayer)
     {
-        Projectile projectile = UnityEngine.Object.Instantiate(projectilePrefab, position, Quaternion.identity);
-        projectile.Init(this, target);
+        ProjectileSettings settings = isPlayer ? projBase.playerProjectilesArray[0] : projBase.enemyProjectilesArray[0];
+
+        Projectile projectile = UnityEngine.Object.Instantiate(projBase.projectilePrefab, position, Quaternion.identity);
+        projectile.Init(this, target, settings, isPlayer);
         projectilesList.Add(projectile);
     }
 

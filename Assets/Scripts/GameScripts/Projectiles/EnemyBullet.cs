@@ -7,7 +7,7 @@ public class EnemyBullet : MonoBehaviour
 
     [SerializeField] ProjectileSettings settings;
     
-    private PlayerController player;
+    private PlayerScript player;
     private BossController enemy;
     private float lifeTimer;
     

@@ -5,7 +5,7 @@ public class BlockMovepoints : MonoBehaviour
 {
     public BossController enemy;
     public float cooldown;
-    public PlayerController player;
+    public PlayerScript player;
     
     private float cooldownTimer;
 
@@ -22,7 +22,7 @@ public class BlockMovepoints : MonoBehaviour
 
         else
         {
-            ChoosePoint(player.movementScript.nextPoint);
+            //ChoosePoint(player.movementScript.nextPoint);
             cooldownTimer = cooldown;
         }
     }

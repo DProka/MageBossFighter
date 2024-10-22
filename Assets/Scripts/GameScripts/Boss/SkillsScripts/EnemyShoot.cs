@@ -5,7 +5,7 @@ public class EnemyShoot : MonoBehaviour
 {
     public float damage;
     public float shootSpeed;
-    public PlayerController target;
+    public PlayerScript target;
     public Transform shootPoint;
     public EnemyBullet bulletPrefab;
 
@@ -31,9 +31,12 @@ public class EnemyShoot : MonoBehaviour
 
     void Shoot()
     {
-        EnemyBullet bullet = Instantiate(bulletPrefab, enemy.shootPoint.position, Quaternion.identity);
-        bullet.SetBulletActive(enemy.shootPoint.position, enemy.target.movementScript.targetPoint.transform.position);
-        bullet.damage = damage;
+        //EnemyBullet bullet = Instantiate(bulletPrefab, enemy.shootPoint.position, Quaternion.identity);
+        //bullet.SetBulletActive(enemy.shootPoint.position, enemy.target.movementScript.targetPoint.transform.position);
+        //bullet.damage = damage;
+
+        GameController.Instance.InstantiateProjectile(enemy.shootPoint.position, false);
+
         StartCoroutine(enemy.PlayThrowAnimation());
     }
 }

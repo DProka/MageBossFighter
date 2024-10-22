@@ -11,7 +11,7 @@ public class GameController : MonoBehaviour
     public int gameLvl;
     public int arenaNum;
     public int bossNum;
-    public TouchControl touch;
+
     public UIController uiScript;
     public bool gameIsActive;
 
@@ -25,12 +25,13 @@ public class GameController : MonoBehaviour
 
     public MovePoint[] points => arenaManager.points;
 
-    [SerializeField] Projectile projectilePrefab;
+    //[SerializeField] Projectile projectilePrefab;
+    [SerializeField] ProjectileBase projectileBase;
     private ProjectileManager projectileManager;
 
     [Header("Player Main")]
 
-    public PlayerController player;
+    public PlayerScript player;
     public HealthBar playerHB;
 
     [HideInInspector]public List<PlayerBullet> playerBullets;
@@ -50,11 +51,11 @@ public class GameController : MonoBehaviour
 
         GameEventBus.OnSomeoneDies += CheckWinner;
 
-        projectileManager = new ProjectileManager(projectilePrefab);
+        projectileManager = new ProjectileManager(projectileBase);
 
         arenaManager.Init(lvlbase);
         LoadLevel();
-        player.Init();
+        player.Init(enemy);
         enemy.Init();
     }
 
@@ -111,12 +112,17 @@ public class GameController : MonoBehaviour
     public void PlayerUpdate()
     {
         player.PlayerUpdate();
-        touch.UpdateTouch();
+        //touch.UpdateTouch();
 
         for (int i = 0; i < playerBullets.Count; i++)
         {
             playerBullets[i].UpdateBullet();
         }
+    }
+
+    public Transform GetNextWayPoint(int pointNum)
+    {
+        return points[pointNum].transform;
     }
 
     void ArenaStart()
@@ -154,7 +160,7 @@ public class GameController : MonoBehaviour
     {
         gameIsActive = false;
         timerStart = 4;
-        player.RestartPlayer();
+        player.ResetPlayer();
         enemy.ResetEnemy();
         uiScript.endMenu.SetActive(false);
         ClearArena();
@@ -163,7 +169,7 @@ public class GameController : MonoBehaviour
     public void InstantiateProjectile(Vector3 position, bool isPlayer)
     {
         UnitGeneral target = isPlayer ? enemy : player;
-        projectileManager.InstantiateProjectile(position, target);
+        projectileManager.InstantiateProjectile(position, target, isPlayer);
     }
 
     private void OnDestroy()

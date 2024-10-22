@@ -6,24 +6,30 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] ProjectileSettings settings;
     [SerializeField] MeshRenderer meshRenderer;
+
     private ProjectileManager manager;
 
     private UnitGeneral target;
     
     private float lifeTimer;
 
-    public void Init(ProjectileManager _manager, UnitGeneral _target)
+    public void Init(ProjectileManager _manager, UnitGeneral _target, ProjectileSettings _settings, bool isPlayer)
     {
         manager = _manager;
         target = _target;
+        settings = _settings;
         lifeTimer = settings.lifeTime;
         meshRenderer.material = settings.material;
+        transform.localScale = settings.scale;
+
+        Vector3 direction = (_target.transform.position - transform.position).normalized;
+        direction.y = 0f;
+        transform.rotation = Quaternion.LookRotation(direction);
     }
 
     public void UpdateProjectile()
     {
         transform.position += transform.forward * Time.deltaTime * settings.bulletSpeed;
-        //transform.position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
 
         lifeTimer -= Time.deltaTime;
 
@@ -37,15 +43,6 @@ public class Projectile : MonoBehaviour
         {
             DestroyBullet();
         }
-    }
-
-    public void SetBulletActive(Vector3 startPosition, Vector3 targetPosition)
-    {
-        gameObject.SetActive(true);
-        transform.position = startPosition;
-        Vector3 direction = (targetPosition - transform.position).normalized;
-        direction.y = 0f;
-        transform.rotation = Quaternion.LookRotation(direction);
     }
 
     public void DestroyBullet()

@@ -1,95 +1,126 @@
-
+﻿
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement
 {
-    public float moveSpeed;
-    public float moveDelay;
+    public bool isMoving { get; private set; }
 
-    [HideInInspector] public MovePoint targetPoint;
-    [HideInInspector] public float moveTimer;
-    [HideInInspector] public int nextPoint = 0;
-    [HideInInspector] public bool isMoving;
+    private MovePoint targetPoint;
+
+    private PlayerScript controller;
+    private PlayerSettings settings;
+    private Transform enemyPoint;
+    private Transform nextWayPoint;
+
+    private float mouseDeltaX;
+    private float moveTimer;
+
+    private int nextPoint = 0;
     private int lastPoint;
-    private PlayerController playerController;
 
-
-    public void Init()
+    public PlayerMovement(PlayerScript playerController, PlayerSettings _settings, Transform _enemyPoint)
     {
-        playerController = gameObject.GetComponent<PlayerController>();
+        controller = playerController;
+        settings = _settings;
+        enemyPoint = _enemyPoint;
+
         targetPoint = GameController.Instance.points[nextPoint];
+
+        moveTimer = 0;
     }
 
     public void UpdateMovement()
     {
         MovePlayer();
-     
-        if (moveTimer > 0)
-        {
-            moveTimer -= Time.deltaTime;
-            isMoving = true;
-        }
-        else
-        {
-            isMoving = false;
 
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                nextPoint++;
-                if (nextPoint >= GameController.Instance.points.Length)
-                    nextPoint = 0;
-                ChangePoint(nextPoint);
-                StartCoroutine(playerController.PlayStepAnimation(true));
-            }
-
-            if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                nextPoint--;
-                if (nextPoint < 0)
-                    nextPoint = GameController.Instance.points.Length - 1;
-                ChangePoint(nextPoint);
-                StartCoroutine(playerController.PlayStepAnimation(false));
-            }
+        if (Input.GetMouseButton(0))
+        {
+            mouseDeltaX = Input.GetAxis("Mouse X");
         }
 
-        playerController.isMoving = isMoving;
+        if (Input.GetMouseButtonUp(0))
+        {
+            ChangePoint();
+        }
     }
 
-    public void CheckTargetPoint()
+    //public void CheckTargetPoint()
+    //{
+    //    if (targetPoint.pointStatus == Status.Burning)
+    //        controller.burnStatus = PlayerScript.PlayerStatus.Burn;
+    //    else
+    //        controller.burnStatus = PlayerScript.PlayerStatus.NoStatus;
+
+    //    if (targetPoint.pointStatus == Status.Freeze)
+    //        controller.freezeStatus = PlayerScript.PlayerStatus.Freeze;
+    //    else
+    //        controller.freezeStatus = PlayerScript.PlayerStatus.NoStatus;
+
+    //    if (targetPoint.pointStatus != Status.Blocked)
+    //        lastPoint = nextPoint;
+    //    else
+    //        nextPoint = lastPoint;
+    //}
+
+    public void ChangePoint()
     {
-        if (targetPoint.pointStatus == Status.Burning)
-            playerController.burnStatus = PlayerController.PlayerStatus.Burn;
-        else
-            playerController.burnStatus = PlayerController.PlayerStatus.NoStatus;
+        if (mouseDeltaX < -0.3)
+        {
+            controller.playerAnimator.StartAnimation(PlayerAnimator.Clip.MoveLeft);
+            nextPoint++;
+        }
+        else if (mouseDeltaX > 0.3)
+        {
+            controller.playerAnimator.StartAnimation(PlayerAnimator.Clip.MoveRight);
+            nextPoint--;
+        }
 
-        if (targetPoint.pointStatus == Status.Freeze)
-            playerController.freezeStatus = PlayerController.PlayerStatus.Freeze;
-        else
-            playerController.freezeStatus = PlayerController.PlayerStatus.NoStatus;
+        if (nextPoint >= 12)
+            nextPoint = 0;
+        if (nextPoint < 0)
+            nextPoint = 11;
 
-        if (targetPoint.pointStatus != Status.Blocked)
-            lastPoint = nextPoint;
-        else
-            nextPoint = lastPoint;
+        nextWayPoint = GameController.Instance.GetNextWayPoint(nextPoint);
+
+        targetPoint = GameController.Instance.points[nextPoint];
+        Debug.Log("Target Point = " + targetPoint.name);
+
+        moveTimer = settings.moveDelay;
     }
 
-    public void ChangePoint(int newPoint)
+    private void MovePlayer()
     {
-        targetPoint = GameController.Instance.points[newPoint];
-        CheckTargetPoint();
-        moveTimer = moveDelay;
-    }
+        if (nextWayPoint == null)
+            return;
 
-    void MovePlayer()
-    {
-        transform.position = Vector3.Lerp(GameController.Instance.points[nextPoint].transform.position, transform.position, moveSpeed);
+        controller.transform.position = Vector3.MoveTowards(controller.transform.position, nextWayPoint.position, settings.moveSpeed * Time.deltaTime);
         RotatePlayer();
+        CheckIsMoving();
     }
 
-    void RotatePlayer()
+    private void RotatePlayer()
     {
-        Vector3 direction = (playerController.enemy.transform.position - transform.position).normalized;
+        Vector3 direction = (enemyPoint.position - controller.transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * 100);
+        controller.transform.rotation = Quaternion.Lerp(controller.transform.rotation, lookRotation, Time.deltaTime * 100);
+    }
+
+    private void CheckIsMoving()
+    {
+        float distance = Vector3.Distance(controller.transform.position, nextWayPoint.position);
+
+        if (distance > 0.1f)
+            isMoving = true;
+        else
+        {
+            if (moveTimer > 0)
+                moveTimer -= Time.deltaTime;
+            else
+                isMoving = false;
+
+            controller.playerAnimator.StartAnimation(PlayerAnimator.Clip.Idle);
+        }
+
+        Debug.Log("player is moving = " + isMoving);
     }
 }

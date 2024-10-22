@@ -15,4 +15,5 @@ MonoBehaviour:
   damage: 10
   bulletSpeed: 10
   lifeTime: 3
+  scale: {x: 0.5, y: 0.5, z: 0.5}
   material: {fileID: 2100000, guid: 361e7169408622348af1a8005e6a6f49, type: 2}

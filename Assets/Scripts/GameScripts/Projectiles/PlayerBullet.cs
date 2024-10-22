@@ -8,14 +8,14 @@ public class PlayerBullet : MonoBehaviour
     public float damage;
 
     private BossController target;
-    private PlayerController player;
+    private PlayerScript player;
     private float lifeTimer;
 
     void Start()
     {
         target = GameController.Instance.enemy;
         player = GameController.Instance.player;
-        damage = player.shootingScript.damage;
+        //damage = player.shootingScript.damage;
         lifeTimer = lifeTime;
         GameController.Instance.playerBullets.Add(this);
     }

@@ -1,47 +1,45 @@
 
 using UnityEngine;
 
-public class PlayerShooting : MonoBehaviour
+public class PlayerShooting
 {
-    public float damage;
-    public float idleShootCooldown;
-    public float shootCooldown;
-    public float shootTimer;
+    private PlayerScript controller;
+    private PlayerSettings settings;
+    private bool canShoot;
 
-    public bool prepShoot;
-    public float timeBeforeShoot;
-    public float timerBeforeShoot;
+    private float attackTimer;
 
-    private PlayerController playerController;
-
-    public void Init()
+    public PlayerShooting(PlayerScript playerController, PlayerSettings playerSettings)
     {
-        playerController = gameObject.GetComponent<PlayerController>();
+        controller = playerController;
+        settings = playerSettings;
+        canShoot = true;
     }
 
-    public void UpdateShooting()
+    public void UpdateScript()
     {
-        if (shootTimer > 0)
-            shootTimer -= Time.deltaTime;
-
+        if (attackTimer > 0)
+        {
+            attackTimer -= Time.deltaTime;
+        }
         else
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (!controller.isMoving)
             {
-                Shoot();
-                shootTimer = shootCooldown;
+                if (Input.GetMouseButtonDown(0))
+                {
+                    Shoot();
+                }
             }
         }
     }
 
     public void Shoot()
     {
-        //PlayerBullet bullet = Instantiate(playerController.bulletPrefab, playerController.shootPoint.position, Quaternion.identity);
-        //bullet.SetBulletActive(playerController.shootPoint.position, playerController.enemy.transform.position);
-        //bullet.damage = damage;
-
-        GameController.Instance.InstantiateProjectile(playerController.shootPoint.position, true);
-
-        StartCoroutine(playerController.PlayShootAnimation());
+        attackTimer = settings.attackDelay;
+        GameController.Instance.InstantiateProjectile(controller.shootPoint.position, true);
+        controller.playerAnimator.StartAnimation(PlayerAnimator.Clip.Attack);
     }
+
+    public void SetCanShoot(bool _canShoot) => canShoot = _canShoot;
 }

@@ -10,8 +10,10 @@ public class BossController : UnitGeneral
 
     [SerializeField] EnemySettings settings;
 
-    public PlayerController target;
+    public PlayerScript target;
     //private float currentHealth;
+
+    private HealthBar healthBar;
 
     [Header("Animations")]
 
@@ -34,9 +36,8 @@ public class BossController : UnitGeneral
     public void Init()
     {
         target = GameController.Instance.player;
-        //currentHealth = settings.health;
-        //SetHealthBar(false);
-        //isAlive = true;
+        healthBar = GameController.Instance.uiScript.bossHB;
+        
         ResetEnemy();
     }
 
@@ -78,7 +79,7 @@ public class BossController : UnitGeneral
 
     public void ResetEnemy()
     {
-        currentHealth = settings.health;
+        currentHealth = settings.maxHealth;
         SetHealthBar(false);
         animator.SetTrigger("Alive");
         isAlive = true;
@@ -131,11 +132,11 @@ public class BossController : UnitGeneral
 
     private void SetHealthBar(bool isHit)
     {
-        HealthBar healthBar = GameController.Instance.uiScript.bossHB;
+        
         if(isHit)
-            healthBar.SetHealth(currentHealth);
+            healthBar.SetHealth(health, currentHealth);
         else
-            healthBar.SetMaxHealth(currentHealth);
+            healthBar.ResetBar();
     }
 
 }

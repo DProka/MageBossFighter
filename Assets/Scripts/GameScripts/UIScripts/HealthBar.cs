@@ -4,16 +4,15 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    public Slider slider;
+    [SerializeField] Image frontImage;
 
-    public void SetMaxHealth(float health)
+    public void ResetBar()
     {
-        slider.maxValue = health;
-        slider.value = health;
+        frontImage.transform.localScale = new Vector3(1, 1, 0);
     }
 
-    public void SetHealth(float health)
+    public void SetHealth(float maxHealth, float currentHealth)
     {
-        slider.value = health;
+        frontImage.transform.localScale = new Vector3(currentHealth / maxHealth, 1, 0);
     }
 }
