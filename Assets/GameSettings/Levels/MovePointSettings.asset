@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3c046ee0f3fdc941a8613705dde9637, type: 3}
+  m_Name: MovePointSettings
+  m_EditorClassIdentifier: 
+  burningTime: 3
+  freezeTime: 3
+  blockedTime: 3
+  startMaterial: {fileID: 2100000, guid: 7ca7c346bcadf6a41bd77a3b944fb5a7, type: 2}
+  burnMaterial: {fileID: 2100000, guid: c87767a1b09f99a428e1424639e96846, type: 2}
+  freezeMaterial: {fileID: 2100000, guid: 4645d64bee32b5d42adecab7cf5ea591, type: 2}
+  blockedMaterial: {fileID: 2100000, guid: e76b4a356d7749b4c95f0f1ebd8862ba, type: 2}

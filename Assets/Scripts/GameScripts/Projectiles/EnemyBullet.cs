@@ -8,16 +8,16 @@ public class EnemyBullet : MonoBehaviour
     [SerializeField] ProjectileSettings settings;
     
     private PlayerScript player;
-    private BossController enemy;
+    private BossScript enemy;
     private float lifeTimer;
     
     void Start()
     {
-        player = GameController.Instance.player;
-        enemy = GameController.Instance.enemy;
+        //player = GameController.Instance.player;
+        //enemy = GameController.Instance.enemy;
         damage = settings.damage;
         lifeTimer = settings.lifeTime;
-        GameController.Instance.enemyBullets.Add(this);
+        //GameController.Instance.enemyBullets.Add(this);
     }
 
     public void UpdateBullet()
@@ -50,7 +50,7 @@ public class EnemyBullet : MonoBehaviour
 
     public void DestroyBullet()
     {
-        GameController.Instance.enemyBullets.Remove(this);
+        //GameController.Instance.enemyBullets.Remove(this);
         Destroy(gameObject);
     }
 }

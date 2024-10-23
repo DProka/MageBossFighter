@@ -1,72 +1,58 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
     public static GameController Instance;
 
-    [Header("Main")]
+    public bool gameIsActive { get; private set; }
+    public MovePoint[] points => arenaManager.movePointsArray;
 
-    public int gameLvl;
-    public int arenaNum;
-    public int bossNum;
+    [SerializeField] GameSettings settings;
 
-    public UIController uiScript;
-    public bool gameIsActive;
+    [Header("UI Part")]
 
-    public float timeToStart;
-    private float timerStart;
+    [SerializeField] UIController uiController;
 
     [Header("Arena Part")]
 
     [SerializeField] ArenaManager arenaManager;
     [SerializeField] LevelBase lvlbase;
-
-    public MovePoint[] points => arenaManager.points;
-
-    //[SerializeField] Projectile projectilePrefab;
     [SerializeField] ProjectileBase projectileBase;
+
     private ProjectileManager projectileManager;
+    private PlayerScript player;
+    private BossScript enemy;
+    private ArenaStatistic statistic;
 
-    [Header("Player Main")]
-
-    public PlayerScript player;
-    public HealthBar playerHB;
-
-    [HideInInspector]public List<PlayerBullet> playerBullets;
-    
-    [Header("Enemy Main")]
-
-    public BossController enemy;
-    public HealthBar enemyHB;
-
-    [HideInInspector]public List<EnemyBullet> enemyBullets;
+    private float timerStart;
 
     void Awake()
     {
         Instance = this;
         gameIsActive = false;
-        timerStart = timeToStart;
+        timerStart = settings.timeToStart;
 
         GameEventBus.OnSomeoneDies += CheckWinner;
 
+        statistic = new ArenaStatistic();
+        statistic.UpdateStatistic(new int[] { 0, 0, 0 });
         projectileManager = new ProjectileManager(projectileBase);
 
+        uiController.Init(this);
         arenaManager.Init(lvlbase);
         LoadLevel();
-        player.Init(enemy);
-        enemy.Init();
     }
 
     void Update()
     {
-        uiScript.UpdateUI();
+        uiController.UpdateUI();
 
         if (gameIsActive)
         {
-            PlayerUpdate();
-            EnemyUpdate();
+            player.PlayerUpdate();
+            enemy.EnemyUpdate();
             projectileManager.UpdateList();
         }
         else
@@ -81,10 +67,12 @@ public class GameController : MonoBehaviour
 
     public void LoadLevel()
     {
-        gameLvl = DataHolder.gameLevel;
-        bossNum = gameLvl;
-        arenaManager.SpawnArena(arenaNum);
-        enemy = arenaManager.SpawnBoss(bossNum);
+        arenaManager.SpawnArena(statistic.arenaNum);
+        player = arenaManager.SpawnPlayer(0);
+        enemy = arenaManager.SpawnBoss(statistic.bossNum);
+
+        player.Init(enemy);
+        enemy.Init(player);
     }
 
     private void CheckWinner()
@@ -94,30 +82,9 @@ public class GameController : MonoBehaviour
         else
             Debug.Log("Player Defeat");
 
-        uiScript.CallEndScreen(player.isAlive);
+        uiController.CallEndScreen(player.isAlive);
         ClearArena();
         gameIsActive = false;
-    }
-
-    public void EnemyUpdate()
-    {
-        enemy.EnemyUpdate();
-
-        for(int i = 0; i < enemyBullets.Count; i++)
-        {
-            enemyBullets[i].UpdateBullet();
-        }
-    }
-    
-    public void PlayerUpdate()
-    {
-        player.PlayerUpdate();
-        //touch.UpdateTouch();
-
-        for (int i = 0; i < playerBullets.Count; i++)
-        {
-            playerBullets[i].UpdateBullet();
-        }
     }
 
     public Transform GetNextWayPoint(int pointNum)
@@ -127,43 +94,25 @@ public class GameController : MonoBehaviour
 
     void ArenaStart()
     {
-        uiScript.timerObj.SetActive(true);
+        uiController.timerObj.SetActive(true);
         int time = (int)timerStart;
         
         if(timerStart > 1)
-            uiScript.timerText.text = " " + time;
+            uiController.timerText.text = " " + time;
 
         else if (timerStart <= 1 && timerStart > 0)
-            uiScript.timerText.text = "GO";
+            uiController.timerText.text = "GO";
 
         else
         {
-            uiScript.timerObj.SetActive(false);
+            uiController.timerObj.SetActive(false);
             gameIsActive = true;
         }
     }
 
     void ClearArena()
     {
-        for (int i = 0; i < playerBullets.Count; i++)
-        {
-            playerBullets[i].DestroyBullet();
-        }
-
-        for (int i = 0; i < enemyBullets.Count; i++)
-        {
-            enemyBullets[i].DestroyBullet();
-        }
-    }
-
-    public void RestartScene()
-    {
-        gameIsActive = false;
-        timerStart = 4;
-        player.ResetPlayer();
-        enemy.ResetEnemy();
-        uiScript.endMenu.SetActive(false);
-        ClearArena();
+        projectileManager.ClearList();
     }
 
     public void InstantiateProjectile(Vector3 position, bool isPlayer)
@@ -172,8 +121,24 @@ public class GameController : MonoBehaviour
         projectileManager.InstantiateProjectile(position, target, isPlayer);
     }
 
+    public void RestartScene()
+    {
+        gameIsActive = false;
+        timerStart = 4;
+        player.ResetPlayer();
+        enemy.ResetEnemy();
+        uiController.endMenu.SetActive(false);
+        ClearArena();
+    }
+
+    public void GoToMaiuMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
     private void OnDestroy()
     {
         GameEventBus.OnSomeoneDies -= CheckWinner;
     }
+
 }

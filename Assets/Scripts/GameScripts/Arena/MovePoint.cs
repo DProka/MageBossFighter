@@ -1,71 +1,67 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
-using System;
 
 public class MovePoint : MonoBehaviour
 {
-    public Status pointStatus;
-    public float burningTime;
-    public float freezeTime;
-    public float blockedTime;
+    public Status pointStatus { get; private set; }
 
-    public MeshRenderer meshRenderer;
-    public Material startMaterial;
-    public Material burnMaterial;
-    public Material freezeMaterial;
-    public Material blockedMaterial;
+    [SerializeField] MeshRenderer meshRenderer;
+
+    private MovePointSettings settings;
 
     private float burningTimer;
     private float freezeTimer;
     private float blockedTimer;
 
-    void Start()
+    public void Init(MovePointSettings _settings)
     {
-        GetNewStatus(Status.NoStatus);
-        burningTimer = burningTime;
-        freezeTimer = freezeTime;
-        blockedTimer = blockedTime;
+        settings = _settings;
+        SetNewStatus(Status.NoStatus);
+        burningTimer = settings.burningTime;
+        freezeTimer = settings.freezeTime;
+        blockedTimer = settings.blockedTime;
     }
 
-    void Update()
+    //void Update()
+    //{
+    //    CheckStatus();
+    //}
+
+    public void SetNewStatus(Status status)
     {
-        CheckStatus();
+        switch (status)
+        {
+            case Status.NoStatus:
+                pointStatus = Status.NoStatus;
+                meshRenderer.material = settings.startMaterial;
+                break;
+        
+            case Status.Burning:
+                pointStatus = Status.Burning;
+                meshRenderer.material = settings.burnMaterial;
+                break;
+        
+            case Status.Freeze:
+                pointStatus = Status.Freeze;
+                meshRenderer.material = settings.freezeMaterial;
+                break;
+        
+            case Status.Blocked:
+                pointStatus = Status.Blocked;
+                meshRenderer.material = settings.blockedMaterial;
+                break;
+        }
     }
 
-    public void GetNewStatus(Status status)
-    {
-        if (status == Status.NoStatus)
-        {
-            pointStatus = Status.NoStatus;
-            meshRenderer.material = startMaterial;
-        }
-        else if (status == Status.Burning)
-        {
-            pointStatus = Status.Burning;
-            meshRenderer.material = burnMaterial;
-        }
-        else if (status == Status.Freeze)
-        {
-            pointStatus = Status.Freeze;
-            meshRenderer.material = freezeMaterial;
-        }
-        else if (status == Status.Blocked)
-        {
-            pointStatus = Status.Blocked;
-            meshRenderer.material = blockedMaterial;
-        }
-    }
-
-    void CheckStatus()
+    public void CheckStatus()
     {
         if(pointStatus == Status.Burning)
         {
             burningTimer -= Time.deltaTime;
             if(burningTimer <= 0)
             {
-                burningTimer = burningTime;
-                GetNewStatus(Status.NoStatus);
+                burningTimer = settings.burningTime;
+                SetNewStatus(Status.NoStatus);
             }
         }
         else if (pointStatus == Status.Freeze)
@@ -73,8 +69,8 @@ public class MovePoint : MonoBehaviour
             freezeTimer -= Time.deltaTime;
             if(freezeTimer <= 0)
             {
-                freezeTimer = freezeTime;
-                GetNewStatus(Status.NoStatus);
+                freezeTimer = settings.freezeTime;
+                SetNewStatus(Status.NoStatus);
             }
         }
         else if (pointStatus == Status.Blocked)
@@ -82,17 +78,17 @@ public class MovePoint : MonoBehaviour
             blockedTimer -= Time.deltaTime;
             if(blockedTimer <= 0)
             {
-                blockedTimer = blockedTime;
-                GetNewStatus(Status.NoStatus);
+                blockedTimer = settings.blockedTime;
+                SetNewStatus(Status.NoStatus);
             }
         }
     }
-}
 
-public enum Status
-{
-    NoStatus,
-    Burning,
-    Freeze,
-    Blocked
+    public enum Status
+    {
+        NoStatus,
+        Burning,
+        Freeze,
+        Blocked
+    }
 }

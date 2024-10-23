@@ -3,7 +3,13 @@ using UnityEngine;
 
 public class ArenaManager : MonoBehaviour
 {
-    public MovePoint[] points { get; private set; }
+    public MovePoint[] movePointsArray { get; private set; }
+
+    [Header("Move Point Settings")]
+
+    [SerializeField] MovePointSettings movePointSettings;
+
+    [Header("Spawn Points")]
 
     [SerializeField] Transform pointsParent;
     [SerializeField] Transform arenaPivot;
@@ -18,26 +24,32 @@ public class ArenaManager : MonoBehaviour
         PrepareArena();
     }
 
-    public void SpawnArena(int arenaNum)
+    public void SpawnArena(int arenaNum) => Instantiate(lvlbase.arenaPrefab[arenaNum], arenaPivot.position, Quaternion.identity, transform);
+    
+    public PlayerScript SpawnPlayer(int prefNum)
     {
-        Instantiate(lvlbase.arenaModel[arenaNum], arenaPivot.position, Quaternion.identity);
-    }
+        GameObject pref = Instantiate(lvlbase.playerPrefab[prefNum], movePointsArray[0].transform.position, Quaternion.Euler(0, 0, 0), transform);
+        PlayerScript player = pref.GetComponent<PlayerScript>();
 
-    public BossController SpawnBoss(int bossNum)
+        return player;
+    }
+    
+    public BossScript SpawnBoss(int bossNum)
     {
-        GameObject boss = Instantiate(lvlbase.bossModel[bossNum], arenaPivot.position, Quaternion.Euler(0, 180, 0));
-        BossController enemy = boss.GetComponent<BossController>();
+        GameObject boss = Instantiate(lvlbase.bossPrefab[bossNum], arenaPivot.position, Quaternion.Euler(0, 180, 0), transform);
+        BossScript enemy = boss.GetComponent<BossScript>();
 
         return enemy;
     }
 
     private void PrepareArena()
     {
-        points = new MovePoint[pointsParent.childCount];
+        movePointsArray = new MovePoint[pointsParent.childCount];
 
         for (int i = 0; i < pointsParent.childCount; i++)
         {
-            points[i] = pointsParent.GetChild(i).GetComponent<MovePoint>();
+            movePointsArray[i] = pointsParent.GetChild(i).GetComponent<MovePoint>();
+            movePointsArray[i].Init(movePointSettings);
         }
     }
 }

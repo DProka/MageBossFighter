@@ -7,17 +7,17 @@ public class PlayerBullet : MonoBehaviour
     public float lifeTime;
     public float damage;
 
-    private BossController target;
+    private BossScript target;
     private PlayerScript player;
     private float lifeTimer;
 
     void Start()
     {
-        target = GameController.Instance.enemy;
-        player = GameController.Instance.player;
+        //target = GameController.Instance.enemy;
+        //player = GameController.Instance.player;
         //damage = player.shootingScript.damage;
         lifeTimer = lifeTime;
-        GameController.Instance.playerBullets.Add(this);
+        //GameController.Instance.playerBullets.Add(this);
     }
 
     public void UpdateBullet()
@@ -48,7 +48,7 @@ public class PlayerBullet : MonoBehaviour
 
     public void DestroyBullet()
     {
-        GameController.Instance.playerBullets.Remove(this);
+        //GameController.Instance.playerBullets.Remove(this);
         Destroy(gameObject);
     }
 }
