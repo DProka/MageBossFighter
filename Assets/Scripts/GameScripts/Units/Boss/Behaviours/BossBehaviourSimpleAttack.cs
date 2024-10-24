@@ -1,10 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class BossBehaviourSimpleAttack : IBehaviour
 {
     private BossScript unit;
+
+    private float shootTimer;
 
     public BossBehaviourSimpleAttack(BossScript thisUnit)
     {
@@ -13,16 +14,36 @@ public class BossBehaviourSimpleAttack : IBehaviour
 
     public void Enter()
     {
-        throw new System.NotImplementedException();
+        shootTimer = unit._settings.simpleAttackSpeed;
+    }
+
+    public void Update()
+    {
+        if (shootTimer > 0)
+            shootTimer -= Time.deltaTime;
+        else
+            Shoot();
+
+        Rotate();
     }
 
     public void Exit()
     {
-        throw new System.NotImplementedException();
+
     }
 
-    void IBehaviour.Update()
+    private void Shoot()
     {
-        throw new System.NotImplementedException();
+        shootTimer = unit._settings.simpleAttackSpeed;
+        //unit.SpawnSimpleProjectile();
+        GameController.Instance.InstantiateProjectile(unit._shootPoint.position, unit.target.transform.position, false);
+        unit.animationManager.PlayAnimation(BossAnimationManager.Anim.Attack);
+    }
+
+    public void Rotate()
+    {
+        Vector3 direction = (unit.target.transform.position - unit.transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        unit.transform.rotation = Quaternion.Lerp(unit.transform.rotation, lookRotation, Time.deltaTime * unit._settings.rotateSpeed);
     }
 }

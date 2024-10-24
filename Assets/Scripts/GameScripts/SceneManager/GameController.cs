@@ -7,6 +7,9 @@ public class GameController : MonoBehaviour
     public static GameController Instance;
 
     public bool gameIsActive { get; private set; }
+    public PlayerScript player { get; private set; }
+    public BossScript enemy { get; private set; }
+
     public MovePoint[] points => arenaManager.movePointsArray;
 
     [SerializeField] GameSettings settings;
@@ -22,8 +25,6 @@ public class GameController : MonoBehaviour
     [SerializeField] ProjectileBase projectileBase;
 
     private ProjectileManager projectileManager;
-    private PlayerScript player;
-    private BossScript enemy;
     private ArenaStatistic statistic;
 
     private float timerStart;
@@ -57,11 +58,13 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            if (timerStart > 0)
-            {
-                timerStart -= Time.deltaTime;
-                ArenaStart();
-            }
+            //if (timerStart > 0)
+            //{
+            //    timerStart -= Time.deltaTime;
+            //    StartArena();
+            //}
+
+            UpdateStartTimer();
         }
     }
 
@@ -73,11 +76,13 @@ public class GameController : MonoBehaviour
 
         player.Init(enemy);
         enemy.Init(player);
+
+        StartArenaTimer();
     }
 
     private void CheckWinner()
     {
-        if(player.isAlive)
+        if (player.isAlive)
             Debug.Log("Player Win");
         else
             Debug.Log("Player Defeat");
@@ -92,22 +97,38 @@ public class GameController : MonoBehaviour
         return points[pointNum].transform;
     }
 
-    void ArenaStart()
+    private void StartArenaTimer()
     {
         uiController.timerObj.SetActive(true);
-        int time = (int)timerStart;
-        
-        if(timerStart > 1)
-            uiController.timerText.text = " " + time;
+        timerStart = settings.timeToStart;
+    }
 
-        else if (timerStart <= 1 && timerStart > 0)
-            uiController.timerText.text = "GO";
+    private void UpdateStartTimer()
+    {
+        if (timerStart > 0)
+        {
+            timerStart -= Time.deltaTime;
+            int time = (int)timerStart;
 
+            if (timerStart > 1)
+                uiController.timerText.text = " " + time;
+
+            else if (timerStart <= 1 && timerStart > 0)
+                uiController.timerText.text = "GO";
+        }
         else
         {
-            uiController.timerObj.SetActive(false);
-            gameIsActive = true;
+            StartArena();
         }
+    }
+
+    private void StartArena()
+    {
+        uiController.timerObj.SetActive(false);
+        gameIsActive = true;
+        enemy.ActivateBoss();
+
+        Debug.Log("Arena is Active = " + gameIsActive);
     }
 
     void ClearArena()
@@ -115,10 +136,9 @@ public class GameController : MonoBehaviour
         projectileManager.ClearList();
     }
 
-    public void InstantiateProjectile(Vector3 position, bool isPlayer)
+    public void InstantiateProjectile(Vector3 startPosition, Vector3 targetPosition, bool isPlayer)
     {
-        UnitGeneral target = isPlayer ? enemy : player;
-        projectileManager.InstantiateProjectile(position, target, isPlayer);
+        projectileManager.InstantiateProjectile(startPosition, targetPosition, isPlayer);
     }
 
     public void RestartScene()

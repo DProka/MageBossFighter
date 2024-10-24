@@ -32,6 +32,10 @@ public class BossBehaviourManager
             case Behaviour.SimpleAttack:
                 newBeh = GetBehaviour<BossBehaviourSimpleAttack>();
                 break;
+        
+            case Behaviour.RoundAttack:
+                newBeh = GetBehaviour<BossBehaviourRoundAttack>();
+                break;
         }
 
         SetBehaviour(newBeh);
@@ -41,6 +45,7 @@ public class BossBehaviourManager
     {
         Idle,
         SimpleAttack,
+        RoundAttack,
     }
 
     private void SetBehaviour(IBehaviour newBehaviour)
@@ -61,6 +66,7 @@ public class BossBehaviourManager
 
         behavioursMap[typeof(BossBehaviourIdle)] = new BossBehaviourIdle(thisUnit);
         behavioursMap[typeof(BossBehaviourSimpleAttack)] = new BossBehaviourSimpleAttack(thisUnit);
+        behavioursMap[typeof(BossBehaviourRoundAttack)] = new BossBehaviourRoundAttack(thisUnit);
 
         SetNewBehaviour(Behaviour.Idle);
     }

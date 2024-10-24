@@ -14,7 +14,7 @@ public class SpiralShoot : MonoBehaviour
 
     private void Start()
     {
-        enemy.UpdEnemy.AddListener(SkillUpdate);
+        //enemy.UpdEnemy.AddListener(SkillUpdate);
     }
 
     void SkillUpdate()

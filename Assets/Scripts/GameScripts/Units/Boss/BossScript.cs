@@ -1,40 +1,34 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class BossScript : UnitGeneral
 {
+    public BossAnimationManager animationManager { get; private set; }
+    public PlayerScript target { get; private set; }
     public bool isAlive { get; private set; }
+    public bool isActive { get; private set; }
+
+    public Transform _shootPoint => shootPoint;
+    public EnemySettings _settings => settings;
 
     [Header("Main")]
 
     [SerializeField] EnemySettings settings;
 
-    public PlayerScript target;
-
     [Header("Animations")]
 
-    public Animator animator;
+    [SerializeField] Animator animator;
 
     [Header("Skills")]
 
-    public Transform shootPoint;
-    public UnityEvent UpdEnemy = new UnityEvent();
-
-    public float burnDamage;
-    public float timeToBurn;
-
-    public float freezeDamage;
-    public float powerOfFreeze;
-    public float timeToFreeze;
-    public float freezeStatusTimer;
+    [SerializeField] Transform shootPoint;
 
     private BossBehaviourManager behaviourManager;
 
     public void Init(PlayerScript _target)
     {
         target = _target;
-
+        animationManager = new BossAnimationManager(animator);
         behaviourManager = new BossBehaviourManager(this);
         behaviourManager.SetNewBehaviour(BossBehaviourManager.Behaviour.Idle);
 
@@ -45,23 +39,10 @@ public class BossScript : UnitGeneral
     {
         if (isAlive)
         {
-            RotateEnemy();
-
-            if (UpdEnemy != null)
-                UpdEnemy.Invoke();
+            behaviourManager.UpdateManager();
         }
-    }
 
-    public void RotateEnemy()
-    {
-        Vector3 direction = (target.transform.position - transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * settings.rotateSpeed);
-
-        //if (target.movementScript.isMoving)
-        //    SetMovingAnimation(true);
-        //else
-        //    SetMovingAnimation(false);
+        animationManager.UpdateScript();
     }
 
     public override void GetHit(float damage)
@@ -70,7 +51,7 @@ public class BossScript : UnitGeneral
 
         if (currentHealth > 0)
         {
-            StartCoroutine(PlayGetHitAnimation());
+            animationManager.PlayAnimation(BossAnimationManager.Anim.GetHit);
         }
         else
         {
@@ -81,56 +62,29 @@ public class BossScript : UnitGeneral
         UIController.Instance.UpdateHealthBar(false, settings.maxHealth, currentHealth);
     }
 
+    public void ActivateBoss()
+    {
+        isActive = true;
+        //behaviourManager.SetNewBehaviour(BossBehaviourManager.Behaviour.SimpleAttack);
+        behaviourManager.SetNewBehaviour(BossBehaviourManager.Behaviour.RoundAttack);
+        Debug.Log("Boss is active");
+    }
+
     public void ResetEnemy()
     {
         currentHealth = settings.maxHealth;
         UIController.Instance.UpdateHealthBar(false, settings.maxHealth, currentHealth);
-        animator.SetTrigger("Alive");
+        behaviourManager.SetNewBehaviour(BossBehaviourManager.Behaviour.Idle);
         isAlive = true;
-    }
-
-    public void SetMovingAnimation(bool isMove)
-    {
-        if (isMove)
-        {
-            animator.SetBool("Rotate", true);
-        }
-        else
-        {
-            animator.SetBool("Rotate", false);
-        }
-    }
-
-    public IEnumerator PlayThrowAnimation()
-    {
-        if (animator != null)
-        {
-            animator.SetBool("Throw", true);
-            animator.SetBool("GetHit", false);
-            yield return new WaitForSeconds(0.1f);
-            animator.SetBool("Throw", false);
-        }
-    }
-
-    IEnumerator PlayGetHitAnimation()
-    {
-        if (animator != null)
-        {
-            animator.SetBool("GetHit", true);
-            animator.SetBool("Throw", false);
-            yield return new WaitForSeconds(0.1f);
-            animator.SetBool("GetHit", false);
-        }
     }
 
     private void SetDeath()
     {
         currentHealth = 0;
         isAlive = false;
+        isActive = false;
 
-        if (animator != null && isAlive)
-            animator.SetTrigger("Death");
-
+        animationManager.PlayAnimation(BossAnimationManager.Anim.Death);
         GameEventBus.OnSomeoneDies?.Invoke();
     }
 }

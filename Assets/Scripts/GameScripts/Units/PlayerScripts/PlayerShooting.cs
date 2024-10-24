@@ -37,7 +37,7 @@ public class PlayerShooting
     public void Shoot()
     {
         attackTimer = settings.attackDelay;
-        GameController.Instance.InstantiateProjectile(shootPoint.position, true);
+        GameController.Instance.InstantiateProjectile(shootPoint.position, GameController.Instance.enemy.transform.position, true);
         controller.playerAnimator.StartAnimation(PlayerAnimator.Clip.Attack);
     }
 

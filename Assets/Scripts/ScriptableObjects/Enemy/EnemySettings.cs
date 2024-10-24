@@ -11,6 +11,8 @@ public class EnemySettings : ScriptableObject
     [Header("Attack")]
 
     public float damage;
+    public float simpleAttackSpeed;
+    public float roundAttackSpeed;
 
     [Header("Moving")]
 

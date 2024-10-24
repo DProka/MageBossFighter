@@ -13,7 +13,7 @@ public class CircleShoot : MonoBehaviour
 
     private void Start()
     {
-        enemy.UpdEnemy.AddListener(SkillUpdate);
+        //enemy.UpdEnemy.AddListener(SkillUpdate);
     }
 
     public void SkillUpdate()

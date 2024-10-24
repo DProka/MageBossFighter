@@ -23,13 +23,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1074384081515194853}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.65, z: 0.94}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6299836529812614752}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6848824013785315341
 GameObject:
@@ -40,7 +40,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6299836529812614752}
-  - component: {fileID: 7171570143419772860}
   - component: {fileID: 1275132259828532597}
   m_Layer: 0
   m_Name: BossBox3
@@ -56,6 +55,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6848824013785315341}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -64,36 +64,7 @@ Transform:
   - {fileID: 3346809489314571974}
   - {fileID: 1406070467590864725}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7171570143419772860
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6848824013785315341}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4da4d21b2ae4a1948b6f0d7f14d0c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  damage: 10
-  rotateSpeed: 5
-  animator: {fileID: 0}
-  isAlive: 0
-  target: {fileID: 0}
-  shootPoint: {fileID: 1406070467590864725}
-  UpdEnemy:
-    m_PersistentCalls:
-      m_Calls: []
-  burnDamage: 0
-  timeToBurn: 0
-  freezeDamage: 0
-  powerOfFreeze: 0
-  timeToFreeze: 0
-  freezeStatusTimer: 0
 --- !u!114 &1275132259828532597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,14 +77,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa8c6b3d8ae1fd548ae3b3bcb657bcd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  shootSpeed: 2
-  bulletPrefab: {fileID: 9083544899108236886, guid: b1b276330c03b6f419777b58d1815f19, type: 3}
 --- !u!1001 &3024439841199554861
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 6299836529812614752}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: d1daa6bf607e7874e9031b9b1bc484ad, type: 3}
@@ -177,6 +146,9 @@ PrefabInstance:
       value: Boss_2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1daa6bf607e7874e9031b9b1bc484ad, type: 3}
 --- !u!4 &3346809489314571974 stripped
 Transform:

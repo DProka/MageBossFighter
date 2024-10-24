@@ -10,7 +10,7 @@ public class BossBehaviourIdle : IBehaviour
 
     public void Enter()
     {
-        
+        unit.animationManager.PlayAnimation(BossAnimationManager.Anim.Idle);
     }
 
     void IBehaviour.Update()

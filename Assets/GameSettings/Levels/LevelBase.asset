@@ -15,7 +15,7 @@ MonoBehaviour:
   playerPrefab:
   - {fileID: 849460599313080634, guid: f83aee081cb991445b12d0c9487330c0, type: 3}
   bossPrefab:
-  - {fileID: 6720578019258621749, guid: 48baa1e3adb806c49a4b8eb9abb8716a, type: 3}
+  - {fileID: 2496872448679842814, guid: 45813cb8617acf649a575e77b788c23c, type: 3}
   - {fileID: 6848824013785315341, guid: f3be2c62e6cafb34b9b3b0adb236257a, type: 3}
   - {fileID: 6848824013785315341, guid: 820e3b51b8fbbbf4898b872bfdc5d70d, type: 3}
   - {fileID: 6848824013785315341, guid: fc7b2dd803a30344a87341594fff2200, type: 3}

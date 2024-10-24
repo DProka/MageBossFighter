@@ -12,7 +12,7 @@ public class BlockMovepoints : MonoBehaviour
     void Start()
     {
         cooldownTimer = cooldown;
-        enemy.UpdEnemy.AddListener(SkillUpdate);
+        //enemy.UpdEnemy.AddListener(SkillUpdate);
     }
 
     public void SkillUpdate()

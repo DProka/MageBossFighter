@@ -25,12 +25,14 @@ public class ProjectileManager
         }
     }
 
-    public void InstantiateProjectile(Vector3 position, UnitGeneral target, bool isPlayer)
+    public void InstantiateProjectile(Vector3 position, Vector3 targetPosition, bool isPlayer)
     {
         ProjectileSettings settings = isPlayer ? projBase.playerProjectilesArray[0] : projBase.enemyProjectilesArray[0];
+        UnitGeneral target = isPlayer ? GameController.Instance.enemy : GameController.Instance.player;
 
         Projectile projectile = UnityEngine.Object.Instantiate(projBase.projectilePrefab, position, Quaternion.identity);
-        projectile.Init(this, target, settings, isPlayer);
+        projectile.Init(this, targetPosition, settings, isPlayer);
+        //projectile.Init(this, target, settings, isPlayer);
         projectilesList.Add(projectile);
     }
 

@@ -14,7 +14,7 @@ public class BurnMovepoints : MonoBehaviour
     {
         cooldownTimer = cooldown;
         SetDamage();
-        enemy.UpdEnemy.AddListener(SkillUpdate);
+        //enemy.UpdEnemy.AddListener(SkillUpdate);
     }
 
     public void SkillUpdate()
@@ -54,7 +54,7 @@ public class BurnMovepoints : MonoBehaviour
 
     void SetDamage()
     {
-        enemy.burnDamage = damage;
+        //enemy.burnDamage = damage;
         //enemy.target.timeToBurn = timeBeforeDamage;
     }
 }

@@ -14,17 +14,6 @@ public class PlayerScript : UnitGeneral
     [SerializeField] Animator animator;
     [SerializeField] Transform shootPoint;
 
-    //public PlayerStatus burnStatus;
-    //public PlayerStatus freezeStatus;
-
-    //public float timeToBurn;
-    //public float timeBeforeFreezeDamage;
-    //public float freezeStatusTime;
-
-    //private float burnTimer;
-    //private float timeTofreezeDamage;
-    //private float freezeStatusTimer;
-
     private PlayerMovement movementScript;
     private PlayerShooting shootingScript;
     private BossScript enemy;

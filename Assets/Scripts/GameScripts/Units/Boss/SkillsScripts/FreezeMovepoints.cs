@@ -16,7 +16,7 @@ public class FreezeMovepoints : MonoBehaviour
     {
         cooldownTimer = cooldown;
         SetDamage();
-        enemy.UpdEnemy.AddListener(SkillUpdate);
+        //enemy.UpdEnemy.AddListener(SkillUpdate);
     }
 
     void SkillUpdate()
@@ -56,9 +56,9 @@ public class FreezeMovepoints : MonoBehaviour
 
     void SetDamage()
     {
-        enemy.freezeDamage = damage;
+        //enemy.freezeDamage = damage;
         //enemy.target.timeBeforeFreezeDamage = timeBeforeDamage;
-        enemy.freezeStatusTimer = timeFreezeStatus;
-        enemy.powerOfFreeze = powerOfFreeze;
+        //enemy.freezeStatusTimer = timeFreezeStatus;
+        //enemy.powerOfFreeze = powerOfFreeze;
     }
 }
