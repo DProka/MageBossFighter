@@ -1,4 +1,5 @@
 
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,7 +11,7 @@ public class GameController : MonoBehaviour
     public PlayerScript player { get; private set; }
     public BossScript enemy { get; private set; }
 
-    public MovePoint[] points => arenaManager.movePointsArray;
+    public MovePointPrefabScript[] points => arenaManager.movePointsArray;
 
     [SerializeField] GameSettings settings;
 
@@ -55,15 +56,10 @@ public class GameController : MonoBehaviour
             player.PlayerUpdate();
             enemy.EnemyUpdate();
             projectileManager.UpdateList();
+            arenaManager.UpdateArena();
         }
         else
         {
-            //if (timerStart > 0)
-            //{
-            //    timerStart -= Time.deltaTime;
-            //    StartArena();
-            //}
-
             UpdateStartTimer();
         }
     }
@@ -96,6 +92,8 @@ public class GameController : MonoBehaviour
     {
         return points[pointNum].transform;
     }
+
+    public List<MovePointPrefabScript> GetEmptyMovepointsList() { return arenaManager.GetEmptyMovepointsList(); }
 
     private void StartArenaTimer()
     {
@@ -131,7 +129,7 @@ public class GameController : MonoBehaviour
         Debug.Log("Arena is Active = " + gameIsActive);
     }
 
-    void ClearArena()
+    private void ClearArena()
     {
         projectileManager.ClearList();
     }

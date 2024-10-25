@@ -12,7 +12,15 @@ public class EnemySettings : ScriptableObject
 
     public float damage;
     public float simpleAttackSpeed;
-    public float roundAttackSpeed;
+    public float spiralAttackSpeed;
+    public float roundAttackSpeed = 3f;
+    public float evenOddAttackSpeed = 3f;
+
+    [Header("Movepoints Attack")]
+
+    public float burnMovepointSpeed = 1f;
+    public float freezeMovepointSpeed = 1f;
+    public float blockMovepointSpeed = 1f;
 
     [Header("Moving")]
 

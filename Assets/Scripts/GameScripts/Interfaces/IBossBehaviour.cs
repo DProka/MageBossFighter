@@ -1,5 +1,5 @@
 
-public interface IBehaviour
+public interface IBossBehaviour
 {
     void Enter();
     void Update();

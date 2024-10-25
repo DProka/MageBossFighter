@@ -1,9 +1,10 @@
 
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ArenaManager : MonoBehaviour
 {
-    public MovePoint[] movePointsArray { get; private set; }
+    public MovePointPrefabScript[] movePointsArray { get; private set; }
 
     [Header("Move Point Settings")]
 
@@ -24,6 +25,11 @@ public class ArenaManager : MonoBehaviour
         PrepareArena();
     }
 
+    public void UpdateArena()
+    {
+        UpdateMovePoints();
+    }
+
     public void SpawnArena(int arenaNum) => Instantiate(lvlbase.arenaPrefab[arenaNum], arenaPivot.position, Quaternion.identity, transform);
     
     public PlayerScript SpawnPlayer(int prefNum)
@@ -42,14 +48,35 @@ public class ArenaManager : MonoBehaviour
         return enemy;
     }
 
+    public List<MovePointPrefabScript> GetEmptyMovepointsList()
+    {
+        List<MovePointPrefabScript> list = new List<MovePointPrefabScript>();
+
+        for (int i = 0; i < movePointsArray.Length; i++)
+        {
+            if (movePointsArray[i].pointStatus == MovePointPrefabScript.Status.NoStatus)
+                list.Add(movePointsArray[i]);
+        }
+
+        return list;
+    }
+
     private void PrepareArena()
     {
-        movePointsArray = new MovePoint[pointsParent.childCount];
+        movePointsArray = new MovePointPrefabScript[pointsParent.childCount];
 
         for (int i = 0; i < pointsParent.childCount; i++)
         {
-            movePointsArray[i] = pointsParent.GetChild(i).GetComponent<MovePoint>();
+            movePointsArray[i] = pointsParent.GetChild(i).GetComponent<MovePointPrefabScript>();
             movePointsArray[i].Init(movePointSettings);
+        }
+    }
+
+    private void UpdateMovePoints()
+    {
+        foreach(MovePointPrefabScript point in movePointsArray)
+        {
+            point.UpdateScript();
         }
     }
 }

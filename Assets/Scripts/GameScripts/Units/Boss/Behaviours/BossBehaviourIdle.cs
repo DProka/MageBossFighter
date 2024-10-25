@@ -1,5 +1,5 @@
 
-public class BossBehaviourIdle : IBehaviour
+public class BossBehaviourIdle : IBossBehaviour
 {
     private BossScript unit;
 
@@ -13,7 +13,7 @@ public class BossBehaviourIdle : IBehaviour
         unit.animationManager.PlayAnimation(BossAnimationManager.Anim.Idle);
     }
 
-    void IBehaviour.Update()
+    void IBossBehaviour.Update()
     {
         
     }

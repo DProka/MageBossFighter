@@ -4,8 +4,8 @@ using System.Collections.Generic;
 public class BossBehaviourManager
 {
     private BossScript thisUnit;
-    private Dictionary<Type, IBehaviour> behavioursMap;
-    private IBehaviour behaviourCurrent;
+    private Dictionary<Type, IBossBehaviour> behavioursMap;
+    private IBossBehaviour behaviourCurrent;
 
     public BossBehaviourManager(BossScript unit)
     {
@@ -21,7 +21,7 @@ public class BossBehaviourManager
 
     public void SetNewBehaviour(Behaviour behaviour)
     {
-        IBehaviour newBeh = GetBehaviour<BossBehaviourIdle>();
+        IBossBehaviour newBeh = GetBehaviour<BossBehaviourIdle>();
 
         switch (behaviour)
         {
@@ -33,8 +33,30 @@ public class BossBehaviourManager
                 newBeh = GetBehaviour<BossBehaviourSimpleAttack>();
                 break;
         
+            case Behaviour.SpiralAttack:
+                newBeh = GetBehaviour<BossBehaviourSpiralAttack>();
+                break;
+        
             case Behaviour.RoundAttack:
                 newBeh = GetBehaviour<BossBehaviourRoundAttack>();
+                break;
+        
+            case Behaviour.EvenOddAttack:
+                newBeh = GetBehaviour<BossBehaviourEvenOddAttack>();
+                break;
+        
+                //-----------------------------------------------------------------
+
+            case Behaviour.BurnMovepoint:
+                newBeh = GetBehaviour<BossBehaviourBurnMovepoint>();
+                break;
+        
+            case Behaviour.FreezeMovepoint:
+                newBeh = GetBehaviour<BossBehaviourFreezeMovepoint>();
+                break;
+        
+            case Behaviour.BlockMovepoint:
+                newBeh = GetBehaviour<BossBehaviourBlockMovepoint>();
                 break;
         }
 
@@ -45,10 +67,16 @@ public class BossBehaviourManager
     {
         Idle,
         SimpleAttack,
+        SpiralAttack,
         RoundAttack,
+        EvenOddAttack,
+
+        BurnMovepoint,
+        FreezeMovepoint,
+        BlockMovepoint,
     }
 
-    private void SetBehaviour(IBehaviour newBehaviour)
+    private void SetBehaviour(IBossBehaviour newBehaviour)
     {
         if (behaviourCurrent != newBehaviour)
         {
@@ -62,16 +90,22 @@ public class BossBehaviourManager
 
     private void InitializeBehaviours()
     {
-        behavioursMap = new Dictionary<Type, IBehaviour>();
+        behavioursMap = new Dictionary<Type, IBossBehaviour>();
 
         behavioursMap[typeof(BossBehaviourIdle)] = new BossBehaviourIdle(thisUnit);
         behavioursMap[typeof(BossBehaviourSimpleAttack)] = new BossBehaviourSimpleAttack(thisUnit);
+        behavioursMap[typeof(BossBehaviourSpiralAttack)] = new BossBehaviourSpiralAttack(thisUnit);
         behavioursMap[typeof(BossBehaviourRoundAttack)] = new BossBehaviourRoundAttack(thisUnit);
+        behavioursMap[typeof(BossBehaviourEvenOddAttack)] = new BossBehaviourEvenOddAttack(thisUnit);
+
+        behavioursMap[typeof(BossBehaviourBurnMovepoint)] = new BossBehaviourBurnMovepoint(thisUnit);
+        behavioursMap[typeof(BossBehaviourFreezeMovepoint)] = new BossBehaviourFreezeMovepoint(thisUnit);
+        behavioursMap[typeof(BossBehaviourBlockMovepoint)] = new BossBehaviourBlockMovepoint(thisUnit);
 
         SetNewBehaviour(Behaviour.Idle);
     }
 
-    private IBehaviour GetBehaviour<T>() where T : IBehaviour
+    private IBossBehaviour GetBehaviour<T>() where T : IBossBehaviour
     {
         var type = typeof(T);
         return behavioursMap[type];

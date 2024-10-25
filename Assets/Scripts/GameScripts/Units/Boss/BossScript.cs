@@ -65,8 +65,13 @@ public class BossScript : UnitGeneral
     public void ActivateBoss()
     {
         isActive = true;
+        
         //behaviourManager.SetNewBehaviour(BossBehaviourManager.Behaviour.SimpleAttack);
-        behaviourManager.SetNewBehaviour(BossBehaviourManager.Behaviour.RoundAttack);
+        //behaviourManager.SetNewBehaviour(BossBehaviourManager.Behaviour.RoundAttack);
+        //behaviourManager.SetNewBehaviour(BossBehaviourManager.Behaviour.SpiralAttack);
+        //behaviourManager.SetNewBehaviour(BossBehaviourManager.Behaviour.EvenOddAttack);
+        behaviourManager.SetNewBehaviour(BossBehaviourManager.Behaviour.BurnMovepoint);
+        
         Debug.Log("Boss is active");
     }
 

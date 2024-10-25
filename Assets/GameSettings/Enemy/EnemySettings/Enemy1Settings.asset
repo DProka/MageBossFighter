@@ -15,5 +15,10 @@ MonoBehaviour:
   maxHealth: 100
   damage: 10
   simpleAttackSpeed: 2
-  roundAttackSpeed: 0.3
+  spiralAttackSpeed: 0.3
+  roundAttackSpeed: 2
+  evenOddAttackSpeed: 1
+  burnMovepointSpeed: 1
+  freezeMovepointSpeed: 1
+  blockMovepointSpeed: 1
   rotateSpeed: 5

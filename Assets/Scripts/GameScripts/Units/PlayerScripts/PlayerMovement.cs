@@ -4,8 +4,8 @@ using UnityEngine;
 public class PlayerMovement
 {
     public bool isMoving { get; private set; }
-
-    private MovePoint targetPoint;
+    
+    private MovePointPrefabScript targetPoint;
 
     private PlayerScript controller;
     private PlayerSettings settings;
@@ -41,24 +41,6 @@ public class PlayerMovement
     {
         SetNewPointByNum(0);
     }
-
-    //public void CheckTargetPoint()
-    //{
-    //    if (targetPoint.pointStatus == Status.Burning)
-    //        controller.burnStatus = PlayerScript.PlayerStatus.Burn;
-    //    else
-    //        controller.burnStatus = PlayerScript.PlayerStatus.NoStatus;
-
-    //    if (targetPoint.pointStatus == Status.Freeze)
-    //        controller.freezeStatus = PlayerScript.PlayerStatus.Freeze;
-    //    else
-    //        controller.freezeStatus = PlayerScript.PlayerStatus.NoStatus;
-
-    //    if (targetPoint.pointStatus != Status.Blocked)
-    //        lastPoint = nextPoint;
-    //    else
-    //        nextPoint = lastPoint;
-    //}
 
     private void ChangePoint()
     {

@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-public class BossBehaviourSimpleAttack : IBehaviour
+public class BossBehaviourSimpleAttack : IBossBehaviour
 {
     private BossScript unit;
 
