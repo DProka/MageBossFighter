@@ -8,6 +8,10 @@ public class EnemySettings : ScriptableObject
     
     public float maxHealth;
 
+    [Header("Skill Pull")]
+
+    public BossBehaviourManager.Behaviour[] skillsArray;
+
     [Header("Attack")]
 
     public float damage;

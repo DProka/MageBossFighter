@@ -4,23 +4,22 @@ using UnityEngine;
 public class PlayerMovement
 {
     public bool isMoving { get; private set; }
-    
-    private MovePointPrefabScript targetPoint;
+    public MovePointPrefabScript targetPoint { get; private set; }
 
-    private PlayerScript controller;
+    private PlayerScript player;
     private PlayerSettings settings;
     private Transform enemyPoint;
-    private Transform nextWayPoint;
+    //private Transform nextWayPoint;
 
     private float mouseDeltaX;
     private float moveTimer;
 
     private int nextPoint = 0;
-    private int lastPoint;
+    private int lastPoint = 0;
 
     public PlayerMovement(PlayerScript playerController, PlayerSettings _settings, Transform _enemyPoint)
     {
-        controller = playerController;
+        player = playerController;
         settings = _settings;
         enemyPoint = _enemyPoint;
 
@@ -29,7 +28,7 @@ public class PlayerMovement
         moveTimer = 0;
     }
 
-    public void UpdateMovement()
+    public void UpdateScript()
     {
         MovePlayer();
 
@@ -42,52 +41,29 @@ public class PlayerMovement
         SetNewPointByNum(0);
     }
 
-    private void ChangePoint()
-    {
-        if (mouseDeltaX < -0.3)
-        {
-            controller.playerAnimator.StartAnimation(PlayerAnimator.Clip.MoveLeft);
-            nextPoint++;
-        }
-        else if (mouseDeltaX > 0.3)
-        {
-            controller.playerAnimator.StartAnimation(PlayerAnimator.Clip.MoveRight);
-            nextPoint--;
-        }
-
-        if (nextPoint >= 12)
-            nextPoint = 0;
-        if (nextPoint < 0)
-            nextPoint = 11;
-
-        nextWayPoint = GameController.Instance.GetNextWayPoint(nextPoint);
-
-        targetPoint = GameController.Instance.points[nextPoint];
-        Debug.Log("Target Point = " + targetPoint.name);
-
-        moveTimer = settings.moveDelay;
-    }
-
     private void MovePlayer()
     {
-        if (nextWayPoint == null)
+        //if (nextWayPoint == null)
+        if (targetPoint == null)
             return;
 
-        controller.transform.position = Vector3.MoveTowards(controller.transform.position, nextWayPoint.position, settings.moveSpeed * Time.deltaTime);
+        //player.transform.position = Vector3.MoveTowards(player.transform.position, nextWayPoint.position, settings.moveSpeed * Time.deltaTime);
+        player.transform.position = Vector3.MoveTowards(player.transform.position, targetPoint.transform.position, settings.moveSpeed * Time.deltaTime);
         RotatePlayer();
         CheckIsMoving();
     }
 
     private void RotatePlayer()
     {
-        Vector3 direction = (enemyPoint.position - controller.transform.position).normalized;
+        Vector3 direction = (enemyPoint.position - player.transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        controller.transform.rotation = Quaternion.Lerp(controller.transform.rotation, lookRotation, Time.deltaTime * 100);
+        player.transform.rotation = Quaternion.Lerp(player.transform.rotation, lookRotation, Time.deltaTime * 100);
     }
 
     private void CheckIsMoving()
     {
-        float distance = Vector3.Distance(controller.transform.position, nextWayPoint.position);
+        //float distance = Vector3.Distance(player.transform.position, nextWayPoint.position);
+        float distance = Vector3.Distance(player.transform.position, targetPoint.transform.position);
 
         if (distance > 0.1f)
             isMoving = true;
@@ -98,24 +74,51 @@ public class PlayerMovement
             else
                 isMoving = false;
 
-            controller.playerAnimator.StartAnimation(PlayerAnimator.Clip.Idle);
+            player.playerAnimator.StartAnimation(PlayerAnimator.Clip.Idle);
         }
 
         //Debug.Log("player is moving = " + isMoving);
     }
 
-    private void UpdateMouse()
-    {
-        if (Input.GetMouseButton(0))
-        {
-            mouseDeltaX = Input.GetAxis("Mouse X");
-        }
+    //private void UpdateMouse()
+    //{
+    //    if (Input.GetMouseButton(0))
+    //    {
+    //        mouseDeltaX = Input.GetAxis("Mouse X");
+    //    }
 
-        if (Input.GetMouseButtonUp(0))
-        {
-            ChangePoint();
-        }
-    }
+    //    if (Input.GetMouseButtonUp(0))
+    //    {
+    //        //ChangePoint();
+    //    }
+    //}
+
+    //private void ChangePoint()
+    //{
+    //    if (mouseDeltaX < -0.3)
+    //    {
+    //        player.playerAnimator.StartAnimation(PlayerAnimator.Clip.MoveLeft);
+    //        nextPoint++;
+    //    }
+    //    else if (mouseDeltaX > 0.3)
+    //    {
+    //        player.playerAnimator.StartAnimation(PlayerAnimator.Clip.MoveRight);
+    //        nextPoint--;
+    //    }
+
+    //    if (nextPoint >= 12)
+    //        nextPoint = 0;
+    //    if (nextPoint < 0)
+    //        nextPoint = 11;
+
+    //    targetPoint = GameController.Instance.points[nextPoint];
+    //    //nextWayPoint = targetPoint.transform;
+    //    //nextWayPoint = GameController.Instance.GetNextWayPoint(nextPoint);
+    //    player.CheckWaypointStatus();
+    //    moveTimer = settings.moveDelay;
+
+    //    Debug.Log("Target Point = " + targetPoint.name);
+    //}
 
     private void UpdateKeyboard()
     {
@@ -134,12 +137,12 @@ public class PlayerMovement
     {
         if (isLeft)
         {
-            controller.playerAnimator.StartAnimation(PlayerAnimator.Clip.MoveLeft);
+            player.playerAnimator.StartAnimation(PlayerAnimator.Clip.MoveLeft);
             nextPoint++;
         }
         else
         {
-            controller.playerAnimator.StartAnimation(PlayerAnimator.Clip.MoveRight);
+            player.playerAnimator.StartAnimation(PlayerAnimator.Clip.MoveRight);
             nextPoint--;
         }
 
@@ -153,11 +156,22 @@ public class PlayerMovement
 
     private void SetNewPointByNum(int num)
     {
-        nextWayPoint = GameController.Instance.GetNextWayPoint(num);
+        //nextWayPoint = GameController.Instance.GetNextWayPoint(num);
 
-        targetPoint = GameController.Instance.points[nextPoint];
-        Debug.Log("Target Point = " + targetPoint.name);
+        MovePointPrefabScript newPoint = GameController.Instance.points[num];
+        if (newPoint.pointStatus != MovePointPrefabScript.Status.Blocked)
+        {
+            targetPoint = newPoint;
+            player.CheckWaypointStatus();
+            moveTimer = settings.moveDelay;
 
-        moveTimer = settings.moveDelay;
+            lastPoint = nextPoint;
+
+            Debug.Log("Target Point = " + targetPoint.name);
+        }
+        else
+        {
+            nextPoint = lastPoint;
+        }
     }
 }

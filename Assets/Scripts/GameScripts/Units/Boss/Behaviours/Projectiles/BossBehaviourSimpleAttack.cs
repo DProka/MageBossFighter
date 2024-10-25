@@ -5,6 +5,7 @@ public class BossBehaviourSimpleAttack : IBossBehaviour
 {
     private BossScript unit;
 
+    private int attackCounter = 5;
     private float shootTimer;
 
     public BossBehaviourSimpleAttack(BossScript thisUnit)
@@ -15,6 +16,7 @@ public class BossBehaviourSimpleAttack : IBossBehaviour
     public void Enter()
     {
         shootTimer = unit._settings.simpleAttackSpeed;
+        attackCounter = 5;
     }
 
     public void Update()
@@ -38,6 +40,10 @@ public class BossBehaviourSimpleAttack : IBossBehaviour
         //unit.SpawnSimpleProjectile();
         GameController.Instance.InstantiateProjectile(unit._shootPoint.position, unit.target.transform.position, false);
         unit.animationManager.PlayAnimation(BossAnimationManager.Anim.Attack);
+        attackCounter--;
+
+        if (attackCounter <= 0)
+            unit.SetRandomBehaviour();
     }
 
     public void Rotate()

@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: Enemy1Settings
   m_EditorClassIdentifier: 
   maxHealth: 100
+  skillsArray: 01000000020000000400000005000000
   damage: 10
   simpleAttackSpeed: 2
   spiralAttackSpeed: 0.3
   roundAttackSpeed: 2
   evenOddAttackSpeed: 1
-  burnMovepointSpeed: 1
+  burnMovepointSpeed: 3
   freezeMovepointSpeed: 1
-  blockMovepointSpeed: 1
+  blockMovepointSpeed: 3
   rotateSpeed: 5

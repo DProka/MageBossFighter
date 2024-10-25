@@ -39,6 +39,8 @@ public class BossBehaviourBurnMovepoint : IBossBehaviour
         List<MovePointPrefabScript> points = GameController.Instance.GetEmptyMovepointsList();
 
         int random = Random.Range(0, points.Count);
-        points[random].SetNewStatus(MovePointPrefabScript.Status.Burning);
+        points[random].SetNewStatus(MovePointPrefabScript.Status.Burn);
+
+        unit.SetRandomBehaviour();
     }
 }

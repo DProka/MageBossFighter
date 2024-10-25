@@ -4,9 +4,11 @@ using UnityEngine;
 public class PlayerScript : UnitGeneral
 {
     public PlayerAnimator playerAnimator { get; private set; }
-
     public bool isAlive { get; private set; }
+    public int currentPointNum { get; private set; }
+
     public bool isMoving => movementScript.isMoving;
+    public bool isFreeze => statusScript.isFreeze;
 
     [Header("Main")]
 
@@ -16,6 +18,7 @@ public class PlayerScript : UnitGeneral
 
     private PlayerMovement movementScript;
     private PlayerShooting shootingScript;
+    private PlayerStatus statusScript;
     private BossScript enemy;
 
     public void Init(BossScript _enemy)
@@ -24,6 +27,7 @@ public class PlayerScript : UnitGeneral
         movementScript = new PlayerMovement(this, settings, enemy.transform);
         shootingScript = new PlayerShooting(this, settings, shootPoint);
         playerAnimator = new PlayerAnimator(animator);
+        statusScript = new PlayerStatus(this, settings);
 
         ResetPlayer();
     }
@@ -32,10 +36,9 @@ public class PlayerScript : UnitGeneral
     {
         if (isAlive)
         {
-            //CheckStatus();
-
-            movementScript.UpdateMovement();
+            movementScript.UpdateScript();
             shootingScript.UpdateScript();
+            statusScript.UpdateScript();
         }
     }
 
@@ -56,85 +59,27 @@ public class PlayerScript : UnitGeneral
         UIController.Instance.UpdateHealthBar(true, settings.maxHealth, currentHealth);
     }
 
-    #region Statuses
-
-    //void CheckStatus()
-    //{
-    //    if (burnStatus == PlayerStatus.NoStatus && freezeStatus == PlayerStatus.NoStatus)
-    //        return;
-    //    else
-    //    {
-    //        CheckBurnStatus();
-    //        CheckFreezeStatus();
-    //    }
-    //}
-
-    //void CheckBurnStatus()
-    //{
-    //    if (burnStatus == PlayerStatus.NoStatus)
-    //    {
-    //        burnTimer = timeToBurn;
-    //    }
-
-    //    if (burnStatus == PlayerStatus.Burn)
-    //    {
-    //        if (burnTimer > 0)
-    //        {
-    //            burnTimer -= Time.deltaTime;
-    //        }
-    //        else
-    //        {
-    //            GetHit(enemy.burnDamage);
-    //            burnTimer = timeToBurn;
-    //            burnStatus = PlayerStatus.NoStatus;
-    //        }
-    //    }
-    //}
-
-    //void CheckFreezeStatus()
-    //{
-    //    if (freezeStatus == PlayerStatus.NoStatus)
-    //    {
-    //        timeTofreezeDamage = timeBeforeFreezeDamage;
-    //    }
-
-    //    if (freezeStatus == PlayerStatus.Freeze)
-    //    {
-    //        if (timeTofreezeDamage > 0)
-    //        {
-    //            timeTofreezeDamage -= Time.deltaTime;
-    //        }
-    //        else
-    //        {
-    //            GetHit(enemy.freezeDamage);
-    //            timeTofreezeDamage = timeBeforeFreezeDamage;
-    //            freezeStatusTimer = enemy.freezeStatusTimer;
-    //            freezeStatus = PlayerStatus.NoStatus;
-    //        }
-    //    }
-
-    //    if (freezeStatusTimer > 0)
-    //    {
-    //        freezeStatusTimer -= Time.deltaTime;
-    //    }
-    //}
-
-    //public enum PlayerStatus
-    //{
-    //    NoStatus,
-    //    Burn,
-    //    Freeze
-    //}
-
-    #endregion
-
-    private void SetDead()
+    public void CheckWaypointStatus()
     {
-        isAlive = false;
-        playerAnimator.StartAnimation(PlayerAnimator.Clip.Death);
-        GameEventBus.OnSomeoneDies?.Invoke();
+        MovePointPrefabScript.Status pointStatus = movementScript.targetPoint.pointStatus;
+        currentPointNum = movementScript.targetPoint.id;
+
+        switch (pointStatus)
+        {
+            case MovePointPrefabScript.Status.NoStatus:
+                //movementScript.targetPoint.SetNewStatus(MovePointPrefabScript.Status.Player);
+                break;
+
+            case MovePointPrefabScript.Status.Burn:
+                statusScript.SetStatus(PlayerStatus.Status.Burn);
+                break;
+
+            case MovePointPrefabScript.Status.Freeze:
+                statusScript.SetStatus(PlayerStatus.Status.Freeze);
+                break;
+        }
     }
-    
+
     public void ResetPlayer()
     {
         isAlive = true;
@@ -142,5 +87,12 @@ public class PlayerScript : UnitGeneral
         UIController.Instance.UpdateHealthBar(true, settings.maxHealth, currentHealth);
         movementScript.ResetWayPoint();
         playerAnimator.StartAnimation(PlayerAnimator.Clip.Idle);
+    }
+
+    private void SetDead()
+    {
+        isAlive = false;
+        playerAnimator.StartAnimation(PlayerAnimator.Clip.Death);
+        GameEventBus.OnSomeoneDies?.Invoke();
     }
 }

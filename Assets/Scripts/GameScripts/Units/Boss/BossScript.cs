@@ -66,13 +66,21 @@ public class BossScript : UnitGeneral
     {
         isActive = true;
         
-        //behaviourManager.SetNewBehaviour(BossBehaviourManager.Behaviour.SimpleAttack);
+        behaviourManager.SetNewBehaviour(BossBehaviourManager.Behaviour.SimpleAttack);
         //behaviourManager.SetNewBehaviour(BossBehaviourManager.Behaviour.RoundAttack);
         //behaviourManager.SetNewBehaviour(BossBehaviourManager.Behaviour.SpiralAttack);
         //behaviourManager.SetNewBehaviour(BossBehaviourManager.Behaviour.EvenOddAttack);
-        behaviourManager.SetNewBehaviour(BossBehaviourManager.Behaviour.BurnMovepoint);
+        //behaviourManager.SetNewBehaviour(BossBehaviourManager.Behaviour.BurnMovepoint);
+        //behaviourManager.SetNewBehaviour(BossBehaviourManager.Behaviour.FreezeMovepoint);
+        //behaviourManager.SetNewBehaviour(BossBehaviourManager.Behaviour.BlockMovepoint);
         
         Debug.Log("Boss is active");
+    }
+
+    public void SetRandomBehaviour()
+    {
+        int random = Random.Range(0, settings.skillsArray.Length);
+        behaviourManager.SetNewBehaviour(settings.skillsArray[random]);
     }
 
     public void ResetEnemy()

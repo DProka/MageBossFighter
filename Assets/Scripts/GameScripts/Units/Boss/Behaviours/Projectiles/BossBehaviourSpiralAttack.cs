@@ -6,6 +6,7 @@ public class BossBehaviourSpiralAttack : IBossBehaviour
     private BossScript unit;
     private float attackTimer;
     private int nextPointNum = 0;
+    int attackCounter = 1;
 
     public BossBehaviourSpiralAttack(BossScript thisUnit)
     {
@@ -16,6 +17,7 @@ public class BossBehaviourSpiralAttack : IBossBehaviour
     {
         attackTimer = unit._settings.spiralAttackSpeed;
         nextPointNum = 0;
+        attackCounter = 1;
     }
 
     public void Exit()
@@ -41,7 +43,13 @@ public class BossBehaviourSpiralAttack : IBossBehaviour
         //unit.animationManager.PlayAnimation(BossAnimationManager.Anim.Attack);
 
         if (nextPointNum >= GameController.Instance.points.Length)
+        {
             nextPointNum = 0;
+
+            //attackCounter--;
+            //if (attackCounter <= 0)
+                unit.SetRandomBehaviour();
+        }
     }
 
     public void Rotate()

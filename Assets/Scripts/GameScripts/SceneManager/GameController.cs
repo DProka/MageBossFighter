@@ -93,7 +93,7 @@ public class GameController : MonoBehaviour
         return points[pointNum].transform;
     }
 
-    public List<MovePointPrefabScript> GetEmptyMovepointsList() { return arenaManager.GetEmptyMovepointsList(); }
+    public List<MovePointPrefabScript> GetEmptyMovepointsList() { return arenaManager.GetEmptyMovepointsList(player.currentPointNum); }
 
     private void StartArenaTimer()
     {

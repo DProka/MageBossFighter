@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class MovePointPrefabScript : MonoBehaviour
 {
+    public int id { get; private set; }
     public Status pointStatus { get; private set; }
 
     [SerializeField] MeshRenderer meshRenderer;
@@ -11,15 +12,22 @@ public class MovePointPrefabScript : MonoBehaviour
 
     private float statusTimer;
 
-    public void Init(MovePointSettings _settings)
+    public void Init(MovePointSettings _settings, int _id)
     {
         settings = _settings;
+        id = _id;
         SetNewStatus(Status.NoStatus);
     }
 
     public void UpdateScript()
     {
         CheckStatus();
+    }
+
+    public void SetPlayer()
+    {
+        if (pointStatus == Status.NoStatus)
+            SetNewStatus(Status.Player);
     }
 
     public void SetNewStatus(Status status)
@@ -32,7 +40,7 @@ public class MovePointPrefabScript : MonoBehaviour
                 meshRenderer.material = settings.startMaterial;
                 break;
 
-            case Status.Burning:
+            case Status.Burn:
                 meshRenderer.material = settings.burnMaterial;
                 statusTimer = settings.burningTime;
                 break;
@@ -55,7 +63,7 @@ public class MovePointPrefabScript : MonoBehaviour
     public enum Status
     {
         NoStatus,
-        Burning,
+        Burn,
         Freeze,
         Blocked,
         Player

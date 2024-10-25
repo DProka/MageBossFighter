@@ -6,11 +6,13 @@ public class BossBehaviourEvenOddAttack : IBossBehaviour
     private BossScript unit;
     private float attackTimer;
     private bool isEven;
+    private int attackCounter;
 
     public BossBehaviourEvenOddAttack(BossScript thisUnit)
     {
         unit = thisUnit;
         isEven = false;
+        attackCounter = 2;
     }
 
     public void Enter()
@@ -45,6 +47,10 @@ public class BossBehaviourEvenOddAttack : IBossBehaviour
         attackTimer = unit._settings.evenOddAttackSpeed;
         unit.animationManager.PlayAnimation(BossAnimationManager.Anim.Attack);
         Rotate();
+
+        attackCounter--;
+        if (attackCounter <= 0)
+            unit.SetRandomBehaviour();
     }
 
     public void Rotate()

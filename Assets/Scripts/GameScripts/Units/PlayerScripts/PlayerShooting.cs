@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerShooting
 {
-    private PlayerScript controller;
+    private PlayerScript player;
     private PlayerSettings settings;
     private Transform shootPoint;
     private bool canShoot;
@@ -12,7 +12,7 @@ public class PlayerShooting
 
     public PlayerShooting(PlayerScript playerController, PlayerSettings playerSettings, Transform _shootPoint)
     {
-        controller = playerController;
+        player = playerController;
         settings = playerSettings;
         shootPoint = _shootPoint;
         canShoot = true;
@@ -26,7 +26,7 @@ public class PlayerShooting
         }
         else
         {
-            if (!controller.isMoving)
+            if (!player.isMoving)
             {
                 //UpdateMouse();
                 UpdateKeys();
@@ -34,11 +34,13 @@ public class PlayerShooting
         }
     }
 
-    public void Shoot()
+    private void Shoot()
     {
-        attackTimer = settings.attackDelay;
+        float attackDelay = player.isFreeze ? (settings.attackDelay * settings.freezeSpeedFactor) : settings.attackDelay;
+        attackTimer = attackDelay;
+        //attackTimer = settings.attackDelay;
         GameController.Instance.InstantiateProjectile(shootPoint.position, GameController.Instance.enemy.transform.position, true);
-        controller.playerAnimator.StartAnimation(PlayerAnimator.Clip.Attack);
+        player.playerAnimator.StartAnimation(PlayerAnimator.Clip.Attack);
     }
 
     public void SetCanShoot(bool _canShoot) => canShoot = _canShoot;
