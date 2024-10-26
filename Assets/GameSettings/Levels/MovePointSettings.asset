@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3c046ee0f3fdc941a8613705dde9637, type: 3}
   m_Name: MovePointSettings
   m_EditorClassIdentifier: 
-  burningTime: 3
+  burningTime: 10
   freezeTime: 3
   blockedTime: 3
   startMaterial: {fileID: 2100000, guid: 7ca7c346bcadf6a41bd77a3b944fb5a7, type: 2}

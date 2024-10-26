@@ -45,6 +45,10 @@ public class BossBehaviourManager
                 newBeh = GetBehaviour<BossBehaviourEvenOddAttack>();
                 break;
         
+            case Behaviour.SectorAttack:
+                newBeh = GetBehaviour<BossBehaviourSectorAttack>();
+                break;
+        
                 //-----------------------------------------------------------------
 
             case Behaviour.BurnMovepoint:
@@ -70,6 +74,7 @@ public class BossBehaviourManager
         SpiralAttack,
         RoundAttack,
         EvenOddAttack,
+        SectorAttack,
 
         BurnMovepoint,
         FreezeMovepoint,
@@ -88,26 +93,27 @@ public class BossBehaviourManager
         }
     }
 
+    private IBossBehaviour GetBehaviour<T>() where T : IBossBehaviour
+    {
+        var type = typeof(T);
+        return behavioursMap[type];
+    }
+
     private void InitializeBehaviours()
     {
         behavioursMap = new Dictionary<Type, IBossBehaviour>();
 
         behavioursMap[typeof(BossBehaviourIdle)] = new BossBehaviourIdle(thisUnit);
-        behavioursMap[typeof(BossBehaviourSimpleAttack)] = new BossBehaviourSimpleAttack(thisUnit);
-        behavioursMap[typeof(BossBehaviourSpiralAttack)] = new BossBehaviourSpiralAttack(thisUnit);
+        behavioursMap[typeof(BossBehaviourSimpleAttack)] = new BossBehaviourSimpleAttack(thisUnit, thisUnit._settings.skillBase.simpleAttack);
+        behavioursMap[typeof(BossBehaviourSpiralAttack)] = new BossBehaviourSpiralAttack(thisUnit, thisUnit._settings.skillBase.spiralAttack);
         behavioursMap[typeof(BossBehaviourRoundAttack)] = new BossBehaviourRoundAttack(thisUnit);
-        behavioursMap[typeof(BossBehaviourEvenOddAttack)] = new BossBehaviourEvenOddAttack(thisUnit);
+        behavioursMap[typeof(BossBehaviourEvenOddAttack)] = new BossBehaviourEvenOddAttack(thisUnit, thisUnit._settings.skillBase.evenOddAttack);
+        behavioursMap[typeof(BossBehaviourSectorAttack)] = new BossBehaviourSectorAttack(thisUnit, thisUnit._settings.skillBase.sectorAttack);
 
-        behavioursMap[typeof(BossBehaviourBurnMovepoint)] = new BossBehaviourBurnMovepoint(thisUnit);
+        behavioursMap[typeof(BossBehaviourBurnMovepoint)] = new BossBehaviourBurnMovepoint(thisUnit, thisUnit._settings.skillBase.burnMovepoint);
         behavioursMap[typeof(BossBehaviourFreezeMovepoint)] = new BossBehaviourFreezeMovepoint(thisUnit);
         behavioursMap[typeof(BossBehaviourBlockMovepoint)] = new BossBehaviourBlockMovepoint(thisUnit);
 
         SetNewBehaviour(Behaviour.Idle);
-    }
-
-    private IBossBehaviour GetBehaviour<T>() where T : IBossBehaviour
-    {
-        var type = typeof(T);
-        return behavioursMap[type];
     }
 }

@@ -4,25 +4,32 @@ using UnityEngine;
 public class BossBehaviourEvenOddAttack : IBossBehaviour
 {
     private BossScript unit;
+    private EnemySkillSettings settings;
+
     private float attackTimer;
     private bool isEven;
     private int attackCounter;
 
-    public BossBehaviourEvenOddAttack(BossScript thisUnit)
+    public BossBehaviourEvenOddAttack(BossScript thisUnit, EnemySkillSettings _settings)
     {
         unit = thisUnit;
+        settings = _settings;
+
         isEven = false;
-        attackCounter = 2;
     }
 
     public void Enter()
     {
-        attackTimer = unit._settings.evenOddAttackSpeed;
+        attackTimer = unit._settings.delayBeforeAttack;
+        attackCounter = settings.attackCounter;
     }
 
     public void Exit()
     {
-        
+        attackTimer = unit._settings.delayBeforeAttack;
+        attackCounter = settings.attackCounter;
+
+        isEven = !isEven;
     }
 
     public void Update()
@@ -33,7 +40,7 @@ public class BossBehaviourEvenOddAttack : IBossBehaviour
             ShootRound();
     }
 
-    void ShootRound()
+    private void ShootRound()
     {
         MovePointPrefabScript[] points = GameController.Instance.points;
 
@@ -44,7 +51,7 @@ public class BossBehaviourEvenOddAttack : IBossBehaviour
 
         isEven = !isEven;
 
-        attackTimer = unit._settings.evenOddAttackSpeed;
+        attackTimer = settings.attackSpeed;
         unit.animationManager.PlayAnimation(BossAnimationManager.Anim.Attack);
         Rotate();
 
@@ -53,7 +60,7 @@ public class BossBehaviourEvenOddAttack : IBossBehaviour
             unit.SetRandomBehaviour();
     }
 
-    public void Rotate()
+    private void Rotate()
     {
         Vector3 direction = (GameController.Instance.points[0].transform.position - unit.transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));

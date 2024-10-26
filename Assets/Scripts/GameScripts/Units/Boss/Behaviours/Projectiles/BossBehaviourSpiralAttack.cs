@@ -4,25 +4,35 @@ using UnityEngine;
 public class BossBehaviourSpiralAttack : IBossBehaviour
 {
     private BossScript unit;
+    private EnemySkillSettings settings;
+
     private float attackTimer;
     private int nextPointNum = 0;
-    int attackCounter = 1;
+    int attackCounter = 0;
+    private bool clockwise;
 
-    public BossBehaviourSpiralAttack(BossScript thisUnit)
+    public BossBehaviourSpiralAttack(BossScript thisUnit, EnemySkillSettings _settings)
     {
         unit = thisUnit;
+        settings = _settings;
+
+        clockwise = false;
     }
 
     public void Enter()
     {
-        attackTimer = unit._settings.spiralAttackSpeed;
-        nextPointNum = 0;
-        attackCounter = 1;
+        attackTimer = unit._settings.delayBeforeAttack;
+        attackCounter = settings.attackCounter;
+
+        nextPointNum = clockwise ? 0 : 11;
     }
 
     public void Exit()
     {
+        attackTimer = unit._settings.delayBeforeAttack;
+        attackCounter = settings.attackCounter;
         
+        clockwise = !clockwise;
     }
 
     public void Update()
@@ -30,29 +40,49 @@ public class BossBehaviourSpiralAttack : IBossBehaviour
         if (attackTimer > 0)
             attackTimer -= Time.deltaTime;
         else
-            ShootNextPoint();
+        {
+            if (clockwise)
+                ClockwiseShoot();
+            else
+                CounterClockwiseShoot();
+        }
 
         Rotate();
     }
 
-    void ShootNextPoint()
+    private void ClockwiseShoot()
     {
         GameController.Instance.InstantiateProjectile(unit._shootPoint.position, GameController.Instance.points[nextPointNum].transform.position, false);
-        attackTimer = unit._settings.spiralAttackSpeed;
+        attackTimer = settings.attackSpeed;
         nextPointNum++;
         //unit.animationManager.PlayAnimation(BossAnimationManager.Anim.Attack);
 
         if (nextPointNum >= GameController.Instance.points.Length)
         {
             nextPointNum = 0;
+            attackCounter--;
+            if (attackCounter <= 0)
+                unit.SetRandomBehaviour();
+        }
+    }
+    
+    private void CounterClockwiseShoot()
+    {
+        GameController.Instance.InstantiateProjectile(unit._shootPoint.position, GameController.Instance.points[nextPointNum].transform.position, false);
+        attackTimer = settings.attackSpeed;
+        nextPointNum--;
+        //unit.animationManager.PlayAnimation(BossAnimationManager.Anim.Attack);
 
-            //attackCounter--;
-            //if (attackCounter <= 0)
+        if (nextPointNum < 0)
+        {
+            nextPointNum = 11;
+            attackCounter--;
+            if (attackCounter <= 0)
                 unit.SetRandomBehaviour();
         }
     }
 
-    public void Rotate()
+    private void Rotate()
     {
         Vector3 direction = (GameController.Instance.points[nextPointNum].transform.position - unit.transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));

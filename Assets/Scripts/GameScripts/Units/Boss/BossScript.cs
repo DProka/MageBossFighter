@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BossScript : UnitGeneral
@@ -24,6 +25,7 @@ public class BossScript : UnitGeneral
     [SerializeField] Transform shootPoint;
 
     private BossBehaviourManager behaviourManager;
+    private BossBehaviourManager.Behaviour currentBehaviour;
 
     public void Init(PlayerScript _target)
     {
@@ -31,6 +33,7 @@ public class BossScript : UnitGeneral
         animationManager = new BossAnimationManager(animator);
         behaviourManager = new BossBehaviourManager(this);
         behaviourManager.SetNewBehaviour(BossBehaviourManager.Behaviour.Idle);
+        currentBehaviour = BossBehaviourManager.Behaviour.Idle;
 
         ResetEnemy();
     }
@@ -73,14 +76,26 @@ public class BossScript : UnitGeneral
         //behaviourManager.SetNewBehaviour(BossBehaviourManager.Behaviour.BurnMovepoint);
         //behaviourManager.SetNewBehaviour(BossBehaviourManager.Behaviour.FreezeMovepoint);
         //behaviourManager.SetNewBehaviour(BossBehaviourManager.Behaviour.BlockMovepoint);
+        //behaviourManager.SetNewBehaviour(BossBehaviourManager.Behaviour.SectorAttack);
         
         Debug.Log("Boss is active");
     }
 
     public void SetRandomBehaviour()
     {
-        int random = Random.Range(0, settings.skillsArray.Length);
-        behaviourManager.SetNewBehaviour(settings.skillsArray[random]);
+        List<BossBehaviourManager.Behaviour> newList = new List<BossBehaviourManager.Behaviour>();
+
+        for (int i = 0; i < settings.skillsArray.Length; i++)
+        {
+            if (settings.skillsArray[i] != currentBehaviour)
+                newList.Add(settings.skillsArray[i]);
+        }
+
+        int random = Random.Range(0, newList.Count);
+        currentBehaviour = newList[random];
+        behaviourManager.SetNewBehaviour(currentBehaviour);
+
+        Debug.Log("BossBehaviour = " + currentBehaviour);
     }
 
     public void ResetEnemy()
