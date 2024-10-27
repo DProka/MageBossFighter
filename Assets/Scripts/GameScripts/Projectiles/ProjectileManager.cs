@@ -7,10 +7,12 @@ public class ProjectileManager
     public List<Projectile> projectilesList;
 
     private ProjectileBase projBase;
+    private Transform parent;
 
-    public ProjectileManager(ProjectileBase _projBase)
+    public ProjectileManager(ProjectileBase _projBase, Transform _parent)
     {
         projBase = _projBase;
+        parent = _parent;
         projectilesList = new List<Projectile>();
     }
 
@@ -28,24 +30,17 @@ public class ProjectileManager
     public void InstantiateProjectile(Vector3 position, Vector3 targetPosition, bool isPlayer)
     {
         ProjectileSettings settings = isPlayer ? projBase.playerProjectilesArray[0] : projBase.enemyProjectilesArray[0];
-        UnitGeneral target = isPlayer ? GameController.Instance.enemy : GameController.Instance.player;
+        //UnitGeneral target = isPlayer ? GameController.Instance.enemy : GameController.Instance.player;
 
-        Projectile projectile = UnityEngine.Object.Instantiate(projBase.projectilePrefab, position, Quaternion.identity);
+        Projectile projectile = UnityEngine.Object.Instantiate(projBase.projectilePrefab, position, Quaternion.identity, parent);
         projectile.Init(this, targetPosition, settings, isPlayer);
-        //projectile.Init(this, target, settings, isPlayer);
         projectilesList.Add(projectile);
     }
 
-    public void AddProjectile(Projectile projectile)
-    {
-        projectilesList.Add(projectile);
-    }
+    public void AddProjectile(Projectile projectile) => projectilesList.Add(projectile);
     
-    public void RemoveProjectile(Projectile projectile)
-    {
-        projectilesList.Remove(projectile);
-    }
-
+    public void RemoveProjectile(Projectile projectile) => projectilesList.Remove(projectile);
+    
     public void ClearList()
     {
         for (int i = 0; i < projectilesList.Count; i++)

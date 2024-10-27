@@ -18,11 +18,11 @@ public class ArenaManager : MonoBehaviour
     [SerializeField] Transform playerPivot;
     [SerializeField] Transform enemyPivot;
 
-    private LevelBase lvlbase;
+    private GameSettings settings;
 
-    public void Init(LevelBase _lvlbase)
+    public void Init(GameSettings _settings)
     {
-        lvlbase = _lvlbase;
+        settings = _settings;
         PrepareArena();
     }
 
@@ -31,11 +31,11 @@ public class ArenaManager : MonoBehaviour
         UpdateMovePoints();
     }
 
-    public void SpawnArena(int arenaNum) => Instantiate(lvlbase.arenaPrefab[arenaNum], arenaPivot.position, Quaternion.identity, transform);
+    public void SpawnArena(int arenaNum) => Instantiate(settings.arenaBase.arenaPrefabsArray[arenaNum], arenaPivot.position, Quaternion.identity, transform);
     
     public PlayerScript SpawnPlayer(int prefNum)
     {
-        GameObject pref = Instantiate(lvlbase.playerPrefab[prefNum], movePointsArray[0].transform.position, Quaternion.Euler(0, 0, 0), transform);
+        GameObject pref = Instantiate(settings.playerPrefab[prefNum], movePointsArray[0].transform.position, Quaternion.Euler(0, 0, 0), transform);
         PlayerScript player = pref.GetComponent<PlayerScript>();
 
         return player;
@@ -43,7 +43,7 @@ public class ArenaManager : MonoBehaviour
     
     public BossScript SpawnBoss(int bossNum)
     {
-        GameObject boss = Instantiate(lvlbase.bossPrefab[bossNum], arenaPivot.position, Quaternion.Euler(0, 180, 0), transform);
+        GameObject boss = Instantiate(settings.bossBase.bossPrefabsArray[bossNum], arenaPivot.position, Quaternion.Euler(0, 180, 0), transform);
         BossScript enemy = boss.GetComponent<BossScript>();
 
         return enemy;

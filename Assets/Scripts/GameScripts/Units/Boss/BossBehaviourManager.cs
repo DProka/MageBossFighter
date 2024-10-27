@@ -37,6 +37,14 @@ public class BossBehaviourManager
                 newBeh = GetBehaviour<BossBehaviourSpiralAttack>();
                 break;
         
+            case Behaviour.SpiralDoubleAttack:
+                newBeh = GetBehaviour<BossBehaviourDoubleSpiralAttack>();
+                break;
+        
+            case Behaviour.SpiralQuadrupleAttack:
+                newBeh = GetBehaviour<BossBehaviourQuadrupleSpiralAttack>();
+                break;
+        
             case Behaviour.RoundAttack:
                 newBeh = GetBehaviour<BossBehaviourRoundAttack>();
                 break;
@@ -75,7 +83,8 @@ public class BossBehaviourManager
         RoundAttack,
         EvenOddAttack,
         SectorAttack,
-
+        SpiralDoubleAttack,
+        SpiralQuadrupleAttack,
         BurnMovepoint,
         FreezeMovepoint,
         BlockMovepoint,
@@ -106,13 +115,15 @@ public class BossBehaviourManager
         behavioursMap[typeof(BossBehaviourIdle)] = new BossBehaviourIdle(thisUnit);
         behavioursMap[typeof(BossBehaviourSimpleAttack)] = new BossBehaviourSimpleAttack(thisUnit, thisUnit._settings.skillBase.simpleAttack);
         behavioursMap[typeof(BossBehaviourSpiralAttack)] = new BossBehaviourSpiralAttack(thisUnit, thisUnit._settings.skillBase.spiralAttack);
-        behavioursMap[typeof(BossBehaviourRoundAttack)] = new BossBehaviourRoundAttack(thisUnit);
+        behavioursMap[typeof(BossBehaviourDoubleSpiralAttack)] = new BossBehaviourDoubleSpiralAttack(thisUnit, thisUnit._settings.skillBase.spiralDoubleAttack);
+        behavioursMap[typeof(BossBehaviourQuadrupleSpiralAttack)] = new BossBehaviourQuadrupleSpiralAttack(thisUnit, thisUnit._settings.skillBase.spiralQuadrupleAttack);
+        behavioursMap[typeof(BossBehaviourRoundAttack)] = new BossBehaviourRoundAttack(thisUnit, thisUnit._settings.skillBase.roundAttack);
         behavioursMap[typeof(BossBehaviourEvenOddAttack)] = new BossBehaviourEvenOddAttack(thisUnit, thisUnit._settings.skillBase.evenOddAttack);
         behavioursMap[typeof(BossBehaviourSectorAttack)] = new BossBehaviourSectorAttack(thisUnit, thisUnit._settings.skillBase.sectorAttack);
 
         behavioursMap[typeof(BossBehaviourBurnMovepoint)] = new BossBehaviourBurnMovepoint(thisUnit, thisUnit._settings.skillBase.burnMovepoint);
-        behavioursMap[typeof(BossBehaviourFreezeMovepoint)] = new BossBehaviourFreezeMovepoint(thisUnit);
-        behavioursMap[typeof(BossBehaviourBlockMovepoint)] = new BossBehaviourBlockMovepoint(thisUnit);
+        behavioursMap[typeof(BossBehaviourFreezeMovepoint)] = new BossBehaviourFreezeMovepoint(thisUnit, thisUnit._settings.skillBase.freezeMovepoint);
+        behavioursMap[typeof(BossBehaviourBlockMovepoint)] = new BossBehaviourBlockMovepoint(thisUnit, thisUnit._settings.skillBase.blockMovepoint);
 
         SetNewBehaviour(Behaviour.Idle);
     }

@@ -24,7 +24,8 @@ public class BossBehaviourSpiralAttack : IBossBehaviour
         attackTimer = unit._settings.delayBeforeAttack;
         attackCounter = settings.attackCounter;
 
-        nextPointNum = clockwise ? 0 : 11;
+        nextPointNum = 0;
+        //nextPointNum = clockwise ? 0 : 11;
     }
 
     public void Exit()
@@ -40,46 +41,37 @@ public class BossBehaviourSpiralAttack : IBossBehaviour
         if (attackTimer > 0)
             attackTimer -= Time.deltaTime;
         else
-        {
-            if (clockwise)
-                ClockwiseShoot();
-            else
-                CounterClockwiseShoot();
-        }
+            Shoot();
 
         Rotate();
     }
 
-    private void ClockwiseShoot()
+    private void Shoot()
     {
         GameController.Instance.InstantiateProjectile(unit._shootPoint.position, GameController.Instance.points[nextPointNum].transform.position, false);
         attackTimer = settings.attackSpeed;
-        nextPointNum++;
-        //unit.animationManager.PlayAnimation(BossAnimationManager.Anim.Attack);
 
-        if (nextPointNum >= GameController.Instance.points.Length)
-        {
-            nextPointNum = 0;
-            attackCounter--;
-            if (attackCounter <= 0)
-                unit.SetRandomBehaviour();
-        }
+        int nextNum = clockwise ? 1 : -1;
+        nextPointNum += nextNum;
+
+        CheckNextNum();
+        UpdateCounter();
     }
-    
-    private void CounterClockwiseShoot()
-    {
-        GameController.Instance.InstantiateProjectile(unit._shootPoint.position, GameController.Instance.points[nextPointNum].transform.position, false);
-        attackTimer = settings.attackSpeed;
-        nextPointNum--;
-        //unit.animationManager.PlayAnimation(BossAnimationManager.Anim.Attack);
 
-        if (nextPointNum < 0)
-        {
+    private void CheckNextNum()
+    {
+        if (nextPointNum >= GameController.Instance.points.Length)
+            nextPointNum = 0;
+        
+        else if (nextPointNum < 0)
             nextPointNum = 11;
-            attackCounter--;
-            if (attackCounter <= 0)
-                unit.SetRandomBehaviour();
-        }
+    }
+
+    private void UpdateCounter()
+    {
+        attackCounter--;
+        if (attackCounter <= 0)
+            unit.SetRandomBehaviour();
     }
 
     private void Rotate()

@@ -21,9 +21,8 @@ public class PlayerShooting
     public void UpdateScript()
     {
         if (attackTimer > 0)
-        {
             attackTimer -= Time.deltaTime;
-        }
+
         else
         {
             if (!player.isMoving)
@@ -34,7 +33,21 @@ public class PlayerShooting
         }
     }
 
-    private void Shoot()
+    public void SetCanShoot(bool _canShoot) => canShoot = _canShoot;
+
+    public void UIAttack()
+    {
+        if (attackTimer > 0)
+            return;
+
+        float attackDelay = player.isFreeze ? (settings.attackDelay * settings.freezeSpeedFactor) : settings.attackDelay;
+        attackTimer = attackDelay;
+        //attackTimer = settings.attackDelay;
+        GameController.Instance.InstantiateProjectile(shootPoint.position, GameController.Instance.enemy.transform.position, true);
+        player.playerAnimator.StartAnimation(PlayerAnimator.Clip.Attack);
+    }
+    
+    private void Attack()
     {
         float attackDelay = player.isFreeze ? (settings.attackDelay * settings.freezeSpeedFactor) : settings.attackDelay;
         attackTimer = attackDelay;
@@ -43,13 +56,11 @@ public class PlayerShooting
         player.playerAnimator.StartAnimation(PlayerAnimator.Clip.Attack);
     }
 
-    public void SetCanShoot(bool _canShoot) => canShoot = _canShoot;
-
     private void UpdateMouse()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Shoot();
+            Attack();
         }
     }
 
@@ -57,7 +68,7 @@ public class PlayerShooting
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            Shoot();
+            Attack();
         }
     }
 }

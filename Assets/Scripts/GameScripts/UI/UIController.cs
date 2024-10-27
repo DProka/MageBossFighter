@@ -7,61 +7,65 @@ public class UIController : MonoBehaviour
 
     [Header("Main")]
 
-    public TextMeshProUGUI levelNumber;
-    public TextMeshProUGUI levelName;
-    public TextMeshProUGUI timerText;
-    public GameObject timerObj;
+    [SerializeField] UIArenaTimer arenaTimer;
 
-    [Header("Player")]
+    [Header("Player UI")]
 
     [SerializeField] HealthBar playerHB;
+    [SerializeField] UIPlayerControls playerControls;
 
     [Header("Boss")]
 
     [SerializeField] HealthBar bossHB;
 
-    public TextMeshProUGUI bossName;
+    [Header("End Round")]
 
-    [Header("End of Lvl")]
-
-    public GameObject endMenu;
-    public TextMeshProUGUI endText;
+    [SerializeField] UIEndRoundScreen endRoundScreen;
 
     [Header("FPS Meter")]
-    public float fps;
-    public TextMeshProUGUI fpsText;
-    public float timer;
+
+    [SerializeField] UIFpsMeter fpsMeter;
 
     private GameController gameController;
+    private Canvas mainCanvas;
 
     public void Init(GameController _gameController)
     {
         Instance = this;
         gameController = _gameController;
+
+        mainCanvas = GetComponent<Canvas>();
+
+        playerControls.Init(this);
+        endRoundScreen.Init();
     }
 
     public void UpdateUI()
     {
-        ShowFPS();
+        fpsMeter.ShowFPS();
     }
 
-    public void ShowFPS()
+    #region Game
+
+    public void UpdateArenaTimer(float time) => arenaTimer.UpdateTimer(time);
+
+    public void StartArena()
     {
-        fps = 1.0f / Time.deltaTime;
-        timer += Time.deltaTime;
-        if (timer >= 0.3f)
-        {
-            fpsText.text = "FPS: " + (int)fps;
-            timer = 0f;
-        }
+        arenaTimer.SwitchTimerActive(false);
+        endRoundScreen.SwitchMainCanvas(false);
     }
 
-    public void CallEndScreen(bool win)
+    public void RestartScene()
     {
-        endMenu.SetActive(true);
-
-        endText.text = win ? "YOU WIN" : "YOU LOSE";
+        arenaTimer.SwitchTimerActive(true);
+        gameController.RestartScene();
     }
+
+    public void GoToMaiuMenu() => gameController.GoToMaiuMenu();
+
+    #endregion
+
+    #region HealthBars
 
     public void UpdateHealthBar(bool isPlayer, float maxHealth, float currentHealth)
     {
@@ -71,7 +75,11 @@ public class UIController : MonoBehaviour
             bossHB.SetHealth(maxHealth, currentHealth);
     }
 
-    public void RestartScene() => gameController.RestartScene();
-    
-    public void GoToMaiuMenu() => gameController.GoToMaiuMenu();
+    #endregion
+
+    #region Screens
+
+    public void CallEndScreen(bool win) => endRoundScreen.CallScreen(win);
+
+    #endregion
 }

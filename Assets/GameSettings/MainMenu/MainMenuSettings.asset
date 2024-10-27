@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf9eef37b0b4d3846b613a5b855da841, type: 3}
+  m_Name: MainMenuSettings
+  m_EditorClassIdentifier: 
+  arenaBase: {fileID: 11400000, guid: 60242833dc5c4394fa72cb5b0be25ec9, type: 2}
+  bossBase: {fileID: 11400000, guid: b03d570b1af4dbb449ccb3c57593ee36, type: 2}
+  playerBase: {fileID: 11400000, guid: 397fc92a9129dca46a946402bbb5ca38, type: 2}

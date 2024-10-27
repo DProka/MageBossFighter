@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
     public static GameController Instance;
 
     public bool gameIsActive { get; private set; }
+    public bool arenaIsActive { get; private set; }
     public PlayerScript player { get; private set; }
     public BossScript enemy { get; private set; }
 
@@ -22,7 +23,7 @@ public class GameController : MonoBehaviour
     [Header("Arena Part")]
 
     [SerializeField] ArenaManager arenaManager;
-    [SerializeField] LevelBase lvlbase;
+    [SerializeField] Transform projectileParent;
     [SerializeField] ProjectileBase projectileBase;
 
     private ProjectileManager projectileManager;
@@ -34,16 +35,15 @@ public class GameController : MonoBehaviour
     {
         Instance = this;
         gameIsActive = false;
-        timerStart = settings.timeToStart;
 
         GameEventBus.OnSomeoneDies += CheckWinner;
 
         statistic = new ArenaStatistic();
         statistic.UpdateStatistic(new int[] { 0, 0, 0 });
-        projectileManager = new ProjectileManager(projectileBase);
+        projectileManager = new ProjectileManager(projectileBase, projectileParent);
 
         uiController.Init(this);
-        arenaManager.Init(lvlbase);
+        arenaManager.Init(settings);
         LoadLevel();
     }
 
@@ -58,17 +58,18 @@ public class GameController : MonoBehaviour
             projectileManager.UpdateList();
             arenaManager.UpdateArena();
         }
-        else
-        {
-            UpdateStartTimer();
-        }
+
+        UpdateStartTimer();
+
+        Debug.Log("Game is Active = " + gameIsActive);
     }
 
     public void LoadLevel()
     {
         arenaManager.SpawnArena(statistic.arenaNum);
         player = arenaManager.SpawnPlayer(0);
-        enemy = arenaManager.SpawnBoss(statistic.bossNum);
+        enemy = arenaManager.SpawnBoss(0);
+        //enemy = arenaManager.SpawnBoss(statistic.bossNum);
 
         player.Init(enemy);
         enemy.Init(player);
@@ -78,6 +79,9 @@ public class GameController : MonoBehaviour
 
     private void CheckWinner()
     {
+        gameIsActive = false;
+        timerStart = settings.timeToStart;
+
         if (player.isAlive)
             Debug.Log("Player Win");
         else
@@ -85,7 +89,6 @@ public class GameController : MonoBehaviour
 
         uiController.CallEndScreen(player.isAlive);
         ClearArena();
-        gameIsActive = false;
     }
 
     public Transform GetNextWayPoint(int pointNum)
@@ -97,7 +100,6 @@ public class GameController : MonoBehaviour
 
     private void StartArenaTimer()
     {
-        uiController.timerObj.SetActive(true);
         timerStart = settings.timeToStart;
     }
 
@@ -106,25 +108,20 @@ public class GameController : MonoBehaviour
         if (timerStart > 0)
         {
             timerStart -= Time.deltaTime;
-            int time = (int)timerStart;
-
-            if (timerStart > 1)
-                uiController.timerText.text = " " + time;
-
-            else if (timerStart <= 1 && timerStart > 0)
-                uiController.timerText.text = "GO";
+            uiController.UpdateArenaTimer(timerStart);
         }
         else
         {
-            StartArena();
+            if(!gameIsActive)
+                StartArena();
         }
     }
 
     private void StartArena()
     {
-        uiController.timerObj.SetActive(false);
         gameIsActive = true;
         enemy.ActivateBoss();
+        uiController.StartArena();
 
         Debug.Log("Arena is Active = " + gameIsActive);
     }
@@ -141,12 +138,13 @@ public class GameController : MonoBehaviour
 
     public void RestartScene()
     {
-        gameIsActive = false;
-        timerStart = 4;
-        player.ResetPlayer();
-        enemy.ResetEnemy();
-        uiController.endMenu.SetActive(false);
-        ClearArena();
+        //timerStart = 4;
+        //player.ResetPlayer();
+        //enemy.ResetEnemy();
+        //uiController.endMenu.SetActive(false);
+        //ClearArena();
+
+        SceneManager.LoadScene(0);
     }
 
     public void GoToMaiuMenu()

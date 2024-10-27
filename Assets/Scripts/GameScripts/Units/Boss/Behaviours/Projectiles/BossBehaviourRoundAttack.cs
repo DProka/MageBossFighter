@@ -4,21 +4,24 @@ using UnityEngine;
 public class BossBehaviourRoundAttack : IBossBehaviour
 {
     private BossScript unit;
+    private EnemySkillSettings settings;
+
     private float attackTimer;
 
-    public BossBehaviourRoundAttack(BossScript thisUnit)
+    public BossBehaviourRoundAttack(BossScript thisUnit, EnemySkillSettings _settings)
     {
         unit = thisUnit;
+        settings = _settings;
     }
 
     public void Enter()
     {
-        attackTimer = unit._settings.roundAttackSpeed;
+        attackTimer = unit._settings.delayBeforeAttack;
     }
 
     public void Exit()
     {
-        
+        attackTimer = unit._settings.delayBeforeAttack;
     }
 
     public void Update()
@@ -26,12 +29,12 @@ public class BossBehaviourRoundAttack : IBossBehaviour
         if (attackTimer > 0)
             attackTimer -= Time.deltaTime;
         else
-            ShootRound();
+            FreezePoint();
 
         //Rotate();
     }
 
-    void ShootRound()
+    private void FreezePoint()
     {
         MovePointPrefabScript[] points = GameController.Instance.points;
 
@@ -40,12 +43,12 @@ public class BossBehaviourRoundAttack : IBossBehaviour
             GameController.Instance.InstantiateProjectile(unit._shootPoint.position, point.transform.position, false);
         }
 
-        attackTimer = unit._settings.roundAttackSpeed;
+        attackTimer = settings.attackSpeed;
         unit.animationManager.PlayAnimation(BossAnimationManager.Anim.Attack);
         Rotate();
     }
 
-    public void Rotate()
+    private void Rotate()
     {
         Vector3 direction = (GameController.Instance.points[0].transform.position - unit.transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));

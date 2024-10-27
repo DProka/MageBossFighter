@@ -38,16 +38,40 @@ public class PlayerMovement
 
     public void ResetWayPoint()
     {
-        SetNewPointByNum(0);
+        nextPoint = 0;
+        targetPoint = GameController.Instance.points[nextPoint];
+        player.transform.position = targetPoint.transform.position;
+    }
+
+    public void UIChangePointByButton(bool isLeft)
+    {
+        if (moveTimer > 0)
+            return;
+
+        if (isLeft)
+        {
+            player.playerAnimator.StartAnimation(PlayerAnimator.Clip.MoveLeft);
+            nextPoint++;
+        }
+        else
+        {
+            player.playerAnimator.StartAnimation(PlayerAnimator.Clip.MoveRight);
+            nextPoint--;
+        }
+
+        if (nextPoint >= 12)
+            nextPoint = 0;
+        if (nextPoint < 0)
+            nextPoint = 11;
+
+        SetNewPointByNum(nextPoint);
     }
 
     private void MovePlayer()
     {
-        //if (nextWayPoint == null)
         if (targetPoint == null)
             return;
 
-        //player.transform.position = Vector3.MoveTowards(player.transform.position, nextWayPoint.position, settings.moveSpeed * Time.deltaTime);
         player.transform.position = Vector3.MoveTowards(player.transform.position, targetPoint.transform.position, settings.moveSpeed * Time.deltaTime);
         RotatePlayer();
         CheckIsMoving();
@@ -62,7 +86,6 @@ public class PlayerMovement
 
     private void CheckIsMoving()
     {
-        //float distance = Vector3.Distance(player.transform.position, nextWayPoint.position);
         float distance = Vector3.Distance(player.transform.position, targetPoint.transform.position);
 
         if (distance > 0.1f)
@@ -76,8 +99,6 @@ public class PlayerMovement
 
             player.playerAnimator.StartAnimation(PlayerAnimator.Clip.Idle);
         }
-
-        //Debug.Log("player is moving = " + isMoving);
     }
 
     //private void UpdateMouse()
@@ -156,8 +177,6 @@ public class PlayerMovement
 
     private void SetNewPointByNum(int num)
     {
-        //nextWayPoint = GameController.Instance.GetNextWayPoint(num);
-
         MovePointPrefabScript newPoint = GameController.Instance.points[num];
         if (newPoint.pointStatus != MovePointPrefabScript.Status.Blocked)
         {

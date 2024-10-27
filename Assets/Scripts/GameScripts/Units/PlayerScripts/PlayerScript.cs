@@ -44,19 +44,22 @@ public class PlayerScript : UnitGeneral
 
     public override void GetHit(float damage)
     {
-        currentHealth -= damage;
-
-        if (currentHealth > 0)
+        if (isAlive)
         {
-            playerAnimator.StartAnimation(PlayerAnimator.Clip.GetHit);
-        }
-        else
-        {
-            currentHealth = 0;
-            SetDead();
-        }
+            currentHealth -= damage;
 
-        UIController.Instance.UpdateHealthBar(true, settings.maxHealth, currentHealth);
+            if (currentHealth > 0)
+            {
+                playerAnimator.StartAnimation(PlayerAnimator.Clip.GetHit);
+            }
+            else
+            {
+                currentHealth = 0;
+                SetDead();
+            }
+
+            UIController.Instance.UpdateHealthBar(true, settings.maxHealth, currentHealth);
+        }
     }
 
     public void CheckWaypointStatus()
@@ -95,4 +98,14 @@ public class PlayerScript : UnitGeneral
         playerAnimator.StartAnimation(PlayerAnimator.Clip.Death);
         GameEventBus.OnSomeoneDies?.Invoke();
     }
+
+    #region Controls
+
+    public void Attack() { shootingScript.UIAttack(); }
+    
+    public void MoveLeft() { movementScript.UIChangePointByButton(true); }
+
+    public void MoveRight() { movementScript.UIChangePointByButton(false); }
+
+    #endregion
 }

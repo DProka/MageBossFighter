@@ -29,10 +29,10 @@ public class BossBehaviourBurnMovepoint : IBossBehaviour
         if (attackTimer > 0)
             attackTimer -= Time.deltaTime;
         else
-            ChoosePoint();
+            BurnPoint();
     }
 
-    private void ChoosePoint()
+    private void BurnPoint()
     {
         attackTimer = settings.attackSpeed;
         List<MovePointPrefabScript> points = GameController.Instance.GetEmptyMovepointsList();

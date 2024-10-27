@@ -50,34 +50,29 @@ public class BossScript : UnitGeneral
 
     public override void GetHit(float damage)
     {
-        currentHealth -= damage;
-
-        if (currentHealth > 0)
+        if (isAlive)
         {
-            animationManager.PlayAnimation(BossAnimationManager.Anim.GetHit);
-        }
-        else
-        {
-            currentHealth = 0;
-            SetDeath();
-        }
+            currentHealth -= damage;
 
-        UIController.Instance.UpdateHealthBar(false, settings.maxHealth, currentHealth);
+            if (currentHealth > 0)
+            {
+                animationManager.PlayAnimation(BossAnimationManager.Anim.GetHit);
+            }
+            else
+            {
+                currentHealth = 0;
+                SetDeath();
+            }
+
+            UIController.Instance.UpdateHealthBar(false, settings.maxHealth, currentHealth);
+        }
     }
 
     public void ActivateBoss()
     {
         isActive = true;
-        
-        behaviourManager.SetNewBehaviour(BossBehaviourManager.Behaviour.SimpleAttack);
-        //behaviourManager.SetNewBehaviour(BossBehaviourManager.Behaviour.RoundAttack);
-        //behaviourManager.SetNewBehaviour(BossBehaviourManager.Behaviour.SpiralAttack);
-        //behaviourManager.SetNewBehaviour(BossBehaviourManager.Behaviour.EvenOddAttack);
-        //behaviourManager.SetNewBehaviour(BossBehaviourManager.Behaviour.BurnMovepoint);
-        //behaviourManager.SetNewBehaviour(BossBehaviourManager.Behaviour.FreezeMovepoint);
-        //behaviourManager.SetNewBehaviour(BossBehaviourManager.Behaviour.BlockMovepoint);
-        //behaviourManager.SetNewBehaviour(BossBehaviourManager.Behaviour.SectorAttack);
-        
+        currentBehaviour = settings.startSkill;
+        behaviourManager.SetNewBehaviour(currentBehaviour);
         Debug.Log("Boss is active");
     }
 

@@ -56,6 +56,7 @@ public class PlayerAnimator
         animator.SetBool("Right", false);
         animator.SetBool("Attack", false);
         animator.SetBool("GetHit", false);
+        animator.SetBool("Death", false);
     }
 
     private void PlayAttack()
