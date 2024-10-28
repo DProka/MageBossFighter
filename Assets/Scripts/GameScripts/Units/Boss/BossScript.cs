@@ -43,6 +43,8 @@ public class BossScript : UnitGeneral
         if (isAlive)
         {
             behaviourManager.UpdateManager();
+
+            Debug.Log("Boss is Updated");
         }
 
         animationManager.UpdateScript();
@@ -71,7 +73,7 @@ public class BossScript : UnitGeneral
     public void ActivateBoss()
     {
         isActive = true;
-        currentBehaviour = settings.startSkill;
+        currentBehaviour = settings.startBehaviour;
         behaviourManager.SetNewBehaviour(currentBehaviour);
         Debug.Log("Boss is active");
     }
@@ -91,6 +93,11 @@ public class BossScript : UnitGeneral
         behaviourManager.SetNewBehaviour(currentBehaviour);
 
         Debug.Log("BossBehaviour = " + currentBehaviour);
+    }
+
+    public void SpawnProjectile(Vector3 finishPos)
+    {
+        GameController.Instance.InstantiateProjectile(shootPoint.position, finishPos, false, settings.damage);
     }
 
     public void ResetEnemy()

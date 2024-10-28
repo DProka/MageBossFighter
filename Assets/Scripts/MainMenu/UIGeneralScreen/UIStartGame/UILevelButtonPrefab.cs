@@ -15,7 +15,7 @@ public class UILevelButtonPrefab : MonoBehaviour
     {
         menuScript = _menuScript;
         lvlNum = _lvlNum;
-        levelText.text = "Level " + lvlNum;
+        levelText.text = "Level " + (lvlNum + 1);
     }
 
     public void ChooseCurrentLevel() { menuScript.OpenSelectedLevel(lvlNum); }

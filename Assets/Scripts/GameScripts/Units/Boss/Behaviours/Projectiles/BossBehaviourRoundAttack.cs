@@ -40,7 +40,8 @@ public class BossBehaviourRoundAttack : IBossBehaviour
 
         foreach(MovePointPrefabScript point in points)
         {
-            GameController.Instance.InstantiateProjectile(unit._shootPoint.position, point.transform.position, false);
+            //GameController.Instance.InstantiateProjectile(unit._shootPoint.position, point.transform.position, false);
+            unit.SpawnProjectile(point.transform.position);
         }
 
         attackTimer = settings.attackSpeed;

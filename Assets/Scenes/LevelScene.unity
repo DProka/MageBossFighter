@@ -1183,7 +1183,7 @@ Transform:
   m_GameObject: {fileID: 583254560}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2014,9 +2014,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movePointSettings: {fileID: 11400000, guid: b065213665c3e994fa7e2f932352dbc6, type: 2}
   pointsParent: {fileID: 175111058}
-  arenaPivot: {fileID: 583254561}
-  playerPivot: {fileID: 1224878796}
-  enemyPivot: {fileID: 611528482}
+  arenaParent: {fileID: 583254561}
+  playerParent: {fileID: 977202644}
+  enemyParent: {fileID: 611528482}
 --- !u!1 &1140714111
 GameObject:
   m_ObjectHideFlags: 0

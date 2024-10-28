@@ -8,21 +8,18 @@ public class EnemySettings : ScriptableObject
     
     public float maxHealth;
 
-    [Header("Skill Settings")]
-
-    public BossBehaviourManager.Behaviour startSkill;
-    public BossBehaviourManager.Behaviour[] skillsArray;
-
     [Header("Attack")]
 
     public float damage;
     public float delayBeforeAttack = 2f;
 
-    [Header("Skills")]
-
-    public EnemySkillSettingsBase skillBase;
-
     [Header("Moving")]
 
     public float rotateSpeed;
+
+    [Header("Skill Settings")]
+
+    public EnemySkillSettingsBase skillBase;
+    public BossBehaviourManager.Behaviour startBehaviour;
+    public BossBehaviourManager.Behaviour[] skillsArray;
 }

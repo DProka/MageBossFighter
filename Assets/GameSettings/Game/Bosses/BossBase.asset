@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: BossBase
   m_EditorClassIdentifier: 
   bossPrefabsArray:
-  - {fileID: 2399105866090990859, guid: ef2e9a29566a00e41b53a9d72706cadf, type: 3}
-  - {fileID: 4833851554756917084, guid: caebd5d429cb63e49ba7378d5d269959, type: 3}
-  - {fileID: 1287617439402787409, guid: 5b11cafd08e62c1408717396ab21007a, type: 3}
-  - {fileID: 5506204867766110071, guid: f6b93a655346d9a4cb07e9ad7cb387f2, type: 3}
   - {fileID: 7055793973113734156, guid: 28df072dd96be0f4db22c62a98d730ce, type: 3}
+  - {fileID: 1287617439402787409, guid: 5b11cafd08e62c1408717396ab21007a, type: 3}
+  - {fileID: 4833851554756917084, guid: caebd5d429cb63e49ba7378d5d269959, type: 3}
   - {fileID: 4107519223448420842, guid: 8cf4813b227bea340a99be206ac443b2, type: 3}
-  - {fileID: 8489694560417437397, guid: 480cd4b4702cca6478a62b056281c698, type: 3}
+  - {fileID: 2399105866090990859, guid: ef2e9a29566a00e41b53a9d72706cadf, type: 3}
   - {fileID: 8946951080760988339, guid: 45b9fda4d5714c2429718206ddb1a1a8, type: 3}
+  - {fileID: 8489694560417437397, guid: 480cd4b4702cca6478a62b056281c698, type: 3}
+  - {fileID: 5506204867766110071, guid: f6b93a655346d9a4cb07e9ad7cb387f2, type: 3}

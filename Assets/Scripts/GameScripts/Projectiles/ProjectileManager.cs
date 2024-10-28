@@ -27,13 +27,13 @@ public class ProjectileManager
         }
     }
 
-    public void InstantiateProjectile(Vector3 position, Vector3 targetPosition, bool isPlayer)
+    public void InstantiateProjectile(Vector3 position, Vector3 targetPosition, bool isPlayer, float damage)
     {
         ProjectileSettings settings = isPlayer ? projBase.playerProjectilesArray[0] : projBase.enemyProjectilesArray[0];
         //UnitGeneral target = isPlayer ? GameController.Instance.enemy : GameController.Instance.player;
 
         Projectile projectile = UnityEngine.Object.Instantiate(projBase.projectilePrefab, position, Quaternion.identity, parent);
-        projectile.Init(this, targetPosition, settings, isPlayer);
+        projectile.Init(this, targetPosition, settings, isPlayer, damage);
         projectilesList.Add(projectile);
     }
 
@@ -47,5 +47,7 @@ public class ProjectileManager
         {
             projectilesList[i].DestroyBullet();
         }
+
+        projectilesList = new List<Projectile>();
     }
 }

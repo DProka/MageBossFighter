@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: MainMenuArenaBase
   m_EditorClassIdentifier: 
   arenasArray:
-  - {fileID: 6073585403064015390, guid: 0ebfe1049fd532049a8417d6d155f31a, type: 3}
-  - {fileID: 6073585403064015390, guid: 0ebfe1049fd532049a8417d6d155f31a, type: 3}
-  - {fileID: 6073585403064015390, guid: 0ebfe1049fd532049a8417d6d155f31a, type: 3}
-  - {fileID: 6073585403064015390, guid: 0ebfe1049fd532049a8417d6d155f31a, type: 3}
-  - {fileID: 6073585403064015390, guid: 0ebfe1049fd532049a8417d6d155f31a, type: 3}
+  - {fileID: 6073585403064015390, guid: b4e4a8e20116bff4e991847b4c55e358, type: 3}
+  - {fileID: 6073585403064015390, guid: 7983721ccb5513443ad4f3a51eccd561, type: 3}
+  - {fileID: 6073585403064015390, guid: 7983721ccb5513443ad4f3a51eccd561, type: 3}
+  - {fileID: 6073585403064015390, guid: 7983721ccb5513443ad4f3a51eccd561, type: 3}
+  - {fileID: 6073585403064015390, guid: 7983721ccb5513443ad4f3a51eccd561, type: 3}

@@ -2,7 +2,7 @@
 using UnityEngine;
 using TMPro;
 
-public class UIEndRoundScreen : MonoBehaviour
+public class UIEndRoundScreen : MonoBehaviour, IMenuScreen
 {
     [SerializeField] TextMeshProUGUI endText;
 
@@ -17,9 +17,18 @@ public class UIEndRoundScreen : MonoBehaviour
 
     public void CallScreen(bool win)
     {
-        mainCanvas.enabled = true;
-
         endText.text = win ? "YOU WIN" : "YOU LOSE";
+        OpenScreen();
+    }
+
+    public void OpenScreen()
+    {
+        SwitchMainCanvas(true);
+    }
+
+    public void CloseScreen()
+    {
+        SwitchMainCanvas(false);
     }
 
     public void SwitchMainCanvas(bool isActive) => mainCanvas.enabled = isActive;

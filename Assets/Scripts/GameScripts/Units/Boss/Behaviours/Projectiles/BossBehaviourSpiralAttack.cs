@@ -48,7 +48,8 @@ public class BossBehaviourSpiralAttack : IBossBehaviour
 
     private void Shoot()
     {
-        GameController.Instance.InstantiateProjectile(unit._shootPoint.position, GameController.Instance.points[nextPointNum].transform.position, false);
+        //GameController.Instance.InstantiateProjectile(unit._shootPoint.position, GameController.Instance.points[nextPointNum].transform.position, false);
+        unit.SpawnProjectile(GameController.Instance.points[nextPointNum].transform.position);
         attackTimer = settings.attackSpeed;
 
         int nextNum = clockwise ? 1 : -1;

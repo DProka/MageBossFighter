@@ -24,7 +24,7 @@ public class BossBehaviourSectorAttack : IBossBehaviour
     {
         attackTimer = unit._settings.delayBeforeAttack;
         attackCounter = settings.attackCounter;
-        SetPointNumbers();
+        //SetPointNumbers();
     }
 
     public void Exit()
@@ -36,26 +36,34 @@ public class BossBehaviourSectorAttack : IBossBehaviour
     public void Update()
     {
         if (attackTimer > 0)
+        {
             attackTimer -= Time.deltaTime;
+
+            Rotate();
+        }
         else
         {
             ShootSector();
-            Rotate();
         }
     }
 
     private void ShootSector()
     {
+        SetPointNumbers();
+
         attackTimer = settings.attackSpeed;
 
         MovePointPrefabScript[] points = GameController.Instance.points;
 
         if (attackCounter == 0)
-            GameController.Instance.InstantiateProjectile(unit._shootPoint.position, points[startNum].transform.position, false);
+            //GameController.Instance.InstantiateProjectile(unit._shootPoint.position, points[startNum].transform.position, false);
+            unit.SpawnProjectile(points[startNum].transform.position);
         else
         {
-            GameController.Instance.InstantiateProjectile(unit._shootPoint.position, points[leftPoints[attackCounter - 1]].transform.position, false);
-            GameController.Instance.InstantiateProjectile(unit._shootPoint.position, points[rightPoints[attackCounter - 1]].transform.position, false);
+            //GameController.Instance.InstantiateProjectile(unit._shootPoint.position, points[leftPoints[attackCounter - 1]].transform.position, false);
+            //GameController.Instance.InstantiateProjectile(unit._shootPoint.position, points[rightPoints[attackCounter - 1]].transform.position, false);
+            unit.SpawnProjectile(points[leftPoints[attackCounter - 1]].transform.position);
+            unit.SpawnProjectile(points[rightPoints[attackCounter - 1]].transform.position);
         }
 
         attackCounter++;

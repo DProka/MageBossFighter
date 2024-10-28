@@ -43,7 +43,9 @@ public class PlayerShooting
         float attackDelay = player.isFreeze ? (settings.attackDelay * settings.freezeSpeedFactor) : settings.attackDelay;
         attackTimer = attackDelay;
         //attackTimer = settings.attackDelay;
-        GameController.Instance.InstantiateProjectile(shootPoint.position, GameController.Instance.enemy.transform.position, true);
+        //GameController.Instance.InstantiateProjectile(shootPoint.position, GameController.Instance.enemy.transform.position, true);
+        player.SpawnProjectile(GameController.Instance.enemy.transform.position);
+
         player.playerAnimator.StartAnimation(PlayerAnimator.Clip.Attack);
     }
     
@@ -52,7 +54,8 @@ public class PlayerShooting
         float attackDelay = player.isFreeze ? (settings.attackDelay * settings.freezeSpeedFactor) : settings.attackDelay;
         attackTimer = attackDelay;
         //attackTimer = settings.attackDelay;
-        GameController.Instance.InstantiateProjectile(shootPoint.position, GameController.Instance.enemy.transform.position, true);
+        //GameController.Instance.InstantiateProjectile(shootPoint.position, GameController.Instance.enemy.transform.position, true);
+        player.SpawnProjectile(GameController.Instance.enemy.transform.position);
         player.playerAnimator.StartAnimation(PlayerAnimator.Clip.Attack);
     }
 

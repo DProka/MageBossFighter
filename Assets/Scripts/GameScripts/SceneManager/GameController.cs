@@ -29,12 +29,14 @@ public class GameController : MonoBehaviour
     private ProjectileManager projectileManager;
     private ArenaStatistic statistic;
 
+    private bool timerIsActive;
     private float timerStart;
 
     void Awake()
     {
         Instance = this;
         gameIsActive = false;
+        timerIsActive = false;
 
         GameEventBus.OnSomeoneDies += CheckWinner;
 
@@ -61,7 +63,7 @@ public class GameController : MonoBehaviour
 
         UpdateStartTimer();
 
-        Debug.Log("Game is Active = " + gameIsActive);
+        //Debug.Log("Game is Active = " + gameIsActive);
     }
 
     public void LoadLevel()
@@ -87,7 +89,7 @@ public class GameController : MonoBehaviour
         else
             Debug.Log("Player Defeat");
 
-        uiController.CallEndScreen(player.isAlive);
+        uiController.CallEndScreen(true);
         ClearArena();
     }
 
@@ -101,19 +103,23 @@ public class GameController : MonoBehaviour
     private void StartArenaTimer()
     {
         timerStart = settings.timeToStart;
+        timerIsActive = true;
     }
 
     private void UpdateStartTimer()
     {
-        if (timerStart > 0)
+        if (timerIsActive)
         {
-            timerStart -= Time.deltaTime;
-            uiController.UpdateArenaTimer(timerStart);
-        }
-        else
-        {
-            if(!gameIsActive)
+            if (timerStart > 0)
+            {
+                timerStart -= Time.deltaTime;
+                uiController.UpdateArenaTimer(timerStart);
+            }
+            else
+            {
+                timerIsActive = false;
                 StartArena();
+            }
         }
     }
 
@@ -131,20 +137,21 @@ public class GameController : MonoBehaviour
         projectileManager.ClearList();
     }
 
-    public void InstantiateProjectile(Vector3 startPosition, Vector3 targetPosition, bool isPlayer)
+    public void InstantiateProjectile(Vector3 startPosition, Vector3 targetPosition, bool isPlayer, float damage)
     {
-        projectileManager.InstantiateProjectile(startPosition, targetPosition, isPlayer);
+        projectileManager.InstantiateProjectile(startPosition, targetPosition, isPlayer, damage);
     }
 
     public void RestartScene()
     {
-        //timerStart = 4;
-        //player.ResetPlayer();
-        //enemy.ResetEnemy();
-        //uiController.endMenu.SetActive(false);
-        //ClearArena();
+        timerStart = 4;
+        timerIsActive = true;
+        player.ResetPlayer();
+        enemy.ResetEnemy();
+        uiController.CloseEndScreen();
+        ClearArena();
 
-        SceneManager.LoadScene(0);
+        //SceneManager.LoadScene(0);
     }
 
     public void GoToMaiuMenu()

@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class MainMenuPreviewManager : MonoBehaviour
@@ -21,7 +20,12 @@ public class MainMenuPreviewManager : MonoBehaviour
         GameObject newArena = settings.arenaBase.arenasArray[num];
         
         if(arenaPrefab != newArena)
+        {
+            ClearArenaPreviev();
             arenaPrefab = Instantiate(settings.arenaBase.arenasArray[num], arenaParent);
+        }
+
+        Debug.Log("Arena is loaded");
     }
 
     public void SpawnPlayerByNum(int num)
@@ -47,8 +51,13 @@ public class MainMenuPreviewManager : MonoBehaviour
         }
     }
 
-    private void ClearUnitPreviev()
+    public void ClearManager()
     {
-        Destroy(unitPrefab);
+        ClearUnitPreviev();
+        ClearArenaPreviev();
     }
+
+    private void ClearUnitPreviev() => Destroy(unitPrefab);
+    
+    private void ClearArenaPreviev() => Destroy(arenaPrefab);
 }

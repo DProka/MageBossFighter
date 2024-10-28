@@ -46,7 +46,8 @@ public class BossBehaviourEvenOddAttack : IBossBehaviour
 
         for (int i = isEven ? 0 : 1; i < points.Length; i += 2)
         {
-            GameController.Instance.InstantiateProjectile(unit._shootPoint.position, points[i].transform.position, false);
+            //GameController.Instance.InstantiateProjectile(unit._shootPoint.position, points[i].transform.position, false);
+            unit.SpawnProjectile(points[i].transform.position);
         }
 
         isEven = !isEven;

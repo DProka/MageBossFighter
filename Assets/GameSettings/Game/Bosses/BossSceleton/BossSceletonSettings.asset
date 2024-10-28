@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e01ee39f451d80a48ba21546c4f52d23, type: 3}
-  m_Name: BossDevilSettings
+  m_Name: BossSceletonSettings
   m_EditorClassIdentifier: 
-  maxHealth: 300
-  startBehaviour: 1
-  skillsArray: 0100000002000000050000000400000008000000
+  maxHealth: 150
   damage: 10
   delayBeforeAttack: 1.5
-  skillBase: {fileID: 11400000, guid: 3ae42bb026975c1439c9f46098521cc2, type: 2}
   rotateSpeed: 5
+  skillBase: {fileID: 11400000, guid: 9b830d939ceb96b4185e0ae07dd5681a, type: 2}
+  startBehaviour: 1
+  skillsArray: 010000000200000005000000

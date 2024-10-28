@@ -80,6 +80,8 @@ public class UIController : MonoBehaviour
     #region Screens
 
     public void CallEndScreen(bool win) => endRoundScreen.CallScreen(win);
+    
+    public void CloseEndScreen() => endRoundScreen.CloseScreen();
 
     #endregion
 }

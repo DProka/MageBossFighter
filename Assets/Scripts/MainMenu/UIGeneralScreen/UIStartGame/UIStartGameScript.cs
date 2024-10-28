@@ -15,9 +15,9 @@ public class UIStartGameScript : MonoBehaviour, IMenuScreen
     private Canvas mainCanvas;
     private UIMenuController uiController;
     private int screenNum;
+    private int selectedLvlNum;
 
     private UILevelButtonPrefab[] lvlButtonsArray;
-
 
     public void Init(UIMenuController _uiController)
     {
@@ -30,11 +30,12 @@ public class UIStartGameScript : MonoBehaviour, IMenuScreen
     public void OpenSelectedLevel(int num)
     {
         screenNum = 1;
+        selectedLvlNum = num;
         mapObject.SetActive(false);
         levelObject.SetActive(true);
         MainMenuController.Instance.LoadLevelPreviev(num);
 
-        Debug.Log("Level was select " + num);
+        Debug.Log("Level was select " + (num + 1));
     }
 
     public void GoBack()
@@ -51,6 +52,8 @@ public class UIStartGameScript : MonoBehaviour, IMenuScreen
         }
     }
 
+    public void StartLevelByNum() => MainMenuController.Instance.StartLevelByNum(selectedLvlNum);
+    
     private void InitializeScreen()
     {
         lvlButtonsArray = new UILevelButtonPrefab[lvlButtonsParent.childCount];
@@ -79,5 +82,6 @@ public class UIStartGameScript : MonoBehaviour, IMenuScreen
     }
 
     private void SwitchActive(bool isActive) => mainCanvas.enabled = isActive;
+
     #endregion
 }

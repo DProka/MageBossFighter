@@ -40,7 +40,8 @@ public class BossBehaviourSimpleAttack : IBossBehaviour
     private void Shoot()
     {
         shootTimer = settings.attackSpeed;
-        GameController.Instance.InstantiateProjectile(unit._shootPoint.position, unit.target.transform.position, false);
+        //GameController.Instance.InstantiateProjectile(unit._shootPoint.position, unit.target.transform.position, false);
+        unit.SpawnProjectile(unit.target.transform.position);
         unit.animationManager.PlayAnimation(BossAnimationManager.Anim.Attack);
         attackCounter--;
 

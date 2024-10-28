@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: ArenaBase
   m_EditorClassIdentifier: 
   arenaPrefabsArray:
+  - {fileID: 3719411770506552011, guid: ae4b9b1b4c9862444995180f36cba89d, type: 3}
   - {fileID: 4795325248787626587, guid: ded783b2d1c0285478a0ec62d9909200, type: 3}
-  - {fileID: 3719411770506552011, guid: e0dcaa83a542bb54fa418c6e32efb662, type: 3}
-  - {fileID: 3719411770506552011, guid: b3c11edf95d395642b19950fe823ce24, type: 3}
+  - {fileID: 4795325248787626587, guid: ded783b2d1c0285478a0ec62d9909200, type: 3}
+  - {fileID: 4795325248787626587, guid: ded783b2d1c0285478a0ec62d9909200, type: 3}
+  - {fileID: 4795325248787626587, guid: ded783b2d1c0285478a0ec62d9909200, type: 3}

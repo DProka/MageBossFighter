@@ -30,10 +30,13 @@ public class MainMenuController : MonoBehaviour
         InitializePreview();
     }
 
-    public void StartNewGame()
+    public void StartLevelByNum(int num)
     {
+        ClearScene();
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
+
+    #region Preview Part
 
     public void LoadMenuPreviev()
     {
@@ -49,10 +52,17 @@ public class MainMenuController : MonoBehaviour
 
     private void InitializePreview()
     {
-        LoadMenuPreviev();
+        //LoadMenuPreviev();
 
         //previewManager.SpawnArenaByNum(levelCount);
         //previewManager.SpawnBossByNum(levelCount);
         //previewManager.SpawnPlayerByNum(levelCount);
     }
+
+    private void ClearScene()
+    {
+        previewManager.ClearManager();
+    }
+
+    #endregion
 }

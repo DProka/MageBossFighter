@@ -41,15 +41,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 9fe6011ba216d824a8854508d5ca32bf, type: 3}
       propertyPath: m_LocalScale.x
-      value: 60
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9fe6011ba216d824a8854508d5ca32bf, type: 3}
       propertyPath: m_LocalScale.y
-      value: 60
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9fe6011ba216d824a8854508d5ca32bf, type: 3}
       propertyPath: m_LocalScale.z
-      value: 60
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9fe6011ba216d824a8854508d5ca32bf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e98ab7bc2c6bc5478be2335a449744e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settings: {fileID: 11400000, guid: c18ee5bae7496604f8d9243c60c86fbd, type: 2}
+  settings: {fileID: 11400000, guid: 9556de2ae6a52394f8b91b4865d9f55d, type: 2}
   animator: {fileID: 4341693534240556236}
   shootPoint: {fileID: 5797009116649587829}
 --- !u!4 &7683395572731551414 stripped

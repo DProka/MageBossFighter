@@ -49,8 +49,11 @@ public class BossBehaviourDoubleSpiralAttack : IBossBehaviour
 
     private void Shoot()
     {
-        GameController.Instance.InstantiateProjectile(unit._shootPoint.position, GameController.Instance.points[frontPointNum].transform.position, false);
-        GameController.Instance.InstantiateProjectile(unit._shootPoint.position, GameController.Instance.points[backPointNum].transform.position, false);
+        //GameController.Instance.InstantiateProjectile(unit._shootPoint.position, GameController.Instance.points[frontPointNum].transform.position, false);
+        //GameController.Instance.InstantiateProjectile(unit._shootPoint.position, GameController.Instance.points[backPointNum].transform.position, false);
+        unit.SpawnProjectile(GameController.Instance.points[frontPointNum].transform.position);
+        unit.SpawnProjectile(GameController.Instance.points[backPointNum].transform.position);
+
         attackTimer = settings.attackSpeed;
 
         int nextNum = clockwise ? 1 : -1;
