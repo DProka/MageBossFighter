@@ -11,6 +11,8 @@ public class UIPlayerControls : MonoBehaviour
         controller = uIController;
     } 
 
+    public void SwitchPauseGame() { GameController.Instance.SwitchPauseGame(); }
+
     public void PlayerMoveLeft() { GameController.Instance.player.MoveLeft(); }
     public void PlayerMoveRight() { GameController.Instance.player.MoveRight(); }
     public void PlayerAttack() { GameController.Instance.player.Attack(); }

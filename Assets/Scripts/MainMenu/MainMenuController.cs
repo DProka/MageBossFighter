@@ -33,6 +33,7 @@ public class MainMenuController : MonoBehaviour
     public void StartLevelByNum(int num)
     {
         ClearScene();
+        DataHolder.gameLevel = num;
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 

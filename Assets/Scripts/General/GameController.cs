@@ -27,8 +27,8 @@ public class GameController : MonoBehaviour
     [SerializeField] ProjectileBase projectileBase;
 
     private ProjectileManager projectileManager;
-    private ArenaStatistic statistic;
 
+    private int currentLvlNum;
     private bool timerIsActive;
     private float timerStart;
 
@@ -40,10 +40,9 @@ public class GameController : MonoBehaviour
 
         GameEventBus.OnSomeoneDies += CheckWinner;
 
-        statistic = new ArenaStatistic();
-        statistic.UpdateStatistic(new int[] { 0, 0, 0 });
         projectileManager = new ProjectileManager(projectileBase, projectileParent);
 
+        currentLvlNum = DataHolder.gameLevel;
         uiController.Init(this);
         arenaManager.Init(settings);
         LoadLevel();
@@ -68,10 +67,10 @@ public class GameController : MonoBehaviour
 
     public void LoadLevel()
     {
-        arenaManager.SpawnArena(statistic.arenaNum);
         player = arenaManager.SpawnPlayer(0);
-        enemy = arenaManager.SpawnBoss(0);
-        //enemy = arenaManager.SpawnBoss(statistic.bossNum);
+
+        arenaManager.SpawnArena(currentLvlNum);
+        enemy = arenaManager.SpawnBoss(currentLvlNum);
 
         player.Init(enemy);
         enemy.Init(player);
@@ -152,6 +151,23 @@ public class GameController : MonoBehaviour
         ClearArena();
 
         //SceneManager.LoadScene(0);
+    }
+
+    public void SwitchPauseGame()
+    {
+        if (timerStart <= 0)
+        {
+            if (gameIsActive)
+            {
+                gameIsActive = false;
+                uiController.SwitchPauseGame(true);
+            }
+            else
+            {
+                gameIsActive = true;
+                uiController.SwitchPauseGame(false);
+            }
+        }
     }
 
     public void GoToMaiuMenu()

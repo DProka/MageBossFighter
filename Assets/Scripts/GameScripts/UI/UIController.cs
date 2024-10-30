@@ -18,6 +18,10 @@ public class UIController : MonoBehaviour
 
     [SerializeField] HealthBar bossHB;
 
+    [Header("Pause Game")]
+
+    [SerializeField] UIPauseGameScreen pauseScreen;
+
     [Header("End Round")]
 
     [SerializeField] UIEndRoundScreen endRoundScreen;
@@ -38,6 +42,7 @@ public class UIController : MonoBehaviour
 
         playerControls.Init(this);
         endRoundScreen.Init();
+        pauseScreen.Init();
     }
 
     public void UpdateUI()
@@ -48,6 +53,8 @@ public class UIController : MonoBehaviour
     #region Game
 
     public void UpdateArenaTimer(float time) => arenaTimer.UpdateTimer(time);
+
+    public void SwitchPauseGame(bool isPaused) => pauseScreen.SwitchPauseGame(isPaused);
 
     public void StartArena()
     {
