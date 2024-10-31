@@ -1,10 +1,13 @@
 
 using UnityEngine;
+using TMPro;
 
 public class UIMainMenuScript : MonoBehaviour, IMenuScreen
 {
     [SerializeField] Transform upperPart;
     [SerializeField] Transform lowerPart;
+
+    [SerializeField] TextMeshProUGUI coinsText;
 
     private Canvas mainCanvas;
     private UIMenuController uiController;
@@ -16,6 +19,10 @@ public class UIMainMenuScript : MonoBehaviour, IMenuScreen
     }
 
     public void OpenStartGameMenu() { uiController.OpenScreen(UIMenuController.Screen.StartGame); }
+
+    public void UpdateText(int count) => coinsText.text = "" + count;
+
+    #region Main Screen
 
     public void OpenScreen()
     {
@@ -30,4 +37,6 @@ public class UIMainMenuScript : MonoBehaviour, IMenuScreen
     }
 
     private void SwitchActive(bool isActive) { mainCanvas.enabled = isActive; }
+
+    #endregion
 }

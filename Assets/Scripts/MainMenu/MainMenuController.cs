@@ -5,6 +5,11 @@ public class MainMenuController : MonoBehaviour
 {
     public static MainMenuController Instance;
 
+    public int levelCount { get; private set; }
+
+    public int playerCoins { get; private set; }
+    public int playerXP { get; private set; }
+
     [SerializeField] MainMenuSettings settings;
 
     [Header("Preview Manager")]
@@ -15,18 +20,18 @@ public class MainMenuController : MonoBehaviour
 
     [SerializeField] UIMenuController uiController;
 
-    private int levelCount;
-
     void Start()
     {
         Instance = this;
 
         levelCount = 0;
+        playerCoins = 0;
 
         previewManager.Init(settings);
 
         uiController.Init();
 
+        uiController.UpdatePlayerCoinsText(playerCoins);
         InitializePreview();
     }
 
@@ -35,6 +40,25 @@ public class MainMenuController : MonoBehaviour
         ClearScene();
         DataHolder.gameLevel = num;
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+    }
+
+    public void CalculatePlayerCoins(int coins)
+    {
+        playerCoins += coins;
+
+        if (playerCoins <= 0)
+            playerCoins = 0;
+
+        DataHolder.playerCoins = playerCoins;
+
+        uiController.UpdatePlayerCoinsText(playerCoins);
+    }
+    
+    public void GetPlayerCoins()
+    {
+        playerCoins = DataHolder.playerCoins;
+
+        uiController.UpdatePlayerCoinsText(playerCoins);
     }
 
     #region Preview Part

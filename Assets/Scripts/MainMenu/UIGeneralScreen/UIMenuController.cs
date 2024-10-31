@@ -37,6 +37,8 @@ public class UIMenuController : MonoBehaviour
         StartGame,
     }
 
+    public void UpdatePlayerCoinsText(int count) { uiMenuScript.UpdateText(count); }
+
     private void HideAllScreens()
     {
         uiMenuScript.CloseScreen();
