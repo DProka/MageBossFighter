@@ -7,6 +7,8 @@ public class GameController : MonoBehaviour
 {
     public static GameController Instance;
 
+    public int currentLvlNum { get; private set; }
+
     public bool gameIsActive { get; private set; }
     public bool arenaIsActive { get; private set; }
     public PlayerScript player { get; private set; }
@@ -28,7 +30,6 @@ public class GameController : MonoBehaviour
 
     private ProjectileManager projectileManager;
 
-    private int currentLvlNum;
     private bool timerIsActive;
     private float timerStart;
 

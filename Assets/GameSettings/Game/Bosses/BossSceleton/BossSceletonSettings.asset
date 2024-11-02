@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e01ee39f451d80a48ba21546c4f52d23, type: 3}
   m_Name: BossSceletonSettings
   m_EditorClassIdentifier: 
-  maxHealth: 150
+  maxHealth: 80
   damage: 10
   delayBeforeAttack: 1.5
   rotateSpeed: 5

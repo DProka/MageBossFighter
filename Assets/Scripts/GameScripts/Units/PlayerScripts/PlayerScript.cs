@@ -6,7 +6,9 @@ public class PlayerScript : UnitGeneral
     public PlayerAnimator playerAnimator { get; private set; }
     public bool isAlive { get; private set; }
     public int currentPointNum { get; private set; }
+    public float _currentHealth => currentHealth;
 
+    public PlayerSettings _settings => settings;
     public bool isMoving => movementScript.isMoving;
     public bool isFreeze => statusScript.isFreeze;
 

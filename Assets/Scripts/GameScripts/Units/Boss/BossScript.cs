@@ -12,6 +12,8 @@ public class BossScript : UnitGeneral
     public Transform _shootPoint => shootPoint;
     public EnemySettings _settings => settings;
 
+    public float _currentHealth => currentHealth;
+
     [Header("Main")]
 
     [SerializeField] EnemySettings settings;
