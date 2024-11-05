@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
+using System.Collections;
 
 public class UIEndRoundScreen : MonoBehaviour, IMenuScreen
 {
@@ -10,13 +11,22 @@ public class UIEndRoundScreen : MonoBehaviour, IMenuScreen
 
     [SerializeField] Image enemyHpBar;
     [SerializeField] Image playerHpBar;
+    [SerializeField] Transform earnedCoinsPos;
     [SerializeField] TextMeshProUGUI earnedCoinText;
+
+    [Header("Animations")]
+
+    [SerializeField] UIPileReward coinsAnim;
+    [SerializeField] UITextReward textPlusReward;
 
     private Canvas mainCanvas;
 
     public void Init()
     {
         mainCanvas = GetComponent<Canvas>();
+        
+        coinsAnim.Init();
+        textPlusReward.Init();
 
         SwitchMainCanvas(false);
     }
@@ -45,6 +55,7 @@ public class UIEndRoundScreen : MonoBehaviour, IMenuScreen
         float substractedCoins = playerMaxHP - playerCurrentHealth;
         float coins = earnedCoins - substractedCoins;
 
+        StartCoroutine(StartEarnedCoinsAnimation(earnedCoins / 10, percentageBoss, 1f));
         enemyHpBar.DOFillAmount(percentageBoss, 2f).SetDelay(1f).OnComplete(() => 
         {
             earnedCoinText.text = "" + earnedCoins;
@@ -55,8 +66,6 @@ public class UIEndRoundScreen : MonoBehaviour, IMenuScreen
             });
         });
 
-        Sequence sequence = DOTween.Sequence();
-
         DataHolder.playerCoins += (int)coins;
     }
 
@@ -66,6 +75,17 @@ public class UIEndRoundScreen : MonoBehaviour, IMenuScreen
         enemyHpBar.DOFillAmount(1f, 0);
         playerHpBar.DOFillAmount(1f, 0);
     }
+
+    #region CoinAnimations
+
+    private IEnumerator StartEarnedCoinsAnimation(float coins, float percentage, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        coinsAnim.StartCleanAnimation(earnedCoinsPos.position, percentage, 2f);
+        textPlusReward.StartPlusAnim(coins.ToString(), percentage, 2f);
+    }
+
+    #endregion
 
     #region Screen Part
 
