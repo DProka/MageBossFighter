@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3719411770506552014}
   m_Layer: 0
-  m_Name: ArenaClean
+  m_Name: CleanArena
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -33,7 +33,7 @@ public class BossScript : UnitGeneral
     {
         target = _target;
         animationManager = new BossAnimationManager(animator);
-        behaviourManager = new BossBehaviourManager(this);
+        behaviourManager = new BossBehaviourManager(this, settings);
         behaviourManager.SetNewBehaviour(BossBehaviourManager.Behaviour.Idle);
         currentBehaviour = BossBehaviourManager.Behaviour.Idle;
 
@@ -75,7 +75,7 @@ public class BossScript : UnitGeneral
     public void ActivateBoss()
     {
         isActive = true;
-        currentBehaviour = settings.startBehaviour;
+        currentBehaviour = settings.skillTypesArray[0];
         behaviourManager.SetNewBehaviour(currentBehaviour);
         Debug.Log("Boss is active");
     }
@@ -84,10 +84,10 @@ public class BossScript : UnitGeneral
     {
         List<BossBehaviourManager.Behaviour> newList = new List<BossBehaviourManager.Behaviour>();
 
-        for (int i = 0; i < settings.skillsArray.Length; i++)
+        for (int i = 0; i < settings.skillTypesArray.Length; i++)
         {
-            if (settings.skillsArray[i] != currentBehaviour)
-                newList.Add(settings.skillsArray[i]);
+            if (settings.skillTypesArray[i] != currentBehaviour)
+                newList.Add(settings.skillTypesArray[i]);
         }
 
         int random = Random.Range(0, newList.Count);

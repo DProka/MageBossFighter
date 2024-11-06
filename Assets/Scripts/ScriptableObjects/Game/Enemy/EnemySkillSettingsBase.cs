@@ -19,4 +19,9 @@ public class EnemySkillSettingsBase : ScriptableObject
     public EnemySkillSettings burnMovepoint;
     public EnemySkillSettings freezeMovepoint;
     public EnemySkillSettings blockMovepoint;
+
+    [Header("Skills")]
+
+    public BossBehaviourManager.Behaviour[] skillsArray;
+    public EnemySkillSettings[] settingsArray;
 }

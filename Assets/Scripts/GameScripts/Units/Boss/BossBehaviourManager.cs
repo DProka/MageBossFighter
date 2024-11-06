@@ -1,15 +1,18 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public class BossBehaviourManager
 {
     private BossScript thisUnit;
+    private EnemySettings settings;
     private Dictionary<Type, IBossBehaviour> behavioursMap;
     private IBossBehaviour behaviourCurrent;
 
-    public BossBehaviourManager(BossScript unit)
+    public BossBehaviourManager(BossScript unit, EnemySettings _settings)
     {
         thisUnit = unit;
+        settings = _settings;
         InitializeBehaviours();
     }
 
@@ -113,18 +116,31 @@ public class BossBehaviourManager
         behavioursMap = new Dictionary<Type, IBossBehaviour>();
 
         behavioursMap[typeof(BossBehaviourIdle)] = new BossBehaviourIdle(thisUnit);
-        behavioursMap[typeof(BossBehaviourSimpleAttack)] = new BossBehaviourSimpleAttack(thisUnit, thisUnit._settings.skillBase.simpleAttack);
-        behavioursMap[typeof(BossBehaviourSpiralAttack)] = new BossBehaviourSpiralAttack(thisUnit, thisUnit._settings.skillBase.spiralAttack);
-        behavioursMap[typeof(BossBehaviourDoubleSpiralAttack)] = new BossBehaviourDoubleSpiralAttack(thisUnit, thisUnit._settings.skillBase.spiralDoubleAttack);
-        behavioursMap[typeof(BossBehaviourQuadrupleSpiralAttack)] = new BossBehaviourQuadrupleSpiralAttack(thisUnit, thisUnit._settings.skillBase.spiralQuadrupleAttack);
-        behavioursMap[typeof(BossBehaviourRoundAttack)] = new BossBehaviourRoundAttack(thisUnit, thisUnit._settings.skillBase.roundAttack);
-        behavioursMap[typeof(BossBehaviourEvenOddAttack)] = new BossBehaviourEvenOddAttack(thisUnit, thisUnit._settings.skillBase.evenOddAttack);
-        behavioursMap[typeof(BossBehaviourSectorAttack)] = new BossBehaviourSectorAttack(thisUnit, thisUnit._settings.skillBase.sectorAttack);
+        behavioursMap[typeof(BossBehaviourSimpleAttack)] = new BossBehaviourSimpleAttack(thisUnit, GetBehaviourSettings(Behaviour.SimpleAttack));
+        behavioursMap[typeof(BossBehaviourSpiralAttack)] = new BossBehaviourSpiralAttack(thisUnit, GetBehaviourSettings(Behaviour.SpiralAttack));
+        behavioursMap[typeof(BossBehaviourDoubleSpiralAttack)] = new BossBehaviourDoubleSpiralAttack(thisUnit, GetBehaviourSettings(Behaviour.SpiralDoubleAttack));
+        behavioursMap[typeof(BossBehaviourQuadrupleSpiralAttack)] = new BossBehaviourQuadrupleSpiralAttack(thisUnit, GetBehaviourSettings(Behaviour.SpiralQuadrupleAttack));
+        behavioursMap[typeof(BossBehaviourRoundAttack)] = new BossBehaviourRoundAttack(thisUnit, GetBehaviourSettings(Behaviour.RoundAttack));
+        behavioursMap[typeof(BossBehaviourEvenOddAttack)] = new BossBehaviourEvenOddAttack(thisUnit, GetBehaviourSettings(Behaviour.EvenOddAttack));
+        behavioursMap[typeof(BossBehaviourSectorAttack)] = new BossBehaviourSectorAttack(thisUnit, GetBehaviourSettings(Behaviour.SectorAttack));
 
-        behavioursMap[typeof(BossBehaviourBurnMovepoint)] = new BossBehaviourBurnMovepoint(thisUnit, thisUnit._settings.skillBase.burnMovepoint);
-        behavioursMap[typeof(BossBehaviourFreezeMovepoint)] = new BossBehaviourFreezeMovepoint(thisUnit, thisUnit._settings.skillBase.freezeMovepoint);
-        behavioursMap[typeof(BossBehaviourBlockMovepoint)] = new BossBehaviourBlockMovepoint(thisUnit, thisUnit._settings.skillBase.blockMovepoint);
+        behavioursMap[typeof(BossBehaviourBurnMovepoint)] = new BossBehaviourBurnMovepoint(thisUnit, GetBehaviourSettings(Behaviour.BurnMovepoint));
+        behavioursMap[typeof(BossBehaviourFreezeMovepoint)] = new BossBehaviourFreezeMovepoint(thisUnit, GetBehaviourSettings(Behaviour.FreezeMovepoint));
+        behavioursMap[typeof(BossBehaviourBlockMovepoint)] = new BossBehaviourBlockMovepoint(thisUnit, GetBehaviourSettings(Behaviour.BlockMovepoint));
 
         SetNewBehaviour(Behaviour.Idle);
+    }
+
+    private EnemySkillSettings GetBehaviourSettings(Behaviour behaviour)
+    {
+        EnemySkillSettings newSettings = settings.skillSettingsArray[0];
+
+        if (settings.skillTypesArray.Contains(behaviour))
+        {
+            int index = Array.FindIndex(settings.skillTypesArray, n => n == behaviour);
+            newSettings = settings.skillSettingsArray[index];
+        }
+        
+        return newSettings;
     }
 }

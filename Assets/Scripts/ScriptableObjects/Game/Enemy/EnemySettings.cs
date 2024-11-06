@@ -19,7 +19,7 @@ public class EnemySettings : ScriptableObject
 
     [Header("Skill Settings")]
 
-    public EnemySkillSettingsBase skillBase;
     public BossBehaviourManager.Behaviour startBehaviour;
-    public BossBehaviourManager.Behaviour[] skillsArray;
+    public BossBehaviourManager.Behaviour[] skillTypesArray;
+    public EnemySkillSettings[] skillSettingsArray;
 }
