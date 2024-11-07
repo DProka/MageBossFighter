@@ -18,6 +18,7 @@ public class PlayerSettings : ScriptableObject
     public float damage = 10f;
     public float attackDelay = 0.5f;
     public float deforeAttackDelay = 0.2f;
+    public float projectileSpeed = 10f;
 
     [Header("Statuses")]
 

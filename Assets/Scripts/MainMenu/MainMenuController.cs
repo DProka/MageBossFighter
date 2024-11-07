@@ -28,11 +28,11 @@ public class MainMenuController : MonoBehaviour
         playerCoins = 0;
 
         previewManager.Init(settings);
-
-        uiController.Init();
+        uiController.Init(settings);
 
         uiController.UpdatePlayerCoinsText(playerCoins);
         InitializePreview();
+        GetPlayerCoins();
     }
 
     public void StartLevelByNum(int num)
@@ -74,6 +74,8 @@ public class MainMenuController : MonoBehaviour
         previewManager.SpawnArenaByNum(lvlNum);
         previewManager.SpawnBossByNum(lvlNum);
     }
+
+    public EnemySettings GetEnemySettings() => previewManager.GetEnemySettings();
 
     private void InitializePreview()
     {

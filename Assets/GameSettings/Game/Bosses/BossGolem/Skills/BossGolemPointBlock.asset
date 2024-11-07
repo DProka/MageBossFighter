@@ -9,14 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e01ee39f451d80a48ba21546c4f52d23, type: 3}
-  m_Name: BossDevilSettings
+  m_Script: {fileID: 11500000, guid: 64c25cd989f0d5545ba79137f57729ed, type: 3}
+  m_Name: BossGolemPointBlock
   m_EditorClassIdentifier: 
-  bossName: Hellguy
-  maxHealth: 300
-  damage: 10
-  delayBeforeAttack: 1.5
-  rotateSpeed: 5
-  startBehaviour: 1
-  skillTypesArray: 
-  skillSettingsArray: []
+  attackCounter: 0
+  attackSpeed: 1.5

@@ -53,7 +53,7 @@ public class UIEndRoundScreen : MonoBehaviour, IMenuScreen
 
         float earnedCoins = (bossMaxHP - bossCurrentHealth) * 2f;
         float substractedCoins = playerMaxHP - playerCurrentHealth;
-        float coins = earnedCoins - substractedCoins;
+        int coins =(int)(earnedCoins - substractedCoins);
 
         StartCoroutine(StartEarnedCoinsAnimation(earnedCoins / 10, percentageBoss, 1f));
         enemyHpBar.DOFillAmount(percentageBoss, 2f).SetDelay(1f).OnComplete(() => 
@@ -66,7 +66,8 @@ public class UIEndRoundScreen : MonoBehaviour, IMenuScreen
             });
         });
 
-        DataHolder.playerCoins += (int)coins;
+        int totalCoins = DataHolder.playerCoins + coins;
+        DataHolder.playerCoins = totalCoins;
     }
 
     public void ResetBar()

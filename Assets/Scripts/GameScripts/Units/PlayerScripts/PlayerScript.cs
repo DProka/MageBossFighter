@@ -64,11 +64,8 @@ public class PlayerScript : UnitGeneral
         }
     }
 
-    public void SpawnProjectile(Vector3 finishPos)
-    {
-        GameController.Instance.InstantiateProjectile(shootPoint.position, finishPos, true, settings.damage);
-    }
-
+    public void SpawnProjectile() => GameController.Instance.InstantiatePlayerProjectile(shootPoint.position);
+    
     public void CheckWaypointStatus()
     {
         MovePointPrefabScript.Status pointStatus = movementScript.targetPoint.pointStatus;

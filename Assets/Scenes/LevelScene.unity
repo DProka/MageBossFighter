@@ -485,7 +485,7 @@ GameObject:
   - component: {fileID: 114955432}
   - component: {fileID: 114955431}
   m_Layer: 0
-  m_Name: PlayerName
+  m_Name: PlayerNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -503,13 +503,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 239592135}
+  m_Father: {fileID: 571781736}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -40}
-  m_SizeDelta: {x: 0, y: 40}
-  m_Pivot: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 300, y: 40}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &114955431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -657,7 +657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.012862848, g: 0.48235294, b: 0, a: 1}
+  m_Color: {r: 0.012862848, g: 0.48235294, b: 0, a: 0.45882353}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 0
@@ -889,8 +889,6 @@ RectTransform:
   m_Children:
   - {fileID: 753769518}
   - {fileID: 445961324}
-  - {fileID: 625511795}
-  - {fileID: 114955430}
   m_Father: {fileID: 2024719689}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -1826,13 +1824,14 @@ RectTransform:
   m_Children:
   - {fileID: 132769742}
   - {fileID: 1774222625}
+  - {fileID: 114955430}
   m_Father: {fileID: 753769518}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -40}
-  m_SizeDelta: {x: 0, y: 40}
-  m_Pivot: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 15}
+  m_SizeDelta: {x: 352.7, y: 50}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &571781738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1872,7 +1871,7 @@ Transform:
   m_GameObject: {fileID: 583254560}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.2, z: 0}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1903,7 +1902,7 @@ Transform:
   m_GameObject: {fileID: 611528480}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2055,7 +2054,7 @@ GameObject:
   - component: {fileID: 625511797}
   - component: {fileID: 625511796}
   m_Layer: 0
-  m_Name: BossName
+  m_Name: BossNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2073,13 +2072,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 239592135}
+  m_Father: {fileID: 1412531278}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 40}
-  m_Pivot: {x: 0.5, y: 1}
+  m_SizeDelta: {x: 600, y: 40}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &625511796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2922,7 +2921,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -4617,7 +4616,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 44.6}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1395615262
@@ -4663,12 +4662,13 @@ RectTransform:
   m_Children:
   - {fileID: 2137617003}
   - {fileID: 883473185}
+  - {fileID: 625511795}
   m_Father: {fileID: 753769518}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 40}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -15}
+  m_SizeDelta: {x: 945.4, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1412531280
 MonoBehaviour:
@@ -5807,7 +5807,7 @@ MonoBehaviour:
   uiController: {fileID: 2024719693}
   arenaManager: {fileID: 977202645}
   projectileParent: {fileID: 912885528}
-  projectileBase: {fileID: 11400000, guid: 6247faec32eda494fa4067182970c995, type: 2}
+  projectileManagerSettings: {fileID: 11400000, guid: 6247faec32eda494fa4067182970c995, type: 2}
 --- !u!4 &1708173950
 Transform:
   m_ObjectHideFlags: 0
@@ -6182,7 +6182,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -7548,6 +7548,7 @@ MonoBehaviour:
   playerHB: {fileID: 571781738}
   playerControls: {fileID: 1140714113}
   bossHB: {fileID: 1412531280}
+  bossNameText: {fileID: 625511796}
   pauseScreen: {fileID: 1965406908}
   endRoundScreen: {fileID: 1707778169}
   fpsMeter: {fileID: 445961327}
@@ -8226,7 +8227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4811321, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.4811321, g: 0, b: 0, a: 0.45882353}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 0

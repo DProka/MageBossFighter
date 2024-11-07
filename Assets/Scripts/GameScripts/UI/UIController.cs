@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class UIController : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class UIController : MonoBehaviour
     [Header("Boss")]
 
     [SerializeField] HealthBar bossHB;
+    [SerializeField] TextMeshProUGUI bossNameText;
 
     [Header("Pause Game")]
 
@@ -80,6 +82,8 @@ public class UIController : MonoBehaviour
         else
             bossHB.SetHealth(maxHealth, currentHealth);
     }
+
+    public void SetBossName(string name) => bossNameText.text = name;
 
     #endregion
 

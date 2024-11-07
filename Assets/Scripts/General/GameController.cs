@@ -26,7 +26,7 @@ public class GameController : MonoBehaviour
 
     [SerializeField] ArenaManager arenaManager;
     [SerializeField] Transform projectileParent;
-    [SerializeField] ProjectileBase projectileBase;
+    [SerializeField] ProjectileManagerSettings projectileManagerSettings;
 
     private ProjectileManager projectileManager;
 
@@ -41,7 +41,7 @@ public class GameController : MonoBehaviour
 
         GameEventBus.OnSomeoneDies += CheckWinner;
 
-        projectileManager = new ProjectileManager(projectileBase, projectileParent);
+        projectileManager = new ProjectileManager(projectileManagerSettings, projectileParent);
 
         currentLvlNum = DataHolder.gameLevel;
         uiController.Init(this);
@@ -62,8 +62,6 @@ public class GameController : MonoBehaviour
         }
 
         UpdateStartTimer();
-
-        //Debug.Log("Game is Active = " + gameIsActive);
     }
 
     public void LoadLevel()
@@ -72,6 +70,7 @@ public class GameController : MonoBehaviour
 
         arenaManager.SpawnArena(currentLvlNum);
         enemy = arenaManager.SpawnBoss(currentLvlNum);
+        uiController.SetBossName(enemy._settings.bossName);
 
         player.Init(enemy);
         enemy.Init(player);
@@ -137,9 +136,14 @@ public class GameController : MonoBehaviour
         projectileManager.ClearList();
     }
 
-    public void InstantiateProjectile(Vector3 startPosition, Vector3 targetPosition, bool isPlayer, float damage)
+    public void InstantiatePlayerProjectile(Vector3 startPosition)
     {
-        projectileManager.InstantiateProjectile(startPosition, targetPosition, isPlayer, damage);
+        projectileManager.InstantiatePlayerProjectile(startPosition, enemy.transform.position, player._settings.damage, player._settings.projectileSpeed);
+    }
+    
+    public void InstantiateEnemyProjectile(Vector3 startPosition, Vector3 targetPosition)
+    {
+        projectileManager.InstantiateEnemyProjectile(startPosition, targetPosition, currentLvlNum, enemy._settings.damage, enemy._settings.projectileSpeed);
     }
 
     public void RestartScene()
@@ -150,8 +154,6 @@ public class GameController : MonoBehaviour
         enemy.ResetEnemy();
         uiController.CloseEndScreen();
         ClearArena();
-
-        //SceneManager.LoadScene(0);
     }
 
     public void SwitchPauseGame()

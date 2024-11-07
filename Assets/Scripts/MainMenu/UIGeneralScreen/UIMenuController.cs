@@ -3,11 +3,15 @@ using UnityEngine;
 
 public class UIMenuController : MonoBehaviour
 {
+    public MainMenuSettings settings { get; private set; }
+
     [SerializeField] UIMainMenuScript uiMenuScript;
     [SerializeField] UIStartGameScript startGameScript;
 
-    public void Init()
+    public void Init(MainMenuSettings _settings)
     {
+        settings = _settings;
+
         uiMenuScript.Init(this);
         startGameScript.Init(this);
 

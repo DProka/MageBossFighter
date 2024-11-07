@@ -48,7 +48,36 @@ public class MainMenuPreviewManager : MonoBehaviour
             ClearUnitPreviev();
             unitPrefab = Instantiate(settings.bossBase.bossPrefabsArray[num], unitParent);
             unitPrefab.transform.localScale = new Vector3(25, 25, 25);
+
+            switch (num)
+            {
+                case 0:
+                    unitPrefab.transform.localScale = new Vector3(45, 45, 45);
+                    break;
+            
+                case 1:
+                    unitPrefab.transform.localScale = new Vector3(35, 35, 35);
+                    break;
+            
+                case 2:
+                    unitPrefab.transform.localScale = new Vector3(80, 80, 80);
+                    break;
+
+                case 3:
+                    unitPrefab.transform.localScale = new Vector3(45, 45, 45);
+                    break;
+            }
         }
+    }
+
+    public EnemySettings GetEnemySettings()
+    {
+        if (unitPrefab.TryGetComponent<BossScript>(out BossScript boss))
+        {
+            return boss._settings;
+        }
+        else
+            return null;
     }
 
     public void ClearManager()

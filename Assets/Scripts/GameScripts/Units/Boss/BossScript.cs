@@ -99,7 +99,8 @@ public class BossScript : UnitGeneral
 
     public void SpawnProjectile(Vector3 finishPos)
     {
-        GameController.Instance.InstantiateProjectile(shootPoint.position, finishPos, false, settings.damage);
+        //GameController.Instance.InstantiateProjectile(shootPoint.position, finishPos, false, settings.damage);
+        GameController.Instance.InstantiateEnemyProjectile(shootPoint.position, finishPos);
     }
 
     public void ResetEnemy()

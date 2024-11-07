@@ -6,10 +6,10 @@ public class ProjectileManager
 {
     public List<Projectile> projectilesList;
 
-    private ProjectileBase projBase;
+    private ProjectileManagerSettings projBase;
     private Transform parent;
 
-    public ProjectileManager(ProjectileBase _projBase, Transform _parent)
+    public ProjectileManager(ProjectileManagerSettings _projBase, Transform _parent)
     {
         projBase = _projBase;
         parent = _parent;
@@ -27,13 +27,17 @@ public class ProjectileManager
         }
     }
 
-    public void InstantiateProjectile(Vector3 position, Vector3 targetPosition, bool isPlayer, float damage)
+    public void InstantiatePlayerProjectile(Vector3 position, Vector3 targetPosition, float damage, float speed)
     {
-        ProjectileSettings settings = isPlayer ? projBase.playerProjectilesArray[0] : projBase.enemyProjectilesArray[0];
-        //UnitGeneral target = isPlayer ? GameController.Instance.enemy : GameController.Instance.player;
-
-        Projectile projectile = UnityEngine.Object.Instantiate(projBase.projectilePrefab, position, Quaternion.identity, parent);
-        projectile.Init(this, targetPosition, settings, isPlayer, damage);
+        Projectile projectile = UnityEngine.Object.Instantiate(projBase.playerBase.projectilePrefabArray[0], position, Quaternion.identity, parent);
+        projectile.Init(this, targetPosition, true, damage, speed);
+        projectilesList.Add(projectile);
+    }
+    
+    public void InstantiateEnemyProjectile(Vector3 position, Vector3 targetPosition, int enemyNum, float damage, float speed)
+    {
+        Projectile projectile = UnityEngine.Object.Instantiate(projBase.enemyBase.projectilePrefabArray[enemyNum], position, Quaternion.identity, parent);
+        projectile.Init(this, targetPosition, false, damage, speed);
         projectilesList.Add(projectile);
     }
 

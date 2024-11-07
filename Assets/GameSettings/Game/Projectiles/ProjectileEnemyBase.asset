@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07e3b4fbf5a0a0740aab5faebe58bfb8, type: 3}
+  m_Name: ProjectileEnemyBase
+  m_EditorClassIdentifier: 
+  projectilePrefabArray:
+  - {fileID: 4874683673209579132, guid: 51b6a72226db16c4090d91e7a21512fe, type: 3}
+  - {fileID: 2119841008982677909, guid: a9f0261e084baba47888d7b07a063ded, type: 3}
+  - {fileID: 4874683673209579132, guid: 51b6a72226db16c4090d91e7a21512fe, type: 3}
+  - {fileID: 2119841008982677909, guid: a9f0261e084baba47888d7b07a063ded, type: 3}
+  - {fileID: 4874683673209579132, guid: 51b6a72226db16c4090d91e7a21512fe, type: 3}
+  - {fileID: 2119841008982677909, guid: a9f0261e084baba47888d7b07a063ded, type: 3}
+  projectileSettingsArray: []

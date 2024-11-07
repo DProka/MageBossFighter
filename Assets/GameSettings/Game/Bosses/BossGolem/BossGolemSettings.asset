@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e01ee39f451d80a48ba21546c4f52d23, type: 3}
-  m_Name: BossTreeSettings
+  m_Name: BossGolemSettings
   m_EditorClassIdentifier: 
-  bossName: Rotten Stump
-  maxHealth: 120
-  damage: 12
+  bossName: Mountain Golem
+  maxHealth: 180
+  damage: 15
   delayBeforeAttack: 1.5
   rotateSpeed: 5
   startBehaviour: 1
-  skillTypesArray: 010000000600000004000000
+  skillTypesArray: 0100000005000000040000000a000000
   skillSettingsArray:
-  - {fileID: 11400000, guid: 1aca9ad603a35064883e0d195f80620d, type: 2}
-  - {fileID: 11400000, guid: 09456ed671cba8244a3d63c3514160a3, type: 2}
-  - {fileID: 11400000, guid: 9f820930b37f5004aaf95bdd34ae2357, type: 2}
+  - {fileID: 11400000, guid: 7aa5efbf7c5d2754497b20eca339d0f4, type: 2}
+  - {fileID: 11400000, guid: c0f69648f978bc24fb0ad072022fa82f, type: 2}
+  - {fileID: 11400000, guid: c6a3d23efb17bbb4b864b73470fae3ec, type: 2}
+  - {fileID: 11400000, guid: 16dc7c996696a2546b66674c55035c0d, type: 2}

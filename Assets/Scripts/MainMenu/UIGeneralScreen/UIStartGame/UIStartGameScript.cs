@@ -1,5 +1,6 @@
 
 using UnityEngine;
+using TMPro;
 
 public class UIStartGameScript : MonoBehaviour, IMenuScreen
 {
@@ -11,6 +12,8 @@ public class UIStartGameScript : MonoBehaviour, IMenuScreen
     [Header("Level Part")]
 
     [SerializeField] GameObject levelObject;
+    [SerializeField] TextMeshProUGUI levelNumberText;
+    [SerializeField] TextMeshProUGUI bossNameText;
 
     private Canvas mainCanvas;
     private UIMenuController uiController;
@@ -34,6 +37,15 @@ public class UIStartGameScript : MonoBehaviour, IMenuScreen
         mapObject.SetActive(false);
         levelObject.SetActive(true);
         MainMenuController.Instance.LoadLevelPreviev(num);
+
+        levelNumberText.text = "Level " + (num + 1);
+
+        EnemySettings enemy = MainMenuController.Instance.GetEnemySettings();
+
+        if(enemy != null)
+        {
+            bossNameText.text = enemy.bossName;
+        }
 
         Debug.Log("Level was select " + (num + 1));
     }
