@@ -9,6 +9,7 @@ public class MovePointPrefabScript : MonoBehaviour
     [SerializeField] MeshRenderer meshRenderer;
 
     private MovePointSettings settings;
+    private Material currentMaterial;
 
     private float statusTimer;
 
@@ -16,6 +17,9 @@ public class MovePointPrefabScript : MonoBehaviour
     {
         settings = _settings;
         id = _id;
+        currentMaterial = new Material(meshRenderer.material);
+        meshRenderer.material = currentMaterial;
+
         SetNewStatus(Status.NoStatus);
     }
 
@@ -37,27 +41,34 @@ public class MovePointPrefabScript : MonoBehaviour
         switch (status)
         {
             case Status.NoStatus:
-                meshRenderer.material = settings.startMaterial;
+                currentMaterial.color = settings.startColor;
                 break;
 
             case Status.Burn:
-                meshRenderer.material = settings.burnMaterial;
+                currentMaterial.color = settings.burnColor;
                 statusTimer = settings.burningTime;
                 break;
 
             case Status.Freeze:
-                meshRenderer.material = settings.freezeMaterial;
+                currentMaterial.color = settings.freezeColor;
                 statusTimer = settings.freezeTime;
                 break;
 
             case Status.Blocked:
-                meshRenderer.material = settings.blockedMaterial;
+                currentMaterial.color = settings.blockedColor;
                 statusTimer = settings.blockedTime;
+                break;
+        
+            case Status.Attack:
+                currentMaterial.color = settings.attackColor;
+                statusTimer = settings.attackTime;
                 break;
         
             case Status.Player:
                 break;
         }
+
+        //meshRenderer.material = currentMaterial;
     }
 
     public enum Status
@@ -66,6 +77,8 @@ public class MovePointPrefabScript : MonoBehaviour
         Burn,
         Freeze,
         Blocked,
+        Attack,
+
         Player
     }
 

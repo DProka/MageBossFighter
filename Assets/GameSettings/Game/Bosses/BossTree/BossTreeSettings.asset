@@ -16,10 +16,12 @@ MonoBehaviour:
   maxHealth: 120
   damage: 12
   delayBeforeAttack: 1.5
+  projectileSpeed: 10
   rotateSpeed: 5
-  startBehaviour: 1
-  skillTypesArray: 010000000600000004000000
+  startBehaviour: 11
+  skillTypesArray: 0100000006000000040000000b000000
   skillSettingsArray:
   - {fileID: 11400000, guid: 1aca9ad603a35064883e0d195f80620d, type: 2}
   - {fileID: 11400000, guid: 09456ed671cba8244a3d63c3514160a3, type: 2}
   - {fileID: 11400000, guid: 9f820930b37f5004aaf95bdd34ae2357, type: 2}
+  - {fileID: 11400000, guid: b43e5b866846e6d4caadef15dc7aa68b, type: 2}

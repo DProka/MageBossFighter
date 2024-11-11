@@ -19,4 +19,6 @@ MonoBehaviour:
   - {fileID: 2119841008982677909, guid: a9f0261e084baba47888d7b07a063ded, type: 3}
   - {fileID: 4874683673209579132, guid: 51b6a72226db16c4090d91e7a21512fe, type: 3}
   - {fileID: 2119841008982677909, guid: a9f0261e084baba47888d7b07a063ded, type: 3}
-  projectileSettingsArray: []
+  projectilePointPrefabArray:
+  - {fileID: 7699164690339733446, guid: 4d7f10de1625142418ff8ea8d58140c5, type: 3}
+  - {fileID: 5222337077814588989, guid: 8a28f3636ac189f4f842cfc15b1e5bb0, type: 3}

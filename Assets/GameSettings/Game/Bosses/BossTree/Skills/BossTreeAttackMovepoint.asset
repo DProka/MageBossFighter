@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 847345a2dd18e8e4893eb1722690f908, type: 3}
-  m_Name: PlayerProjectile1Settings
+  m_Script: {fileID: 11500000, guid: 64c25cd989f0d5545ba79137f57729ed, type: 3}
+  m_Name: BossTreeAttackMovepoint
   m_EditorClassIdentifier: 
-  damage: 10
-  bulletSpeed: 10
-  lifeTime: 3
-  scale: {x: 0.5, y: 0.5, z: 0.5}
-  material: {fileID: 2100000, guid: 361e7169408622348af1a8005e6a6f49, type: 2}
+  attackCounter: 5
+  attackSpeed: 1

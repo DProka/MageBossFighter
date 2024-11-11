@@ -45,8 +45,6 @@ public class BossScript : UnitGeneral
         if (isAlive)
         {
             behaviourManager.UpdateManager();
-
-            Debug.Log("Boss is Updated");
         }
 
         animationManager.UpdateScript();

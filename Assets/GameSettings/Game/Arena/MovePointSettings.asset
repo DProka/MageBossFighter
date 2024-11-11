@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   burningTime: 10
   freezeTime: 3
-  blockedTime: 3
-  startMaterial: {fileID: 2100000, guid: 7ca7c346bcadf6a41bd77a3b944fb5a7, type: 2}
-  burnMaterial: {fileID: 2100000, guid: c87767a1b09f99a428e1424639e96846, type: 2}
-  freezeMaterial: {fileID: 2100000, guid: 4645d64bee32b5d42adecab7cf5ea591, type: 2}
-  blockedMaterial: {fileID: 2100000, guid: e76b4a356d7749b4c95f0f1ebd8862ba, type: 2}
+  blockedTime: 10
+  attackTime: 0.5
+  startColor: {r: 0.60784316, g: 0.7882353, b: 0.30980393, a: 1}
+  burnColor: {r: 1, g: 0.0627451, b: 0, a: 1}
+  freezeColor: {r: 0, g: 1, b: 0.85882354, a: 1}
+  blockedColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+  attackColor: {r: 0.9245283, g: 0.9046796, b: 0.3541117, a: 1}

@@ -8,6 +8,7 @@ public class BossBehaviourBlockMovepoint : IBossBehaviour
     private EnemySkillSettings settings;
 
     private float attackTimer;
+    private int attackCounter;
 
     public BossBehaviourBlockMovepoint(BossScript thisUnit, EnemySkillSettings _settings)
     {
@@ -18,6 +19,7 @@ public class BossBehaviourBlockMovepoint : IBossBehaviour
     public void Enter()
     {
         attackTimer = unit._settings.delayBeforeAttack;
+        attackCounter = settings.attackCounter;
     }
 
     public void Exit()
@@ -39,6 +41,13 @@ public class BossBehaviourBlockMovepoint : IBossBehaviour
         List<MovePointPrefabScript> points = GameController.Instance.GetEmptyMovepointsList();
 
         int random = Random.Range(0, points.Count);
-        points[random].SetNewStatus(MovePointPrefabScript.Status.Blocked);
+        MovePointPrefabScript targetPoint = points[random];
+        targetPoint.SetNewStatus(MovePointPrefabScript.Status.Blocked);
+
+        GameController.Instance.InstantiateEnemyPointProjectile(targetPoint.transform.position, 1);
+        attackCounter--;
+
+        if (attackCounter <= 0)
+            unit.SetRandomBehaviour();
     }
 }

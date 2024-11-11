@@ -73,6 +73,10 @@ public class BossBehaviourManager
             case Behaviour.BlockMovepoint:
                 newBeh = GetBehaviour<BossBehaviourBlockMovepoint>();
                 break;
+        
+            case Behaviour.AttackMovepoint:
+                newBeh = GetBehaviour<BossBehaviourAttackMovepoint>();
+                break;
         }
 
         SetBehaviour(newBeh);
@@ -91,6 +95,7 @@ public class BossBehaviourManager
         BurnMovepoint,
         FreezeMovepoint,
         BlockMovepoint,
+        AttackMovepoint,
     }
 
     private void SetBehaviour(IBossBehaviour newBehaviour)
@@ -127,6 +132,7 @@ public class BossBehaviourManager
         behavioursMap[typeof(BossBehaviourBurnMovepoint)] = new BossBehaviourBurnMovepoint(thisUnit, GetBehaviourSettings(Behaviour.BurnMovepoint));
         behavioursMap[typeof(BossBehaviourFreezeMovepoint)] = new BossBehaviourFreezeMovepoint(thisUnit, GetBehaviourSettings(Behaviour.FreezeMovepoint));
         behavioursMap[typeof(BossBehaviourBlockMovepoint)] = new BossBehaviourBlockMovepoint(thisUnit, GetBehaviourSettings(Behaviour.BlockMovepoint));
+        behavioursMap[typeof(BossBehaviourAttackMovepoint)] = new BossBehaviourAttackMovepoint(thisUnit, GetBehaviourSettings(Behaviour.AttackMovepoint));
 
         SetNewBehaviour(Behaviour.Idle);
     }

@@ -145,6 +145,11 @@ public class GameController : MonoBehaviour
     {
         projectileManager.InstantiateEnemyProjectile(startPosition, targetPosition, currentLvlNum, enemy._settings.damage, enemy._settings.projectileSpeed);
     }
+    
+    public void InstantiateEnemyPointProjectile(Vector3 targetPosition, int num)
+    {
+        projectileManager.InstantiateEnemyPointProjectile(targetPosition, num, enemy._settings.damage);
+    }
 
     public void RestartScene()
     {

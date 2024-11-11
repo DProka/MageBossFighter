@@ -40,6 +40,12 @@ public class ProjectileManager
         projectile.Init(this, targetPosition, false, damage, speed);
         projectilesList.Add(projectile);
     }
+    
+    public void InstantiateEnemyPointProjectile(Vector3 targetPosition, int num, float damage)
+    {
+        ProjectilePoint projectile = UnityEngine.Object.Instantiate(projBase.enemyBase.projectilePointPrefabArray[num], targetPosition, Quaternion.identity);
+        projectile.Init(damage);
+    }
 
     public void AddProjectile(Projectile projectile) => projectilesList.Add(projectile);
     

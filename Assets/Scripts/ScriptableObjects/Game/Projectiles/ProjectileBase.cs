@@ -5,5 +5,5 @@ using UnityEngine;
 public class ProjectileBase : ScriptableObject
 {
     public Projectile[] projectilePrefabArray;
-    public ProjectileSettings[] projectileSettingsArray;
+    public ProjectilePoint[] projectilePointPrefabArray;
 }
