@@ -13,6 +13,7 @@ public class UIController : MonoBehaviour
 
     [SerializeField] HealthBar playerHB;
     [SerializeField] UIPlayerControls playerControls;
+    [SerializeField] UIPlayerStatusManager playerStatusManager;
 
     [Header("Boss")]
 
@@ -42,6 +43,8 @@ public class UIController : MonoBehaviour
         mainCanvas = GetComponent<Canvas>();
 
         playerControls.Init(this);
+        playerStatusManager.Init();
+
         endRoundScreen.Init();
         pauseScreen.Init();
     }
@@ -84,6 +87,14 @@ public class UIController : MonoBehaviour
     }
 
     public void SetBossName(string name) => bossNameText.text = name;
+
+    #endregion
+
+    #region Statuses
+
+    public void UpdateStatus(PlayerStatus.Status type, float time) => playerStatusManager.UpdateStatus(type, time);
+
+    public void SetStatusVisibility(PlayerStatus.Status type, bool isVisible) => playerStatusManager.SetStatusVisibility(type, isVisible);
 
     #endregion
 

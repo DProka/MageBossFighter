@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e98ab7bc2c6bc5478be2335a449744e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settings: {fileID: 11400000, guid: c18ee5bae7496604f8d9243c60c86fbd, type: 2}
+  settings: {fileID: 11400000, guid: da888516ac648944c87967ac09cbbd57, type: 2}
   animator: {fileID: 7253938356243317034}
   shootPoint: {fileID: 2791516449429567284}
 --- !u!95 &7253938356243317034 stripped

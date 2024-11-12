@@ -8,6 +8,7 @@ public class BossBehaviourFreezeMovepoint : IBossBehaviour
     private EnemySkillSettings settings;
 
     private float attackTimer;
+    private int attackCounter;
 
     public BossBehaviourFreezeMovepoint(BossScript thisUnit, EnemySkillSettings _settings)
     {
@@ -18,11 +19,12 @@ public class BossBehaviourFreezeMovepoint : IBossBehaviour
     public void Enter()
     {
         attackTimer = unit._settings.delayBeforeAttack;
+        attackCounter = settings.attackCounter;
     }
 
     public void Exit()
     {
-        attackTimer = unit._settings.delayBeforeAttack;
+        unit.SetRandomBehaviour();
     }
 
     void IBossBehaviour.Update()
@@ -30,15 +32,19 @@ public class BossBehaviourFreezeMovepoint : IBossBehaviour
         if (attackTimer > 0)
             attackTimer -= Time.deltaTime;
         else
-            ChoosePoint();
+            FreezePoint();
     }
 
-    void ChoosePoint()
+    void FreezePoint()
     {
         attackTimer = settings.attackSpeed;
         List<MovePointPrefabScript> points = GameController.Instance.GetEmptyMovepointsList();
 
         int random = Random.Range(0, points.Count);
         points[random].SetNewStatus(MovePointPrefabScript.Status.Freeze);
+        attackCounter--;
+
+        if (attackCounter <= 0)
+            Exit();
     }
 }
