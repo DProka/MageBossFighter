@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: BossGolemSettings
   m_EditorClassIdentifier: 
   bossName: Mountain Golem
-  maxHealth: 180
+  maxHealth: 450
   damage: 15
   delayBeforeAttack: 1.5
+  projectileSpeed: 10
   rotateSpeed: 5
   startBehaviour: 1
   skillTypesArray: 0100000005000000040000000a000000

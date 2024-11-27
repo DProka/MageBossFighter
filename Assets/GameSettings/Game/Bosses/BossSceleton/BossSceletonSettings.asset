@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: BossSceletonSettings
   m_EditorClassIdentifier: 
   bossName: Skeletronus
-  maxHealth: 80
+  maxHealth: 300
   damage: 10
   delayBeforeAttack: 1.5
+  projectileSpeed: 10
   rotateSpeed: 5
   startBehaviour: 1
   skillTypesArray: 010000000200000005000000

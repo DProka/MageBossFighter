@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BossTreeSettings
   m_EditorClassIdentifier: 
   bossName: Rotten Stump
-  maxHealth: 120
+  maxHealth: 400
   damage: 12
   delayBeforeAttack: 1.5
   projectileSpeed: 10
