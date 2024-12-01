@@ -20,15 +20,18 @@ public class PlayerShooting
 
     public void UpdateScript()
     {
-        if (attackTimer > 0)
-            attackTimer -= Time.deltaTime;
-
-        else
+        if (canShoot)
         {
-            if (!player.isMoving)
+            if (attackTimer > 0)
+                attackTimer -= Time.deltaTime;
+
+            else
             {
-                //UpdateMouse();
-                UpdateKeys();
+                if (!player.isMoving)
+                {
+                    //UpdateMouse();
+                    UpdateKeys();
+                }
             }
         }
     }
@@ -40,11 +43,13 @@ public class PlayerShooting
         if (attackTimer > 0)
             return;
 
-        float attackDelay = player.isFreeze ? (settings.attackDelay * settings.freezeSpeedFactor) : settings.attackDelay;
-        attackTimer = attackDelay;
-        player.SpawnProjectile();
+        Attack();
 
-        player.playerAnimator.StartAnimation(PlayerAnimator.Clip.Attack);
+        //float attackDelay = player.isFreeze ? (settings.attackDelay * settings.freezeSpeedFactor) : settings.attackDelay;
+        //attackTimer = attackDelay;
+        //player.SpawnProjectile();
+
+        //player.playerAnimator.StartAnimation(PlayerAnimator.Clip.Attack);
     }
     
     private void Attack()

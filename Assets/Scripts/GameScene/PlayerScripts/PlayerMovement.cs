@@ -101,46 +101,6 @@ public class PlayerMovement
         }
     }
 
-    //private void UpdateMouse()
-    //{
-    //    if (Input.GetMouseButton(0))
-    //    {
-    //        mouseDeltaX = Input.GetAxis("Mouse X");
-    //    }
-
-    //    if (Input.GetMouseButtonUp(0))
-    //    {
-    //        //ChangePoint();
-    //    }
-    //}
-
-    //private void ChangePoint()
-    //{
-    //    if (mouseDeltaX < -0.3)
-    //    {
-    //        player.playerAnimator.StartAnimation(PlayerAnimator.Clip.MoveLeft);
-    //        nextPoint++;
-    //    }
-    //    else if (mouseDeltaX > 0.3)
-    //    {
-    //        player.playerAnimator.StartAnimation(PlayerAnimator.Clip.MoveRight);
-    //        nextPoint--;
-    //    }
-
-    //    if (nextPoint >= 12)
-    //        nextPoint = 0;
-    //    if (nextPoint < 0)
-    //        nextPoint = 11;
-
-    //    targetPoint = GameController.Instance.points[nextPoint];
-    //    //nextWayPoint = targetPoint.transform;
-    //    //nextWayPoint = GameController.Instance.GetNextWayPoint(nextPoint);
-    //    player.CheckWaypointStatus();
-    //    moveTimer = settings.moveDelay;
-
-    //    Debug.Log("Target Point = " + targetPoint.name);
-    //}
-
     private void UpdateKeyboard()
     {
         if (Input.GetKeyDown(KeyCode.A))

@@ -2801,6 +2801,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 673856307}
+  - component: {fileID: 673856311}
   - component: {fileID: 673856310}
   - component: {fileID: 673856309}
   - component: {fileID: 673856308}
@@ -2874,19 +2875,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 673856309}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1140714113}
-        m_TargetAssemblyTypeName: UIPlayerControls, Assembly-CSharp
-        m_MethodName: PlayerAttack
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &673856309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2900,7 +2889,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 0.27450982}
+  m_Color: {r: 1, g: 0, b: 0, a: 0.6862745}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2925,6 +2914,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 673856306}
   m_CullTransparentMesh: 1
+--- !u!114 &673856311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673856306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 743de466159e44e45b3ad395fbdb42d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 673856308}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2941,7 +2943,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &705507994
 Light:
   m_ObjectHideFlags: 0
@@ -3681,6 +3683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ebf5210cd6c34a45a557216bbd8dfaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackButton: {fileID: 673856311}
 --- !u!1 &1214009801
 GameObject:
   m_ObjectHideFlags: 0
@@ -5178,7 +5181,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 0.9076162, b: 0.6556604, a: 1}
   m_Intensity: 14
-  m_Range: 20
+  m_Range: 10
   m_SpotAngle: 67
   m_InnerSpotAngle: 1
   m_CookieSize: 10
@@ -7280,8 +7283,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 200, y: 50}
-  m_SizeDelta: {x: 120, y: 120}
+  m_AnchoredPosition: {x: 191, y: 24}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1999642206
 MonoBehaviour:
@@ -7352,7 +7355,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.061501026, b: 1, a: 0.27450982}
+  m_Color: {r: 0, g: 0.88263273, b: 1, a: 0.6862745}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7546,8 +7549,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 50, y: 100}
-  m_SizeDelta: {x: 120, y: 120}
+  m_AnchoredPosition: {x: 40, y: 115}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &2001670648
 MonoBehaviour:
@@ -7618,7 +7621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.99525476, g: 1, b: 0, a: 0.27450982}
+  m_Color: {r: 1, g: 0.93849885, b: 0, a: 0.6862745}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

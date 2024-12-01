@@ -25,6 +25,7 @@ public class BossBehaviourSpiralAttack : IBossBehaviour
         attackCounter = settings.attackCounter;
 
         nextPointNum = 0;
+        //nextPointNum = clockwise ? 3 : 9;
         //nextPointNum = clockwise ? 0 : 11;
     }
 
@@ -52,6 +53,7 @@ public class BossBehaviourSpiralAttack : IBossBehaviour
         unit.SpawnProjectile(GameController.Instance.points[nextPointNum].transform.position);
         attackTimer = settings.attackSpeed;
 
+        //int nextNum = clockwise ? -1 : 1;
         int nextNum = clockwise ? 1 : -1;
         nextPointNum += nextNum;
 
@@ -70,9 +72,14 @@ public class BossBehaviourSpiralAttack : IBossBehaviour
 
     private void UpdateCounter()
     {
-        attackCounter--;
-        if (attackCounter <= 0)
+        if (attackCounter < 1)
+        {
             unit.SetRandomBehaviour();
+        }
+        else
+        {
+            attackCounter--;
+        }
     }
 
     private void Rotate()

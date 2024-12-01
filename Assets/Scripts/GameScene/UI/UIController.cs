@@ -52,6 +52,7 @@ public class UIController : MonoBehaviour
     public void UpdateUI()
     {
         fpsMeter.ShowFPS();
+        playerControls.UpdateScript();
     }
 
     #region Game

@@ -105,7 +105,11 @@ public class PlayerScript : UnitGeneral
 
     #region Controls
 
-    public void Attack() { shootingScript.UIAttack(); }
+    public void Attack() 
+    { 
+        if(!isMoving)
+            shootingScript.UIAttack(); 
+    }
     
     public void MoveLeft() { movementScript.UIChangePointByButton(true); }
 

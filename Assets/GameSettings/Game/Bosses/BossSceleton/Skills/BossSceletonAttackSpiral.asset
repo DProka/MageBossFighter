@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64c25cd989f0d5545ba79137f57729ed, type: 3}
   m_Name: BossSceletonAttackSpiral
   m_EditorClassIdentifier: 
-  attackCounter: 13
+  attackCounter: 12
   attackSpeed: 0.3

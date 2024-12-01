@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class UIPlayerControls : MonoBehaviour
 {
+    [SerializeField] UIPlayerButtonAttack attackButton;
+
     UIController controller;
 
     public void Init(UIController uIController)
     {
         controller = uIController;
+
     } 
+
+    public void UpdateScript()
+    {
+        attackButton.UpdateScript();
+    }
 
     public void SwitchPauseGame() { GameController.Instance.SwitchPauseGame(); }
 
