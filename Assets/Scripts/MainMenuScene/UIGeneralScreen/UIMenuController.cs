@@ -7,6 +7,7 @@ public class UIMenuController : MonoBehaviour
 
     [SerializeField] UIMainMenuScript uiMenuScript;
     [SerializeField] UIStartGameScript startGameScript;
+    [SerializeField] UIStatsMenu statsMenu;
 
     public void Init(MainMenuSettings _settings)
     {
@@ -14,6 +15,7 @@ public class UIMenuController : MonoBehaviour
 
         uiMenuScript.Init(this);
         startGameScript.Init(this);
+        statsMenu.Init(this);
 
         HideAllScreens();
         OpenScreen(Screen.MainMenu);
@@ -32,6 +34,10 @@ public class UIMenuController : MonoBehaviour
             case Screen.StartGame:
                 startGameScript.OpenScreen();
                 break;
+        
+            case Screen.StatsMenu:
+                statsMenu.OpenMenu();
+                break;
         }
     }
 
@@ -39,6 +45,7 @@ public class UIMenuController : MonoBehaviour
     {
         MainMenu,
         StartGame,
+        StatsMenu,
     }
 
     public void UpdatePlayerCoinsText(int count) { uiMenuScript.UpdateText(count); }
@@ -47,5 +54,6 @@ public class UIMenuController : MonoBehaviour
     {
         uiMenuScript.CloseScreen();
         startGameScript.CloseScreen();
+        statsMenu.CloseMenu();
     }
 }
