@@ -25,7 +25,10 @@ public class MainMenuController : MonoBehaviour
         Instance = this;
 
         levelCount = 0;
-        playerCoins = 0;
+        playerCoins = 1000;
+
+        if (DataHolder.playerCoins == 0)
+            DataHolder.playerCoins = playerCoins;
 
         previewManager.Init(settings);
         uiController.Init(settings);

@@ -14,6 +14,7 @@ public class UIController : MonoBehaviour
     [SerializeField] HealthBar playerHB;
     [SerializeField] UIPlayerControls playerControls;
     [SerializeField] UIPlayerStatusManager playerStatusManager;
+    [SerializeField] GameObject tutorialPart;
 
     [Header("Boss")]
 
@@ -100,6 +101,17 @@ public class UIController : MonoBehaviour
     #endregion
 
     #region Screens
+
+    public void StartGame()
+    {
+        arenaTimer.SwitchTimerActive(true);
+        gameController.StartArenaTimer();
+    }
+
+    public void SwitchTutorialPart(bool isActive)
+    {
+        tutorialPart.SetActive(isActive);
+    }
 
     public void CallEndScreen(bool win) => endRoundScreen.CallScreen(win);
     

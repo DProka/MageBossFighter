@@ -46,6 +46,12 @@ public class GameController : MonoBehaviour
         currentLvlNum = DataHolder.gameLevel;
         uiController.Init(this);
         arenaManager.Init(settings);
+
+        if(DataHolder.statsLvls == null)
+        {
+            DataHolder.statsLvls = new int[] { 1, 1, 1 };
+        }
+
         LoadLevel();
     }
 
@@ -75,7 +81,9 @@ public class GameController : MonoBehaviour
         player.Init(enemy);
         enemy.Init(player);
 
-        StartArenaTimer();
+        uiController.SwitchTutorialPart(true);
+
+        //StartArenaTimer();
     }
 
     private void CheckWinner()
@@ -99,10 +107,12 @@ public class GameController : MonoBehaviour
 
     public List<MovePointPrefabScript> GetEmptyMovepointsList() { return arenaManager.GetEmptyMovepointsList(player.currentPointNum); }
 
-    private void StartArenaTimer()
+    public void StartArenaTimer()
     {
         timerStart = settings.timeToStart;
         timerIsActive = true;
+
+        uiController.SwitchTutorialPart(false);
     }
 
     private void UpdateStartTimer()
@@ -138,7 +148,10 @@ public class GameController : MonoBehaviour
 
     public void InstantiatePlayerProjectile(Vector3 startPosition)
     {
-        projectileManager.InstantiatePlayerProjectile(startPosition, enemy.transform.position, player._settings.damage, player._settings.projectileSpeed);
+        float multiplier = (player._settings.damage / 100) * DataHolder.statsLvls[1];
+        float damage = Mathf.Round(player._settings.damage + multiplier);
+
+        projectileManager.InstantiatePlayerProjectile(startPosition, enemy.transform.position, damage, player._settings.projectileSpeed);
     }
     
     public void InstantiateEnemyProjectile(Vector3 startPosition, Vector3 targetPosition)

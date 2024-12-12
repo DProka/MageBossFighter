@@ -90,7 +90,10 @@ public class PlayerScript : UnitGeneral
     public void ResetPlayer()
     {
         isAlive = true;
-        currentHealth = settings.maxHealth;
+        
+        float healthMultiplier = (settings.maxHealth / 100) * DataHolder.statsLvls[0];
+        currentHealth = Mathf.Round(settings.maxHealth + healthMultiplier);
+
         UIController.Instance.UpdateHealthBar(true, settings.maxHealth, currentHealth);
         movementScript.ResetWayPoint();
         playerAnimator.StartAnimation(PlayerAnimator.Clip.Idle);

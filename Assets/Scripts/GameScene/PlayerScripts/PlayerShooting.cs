@@ -29,7 +29,6 @@ public class PlayerShooting
             {
                 if (!player.isMoving)
                 {
-                    //UpdateMouse();
                     UpdateKeys();
                 }
             }
@@ -44,17 +43,13 @@ public class PlayerShooting
             return;
 
         Attack();
-
-        //float attackDelay = player.isFreeze ? (settings.attackDelay * settings.freezeSpeedFactor) : settings.attackDelay;
-        //attackTimer = attackDelay;
-        //player.SpawnProjectile();
-
-        //player.playerAnimator.StartAnimation(PlayerAnimator.Clip.Attack);
     }
     
     private void Attack()
     {
-        float attackDelay = player.isFreeze ? (settings.attackDelay * settings.freezeSpeedFactor) : settings.attackDelay;
+        float speedMultiplier = (settings.attackDelay / 100) * DataHolder.statsLvls[2];
+        float attackSpeed = settings.attackDelay - speedMultiplier;
+        float attackDelay = player.isFreeze ? (attackSpeed * settings.freezeSpeedFactor) : attackSpeed;
         attackTimer = attackDelay;
         player.SpawnProjectile();
         player.playerAnimator.StartAnimation(PlayerAnimator.Clip.Attack);
