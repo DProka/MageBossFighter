@@ -114,6 +114,15 @@ public class PlayerScript : UnitGeneral
             shootingScript.UIAttack(); 
     }
     
+    public void MovePlayer(float direction)
+    {
+        if(direction > 0)
+            MoveRight();
+        
+        else
+            MoveLeft();
+    }
+
     public void MoveLeft() { movementScript.UIChangePointByButton(true); }
 
     public void MoveRight() { movementScript.UIChangePointByButton(false); }

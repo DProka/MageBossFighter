@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: BossTreeAttackMovepoint
   m_EditorClassIdentifier: 
   attackCounter: 5
-  attackSpeed: 1
+  attackSpeed: 2

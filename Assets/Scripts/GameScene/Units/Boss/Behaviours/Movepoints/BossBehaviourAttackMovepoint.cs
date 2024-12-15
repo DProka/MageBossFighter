@@ -42,7 +42,8 @@ public class BossBehaviourAttackMovepoint : IBossBehaviour
     {
         MovePointPrefabScript targetPoint = GameController.Instance.points[unit.target.currentPointNum];
         targetPoint.SetNewStatus(MovePointPrefabScript.Status.Attack);
-        attackTimer = settings.attackSpeed;
+        //attackTimer = settings.attackSpeed;
+        attackTimer = unit._settings.delayBeforeAttack;
         GameController.Instance.InstantiateEnemyPointProjectile(targetPoint.transform.position, 0);
         attackCounter--;
 

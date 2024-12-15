@@ -1,5 +1,6 @@
 
 using UnityEngine;
+using DG.Tweening;
 
 public class MovePointPrefabScript : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class MovePointPrefabScript : MonoBehaviour
     public Status pointStatus { get; private set; }
 
     [SerializeField] MeshRenderer meshRenderer;
+    [SerializeField] SpriteRenderer circleRenderer;
 
     private MovePointSettings settings;
     private Material currentMaterial;
@@ -21,6 +23,7 @@ public class MovePointPrefabScript : MonoBehaviour
         meshRenderer.material = currentMaterial;
 
         SetNewStatus(Status.NoStatus);
+        ResetAnimation();
     }
 
     public void UpdateScript()
@@ -60,15 +63,14 @@ public class MovePointPrefabScript : MonoBehaviour
                 break;
         
             case Status.Attack:
-                currentMaterial.color = settings.attackColor;
+                //currentMaterial.color = settings.attackColor;
                 statusTimer = settings.attackTime;
+                StartAttackAnimation(2f);
                 break;
         
             case Status.Player:
                 break;
         }
-
-        //meshRenderer.material = currentMaterial;
     }
 
     public enum Status
@@ -92,4 +94,20 @@ public class MovePointPrefabScript : MonoBehaviour
                 SetNewStatus(Status.NoStatus);
         }
     }
+
+    #region Attack Animation
+
+    private void StartAttackAnimation(float animTime)
+    {
+        circleRenderer.enabled = true;
+        circleRenderer.transform.DOScale(1.5f, animTime).OnComplete(() => ResetAnimation());
+    }
+
+    private void ResetAnimation()
+    {
+        circleRenderer.enabled = false;
+        circleRenderer.transform.DOScale(4f, 0);
+    }
+
+    #endregion
 }
