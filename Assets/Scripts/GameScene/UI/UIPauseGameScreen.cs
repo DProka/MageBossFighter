@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class UIPauseGameScreen : MonoBehaviour
@@ -13,5 +12,4 @@ public class UIPauseGameScreen : MonoBehaviour
     }
 
     public void SwitchPauseGame(bool isPaused) => mainCanvas.enabled = isPaused;
-
 }

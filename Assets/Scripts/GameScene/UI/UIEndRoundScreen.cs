@@ -7,7 +7,12 @@ using System.Collections;
 
 public class UIEndRoundScreen : MonoBehaviour, IMenuScreen
 {
+    [Header("Head Part")]
+
     [SerializeField] TextMeshProUGUI endText;
+    [SerializeField] Color[] endTextColorsArray;
+
+    [Header("Middle Part")]
 
     [SerializeField] Image enemyHpBar;
     [SerializeField] Image playerHpBar;
@@ -24,7 +29,7 @@ public class UIEndRoundScreen : MonoBehaviour, IMenuScreen
     public void Init()
     {
         mainCanvas = GetComponent<Canvas>();
-        
+
         coinsAnim.Init();
         textPlusReward.Init();
 
@@ -33,7 +38,9 @@ public class UIEndRoundScreen : MonoBehaviour, IMenuScreen
 
     public void CallScreen(bool win)
     {
-        endText.text = win ? "YOU WIN" : "YOU LOSE";
+        endText.text = win ? "YOU WIN" : "YOU LOST";
+        endText.color = win ? endTextColorsArray[0] : endTextColorsArray[1];
+
         OpenScreen();
 
         ResetBar();
@@ -53,14 +60,14 @@ public class UIEndRoundScreen : MonoBehaviour, IMenuScreen
 
         float earnedCoins = (bossMaxHP - bossCurrentHealth) * 2f;
         float substractedCoins = playerMaxHP - playerCurrentHealth;
-        int coins =(int)(earnedCoins - substractedCoins);
+        int coins = (int)(earnedCoins - substractedCoins);
 
         StartCoroutine(StartEarnedCoinsAnimation(earnedCoins / 10, percentageBoss, 1f));
-        enemyHpBar.DOFillAmount(percentageBoss, 2f).SetDelay(1f).OnComplete(() => 
+        enemyHpBar.DOFillAmount(percentageBoss, 2f).SetDelay(1f).OnComplete(() =>
         {
             earnedCoinText.text = "" + earnedCoins;
 
-            playerHpBar.DOFillAmount(percentagePlayer, 2f).OnComplete(() => 
+            playerHpBar.DOFillAmount(percentagePlayer, 2f).OnComplete(() =>
             {
                 earnedCoinText.text = "" + coins;
             });

@@ -36,6 +36,8 @@ public class UIController : MonoBehaviour
     private GameController gameController;
     private Canvas mainCanvas;
 
+    private bool controlsIsActive;
+
     public void Init(GameController _gameController)
     {
         Instance = this;
@@ -53,14 +55,22 @@ public class UIController : MonoBehaviour
     public void UpdateUI()
     {
         fpsMeter.ShowFPS();
-        playerControls.UpdateScript();
+
+        //if (gameController.gameIsActive)
+        //{
+            playerControls.UpdateScript();
+        //}
     }
 
     #region Game
 
     public void UpdateArenaTimer(float time) => arenaTimer.UpdateTimer(time);
 
-    public void SwitchPauseGame(bool isPaused) => pauseScreen.SwitchPauseGame(isPaused);
+    public void SwitchPauseGame(bool isPaused)
+    {
+        pauseScreen.SwitchPauseGame(isPaused);
+        SwitchControlsActive(!isPaused);
+    }
 
     public void StartArena()
     {
@@ -75,6 +85,14 @@ public class UIController : MonoBehaviour
     }
 
     public void GoToMaiuMenu() => gameController.GoToMaiuMenu();
+
+    public void SwitchControlsActive(bool isActive)
+    {
+        controlsIsActive = isActive;
+        playerControls.SwitchControlsActive(isActive);
+
+        Debug.Log("Controls Is Active = " + isActive);
+    }
 
     #endregion
 
@@ -111,6 +129,7 @@ public class UIController : MonoBehaviour
     public void SwitchTutorialPart(bool isActive)
     {
         tutorialPart.SetActive(isActive);
+        SwitchControlsActive(!isActive);
     }
 
     public void CallEndScreen(bool win) => endRoundScreen.CallScreen(win);

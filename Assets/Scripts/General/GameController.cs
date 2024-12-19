@@ -29,6 +29,7 @@ public class GameController : MonoBehaviour
     [SerializeField] ProjectileManagerSettings projectileManagerSettings;
 
     private ProjectileManager projectileManager;
+    private VfxManager vfxManager;
 
     private bool timerIsActive;
     private float timerStart;
@@ -42,6 +43,7 @@ public class GameController : MonoBehaviour
         GameEventBus.OnSomeoneDies += CheckWinner;
 
         projectileManager = new ProjectileManager(projectileManagerSettings, projectileParent);
+        vfxManager = new VfxManager(settings.vfxBase);
 
         currentLvlNum = DataHolder.gameLevel;
         uiController.Init(this);
@@ -52,6 +54,7 @@ public class GameController : MonoBehaviour
             DataHolder.statsLvls = new int[] { 1, 1, 1 };
         }
 
+        CameraManager.Instance.SetCameraPosition(new Vector3(0, 15, -18), Quaternion.Euler(45, 0, 0), false);
         LoadLevel();
     }
 
@@ -96,7 +99,7 @@ public class GameController : MonoBehaviour
         else
             Debug.Log("Player Defeat");
 
-        uiController.CallEndScreen(true);
+        uiController.CallEndScreen(player.isAlive);
         ClearArena();
     }
 
@@ -194,6 +197,9 @@ public class GameController : MonoBehaviour
     public void GoToMaiuMenu()
     {
         SceneManager.LoadScene(0);
+
+        Resources.UnloadUnusedAssets();
+        System.GC.Collect();
     }
 
     private void OnDestroy()

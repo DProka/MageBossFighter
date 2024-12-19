@@ -17,3 +17,4 @@ MonoBehaviour:
   - {fileID: 849460599313080634, guid: f83aee081cb991445b12d0c9487330c0, type: 3}
   arenaBase: {fileID: 11400000, guid: d6c904c803d9c9b4c9d683a91f746bd5, type: 2}
   bossBase: {fileID: 11400000, guid: b03d570b1af4dbb449ccb3c57593ee36, type: 2}
+  vfxBase: {fileID: 11400000, guid: e6c01fedd814eff42925b3239b6b1c08, type: 2}

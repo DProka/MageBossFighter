@@ -33,6 +33,8 @@ public class MainMenuController : MonoBehaviour
         previewManager.Init(settings);
         uiController.Init(settings);
 
+        CameraManager.Instance.SetCameraPosition(new Vector3(0, 3.5f, -8), Quaternion.Euler(20, 0, 0), true);
+
         uiController.UpdatePlayerCoinsText(playerCoins);
         InitializePreview();
         GetPlayerCoins();
@@ -43,6 +45,9 @@ public class MainMenuController : MonoBehaviour
         ClearScene();
         DataHolder.gameLevel = num;
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+
+        Resources.UnloadUnusedAssets();
+        System.GC.Collect();
     }
 
     public void CalculatePlayerCoins(int coins)

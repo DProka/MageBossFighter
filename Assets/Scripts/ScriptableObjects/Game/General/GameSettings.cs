@@ -9,4 +9,5 @@ public class GameSettings : ScriptableObject
     public GameObject[] playerPrefab;
     public ArenaBase arenaBase;
     public BossBase bossBase;
+    public VfxBase vfxBase;
 }

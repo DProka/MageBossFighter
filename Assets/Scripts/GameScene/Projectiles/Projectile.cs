@@ -8,17 +8,19 @@ public class Projectile : MonoBehaviour
     private UnitGeneral target;
     private Vector3 targetPos;
 
+    private bool isPlayer;
     private float damage;
     private float speed;
     private float lifeTimer;
 
-    public void Init(ProjectileManager _manager, Vector3 _targetPos, bool isPlayer, float _damage, float _speed)
+    public void Init(ProjectileManager _manager, Vector3 _targetPos, bool _isPlayer, float _damage, float _speed)
     {
         GameEventBus.OnSomeoneDies += DestroyBullet;
 
         manager = _manager;
         targetPos = _targetPos;
-        target = isPlayer ? GameController.Instance.enemy : GameController.Instance.player;
+        isPlayer = _isPlayer;
+        target = _isPlayer ? GameController.Instance.enemy : GameController.Instance.player;
         damage = _damage;
         speed = _speed;
         lifeTimer = 5f;
@@ -39,7 +41,7 @@ public class Projectile : MonoBehaviour
 
         float distance = Vector3.Distance(targetPos, projectilePos);
 
-        if (distance < 0.8f)
+        if (distance < 1.2f)
         {
             target.GetHit(damage);
             DestroyBullet();
@@ -52,8 +54,16 @@ public class Projectile : MonoBehaviour
 
     public void DestroyBullet()
     {
+        StartVfx();
+
         manager.RemoveProjectile(this);
         Destroy(gameObject);
+    }
+
+    private void StartVfx()
+    {
+        if (isPlayer)
+            VfxManager.Instance.StartExplosion(transform.position);
     }
 
     private void OnDestroy()
