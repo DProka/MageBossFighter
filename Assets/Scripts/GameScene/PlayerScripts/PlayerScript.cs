@@ -23,6 +23,8 @@ public class PlayerScript : UnitGeneral
     private PlayerStatus statusScript;
     private BossScript enemy;
 
+    private bool movementIsClockwise;
+
     public void Init(BossScript _enemy)
     {
         enemy = _enemy;
@@ -30,6 +32,8 @@ public class PlayerScript : UnitGeneral
         shootingScript = new PlayerShooting(this, settings, shootPoint);
         playerAnimator = new PlayerAnimator(animator);
         statusScript = new PlayerStatus(this, settings);
+
+        movementIsClockwise = true;
 
         ResetPlayer();
     }
@@ -126,6 +130,14 @@ public class PlayerScript : UnitGeneral
     public void MoveLeft() { movementScript.UIChangePointByButton(true); }
 
     public void MoveRight() { movementScript.UIChangePointByButton(false); }
+
+    public void CheckMovePoint()
+    {
+        if (movementScript.lastPoint > 3 && movementScript.lastPoint < 9)
+            movementIsClockwise = false;
+        else
+            movementIsClockwise = true;
+    }
 
     #endregion
 }

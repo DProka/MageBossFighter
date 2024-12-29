@@ -371,7 +371,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: abbdc6300e27b2e44b43a9cfc21e2869, type: 2}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -520,6 +520,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 1ba641ffa5e68f7458350e8596dc2894, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 1ba641ffa5e68f7458350e8596dc2894, type: 3}
       propertyPath: m_Name
       value: Bush_2 (1)
@@ -598,6 +602,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 0c135c64437a77b4793049b6f573df65, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 0c135c64437a77b4793049b6f573df65, type: 3}
       propertyPath: m_Name
       value: Stone_3 (5)
@@ -679,7 +687,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 0514fceff67ef144cb5159d0d04288b1, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9536a069ca99f9c4a8373de994ba17ee, type: 2}
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 0514fceff67ef144cb5159d0d04288b1, type: 3}
       propertyPath: m_Name
       value: Fence_2 (2)
@@ -758,6 +766,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 72771d8b8c3b02446adfbf5ec97f6d84, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 72771d8b8c3b02446adfbf5ec97f6d84, type: 3}
       propertyPath: m_Name
       value: Stone_1 (1)
@@ -836,6 +848,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 7065eaf4a337f514ea374e8dcd98714f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 7065eaf4a337f514ea374e8dcd98714f, type: 3}
       propertyPath: m_Name
       value: Stone_2 (1)
@@ -914,6 +930,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 0c135c64437a77b4793049b6f573df65, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 0c135c64437a77b4793049b6f573df65, type: 3}
       propertyPath: m_Name
       value: Stone_3 (2)
@@ -992,6 +1012,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e63a9e40fbc529f4893a7535abadf96e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: e63a9e40fbc529f4893a7535abadf96e, type: 3}
       propertyPath: m_Name
       value: Oak_1 (1)
@@ -1070,6 +1094,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 0c135c64437a77b4793049b6f573df65, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 0c135c64437a77b4793049b6f573df65, type: 3}
       propertyPath: m_Name
       value: Stone_3 (3)
@@ -1151,7 +1179,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: ab6ae9d5fcb8d7f4a8ceb451ac63b255, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9536a069ca99f9c4a8373de994ba17ee, type: 2}
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: ab6ae9d5fcb8d7f4a8ceb451ac63b255, type: 3}
       propertyPath: m_Name
       value: Fence_1
@@ -1230,6 +1258,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 4c3e6fd6c13de534588318fc60795b67, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 4c3e6fd6c13de534588318fc60795b67, type: 3}
       propertyPath: m_Name
       value: House_2
@@ -1308,6 +1340,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 72771d8b8c3b02446adfbf5ec97f6d84, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 72771d8b8c3b02446adfbf5ec97f6d84, type: 3}
       propertyPath: m_Name
       value: Stone_1 (4)
@@ -1386,6 +1422,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d07f8ba0496682944beeea106cbcf984, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: d07f8ba0496682944beeea106cbcf984, type: 3}
       propertyPath: m_Name
       value: Flowers_1 (1)
@@ -1464,6 +1504,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 9c407fd92b024004484edc0900bc7fb2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 9c407fd92b024004484edc0900bc7fb2, type: 3}
       propertyPath: m_Name
       value: Bush_4
@@ -1542,6 +1586,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e63a9e40fbc529f4893a7535abadf96e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: e63a9e40fbc529f4893a7535abadf96e, type: 3}
       propertyPath: m_Name
       value: Oak_1 (2)
@@ -1620,6 +1668,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 1ba641ffa5e68f7458350e8596dc2894, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 1ba641ffa5e68f7458350e8596dc2894, type: 3}
       propertyPath: m_Name
       value: Bush_2 (3)
@@ -1705,7 +1757,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 0514fceff67ef144cb5159d0d04288b1, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9536a069ca99f9c4a8373de994ba17ee, type: 2}
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 0514fceff67ef144cb5159d0d04288b1, type: 3}
       propertyPath: m_Name
       value: Fence_2 (5)
@@ -1784,6 +1836,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 0c135c64437a77b4793049b6f573df65, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 0c135c64437a77b4793049b6f573df65, type: 3}
       propertyPath: m_Name
       value: Stone_3 (4)
@@ -1862,6 +1918,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d07f8ba0496682944beeea106cbcf984, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: d07f8ba0496682944beeea106cbcf984, type: 3}
       propertyPath: m_Name
       value: Flowers_1
@@ -1943,7 +2003,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 0514fceff67ef144cb5159d0d04288b1, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9536a069ca99f9c4a8373de994ba17ee, type: 2}
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 0514fceff67ef144cb5159d0d04288b1, type: 3}
       propertyPath: m_Name
       value: Fence_2 (4)
@@ -2022,6 +2082,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 0c135c64437a77b4793049b6f573df65, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 0c135c64437a77b4793049b6f573df65, type: 3}
       propertyPath: m_Name
       value: Stone_3
@@ -2100,6 +2164,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: c3e21e9263e442a41bfe8a3b1d5a4456, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: c3e21e9263e442a41bfe8a3b1d5a4456, type: 3}
       propertyPath: m_Name
       value: Oak_Dry_2 (2)
@@ -2178,6 +2246,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 72771d8b8c3b02446adfbf5ec97f6d84, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 72771d8b8c3b02446adfbf5ec97f6d84, type: 3}
       propertyPath: m_Name
       value: Stone_1
@@ -2259,7 +2331,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 0514fceff67ef144cb5159d0d04288b1, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9536a069ca99f9c4a8373de994ba17ee, type: 2}
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 0514fceff67ef144cb5159d0d04288b1, type: 3}
       propertyPath: m_Name
       value: Fence_2 (3)
@@ -2338,6 +2410,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: ab6ae9d5fcb8d7f4a8ceb451ac63b255, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: ab6ae9d5fcb8d7f4a8ceb451ac63b255, type: 3}
       propertyPath: m_Name
       value: Fence_1
@@ -2416,6 +2492,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: fe60d0d91ba89b3458fe17e0236755fc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: fe60d0d91ba89b3458fe17e0236755fc, type: 3}
       propertyPath: m_Name
       value: Flowers_3 (1)
@@ -2497,7 +2577,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a39a8df1500e7974e93ce0de95eb40a9, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9536a069ca99f9c4a8373de994ba17ee, type: 2}
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: a39a8df1500e7974e93ce0de95eb40a9, type: 3}
       propertyPath: m_Name
       value: Bench_1
@@ -2576,6 +2656,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d388827cff06e4f4384c2534653842e8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: d388827cff06e4f4384c2534653842e8, type: 3}
       propertyPath: m_Name
       value: Stone_road
@@ -2654,6 +2738,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: c3e21e9263e442a41bfe8a3b1d5a4456, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: c3e21e9263e442a41bfe8a3b1d5a4456, type: 3}
       propertyPath: m_Name
       value: Oak_Dry_2
@@ -2732,6 +2820,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: db4faf5f344fb5b4a8a64d95531753a0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: db4faf5f344fb5b4a8a64d95531753a0, type: 3}
       propertyPath: m_Name
       value: Pine_1 (1)
@@ -2810,6 +2902,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 57a64523b5db7d548829460f2fb65aea, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 57a64523b5db7d548829460f2fb65aea, type: 3}
       propertyPath: m_Name
       value: Logs_2
@@ -2888,6 +2984,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 1ba641ffa5e68f7458350e8596dc2894, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 1ba641ffa5e68f7458350e8596dc2894, type: 3}
       propertyPath: m_Name
       value: Bush_2 (4)
@@ -2966,6 +3066,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d388827cff06e4f4384c2534653842e8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: d388827cff06e4f4384c2534653842e8, type: 3}
       propertyPath: m_Name
       value: Stone_road (2)
@@ -3044,6 +3148,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d07f8ba0496682944beeea106cbcf984, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: d07f8ba0496682944beeea106cbcf984, type: 3}
       propertyPath: m_Name
       value: Flowers_1 (2)
@@ -3122,6 +3230,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 0c135c64437a77b4793049b6f573df65, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 0c135c64437a77b4793049b6f573df65, type: 3}
       propertyPath: m_Name
       value: Stone_3 (1)
@@ -3203,7 +3315,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 4730ba5eb0b07b747bb47673ce85c05e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9536a069ca99f9c4a8373de994ba17ee, type: 2}
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 4730ba5eb0b07b747bb47673ce85c05e, type: 3}
       propertyPath: m_Name
       value: Bush_5 (1)
@@ -3282,6 +3394,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 4f57ef37aea2b9b42941f1f5ec8e519f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 4f57ef37aea2b9b42941f1f5ec8e519f, type: 3}
       propertyPath: m_Name
       value: Oak_2 (1)
@@ -3363,7 +3479,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 0514fceff67ef144cb5159d0d04288b1, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9536a069ca99f9c4a8373de994ba17ee, type: 2}
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 0514fceff67ef144cb5159d0d04288b1, type: 3}
       propertyPath: m_Name
       value: Fence_2 (1)
@@ -3445,7 +3561,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 9ee7a98d041cedf4695774401b19cb51, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9536a069ca99f9c4a8373de994ba17ee, type: 2}
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 9ee7a98d041cedf4695774401b19cb51, type: 3}
       propertyPath: m_Name
       value: Wooden_gate_open_1
@@ -3524,6 +3640,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: fdbb815fcd887db4f90221e3667b8951, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: fdbb815fcd887db4f90221e3667b8951, type: 3}
       propertyPath: m_Name
       value: House_3
@@ -3602,6 +3722,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e63a9e40fbc529f4893a7535abadf96e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: e63a9e40fbc529f4893a7535abadf96e, type: 3}
       propertyPath: m_Name
       value: Oak_1
@@ -3680,6 +3804,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d388827cff06e4f4384c2534653842e8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: d388827cff06e4f4384c2534653842e8, type: 3}
       propertyPath: m_Name
       value: Stone_road (1)
@@ -3758,6 +3886,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 1ba641ffa5e68f7458350e8596dc2894, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 1ba641ffa5e68f7458350e8596dc2894, type: 3}
       propertyPath: m_Name
       value: Bush_2 (5)
@@ -3836,6 +3968,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 72771d8b8c3b02446adfbf5ec97f6d84, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 72771d8b8c3b02446adfbf5ec97f6d84, type: 3}
       propertyPath: m_Name
       value: Stone_1 (3)
@@ -3914,6 +4050,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 4c3e6fd6c13de534588318fc60795b67, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 4c3e6fd6c13de534588318fc60795b67, type: 3}
       propertyPath: m_Name
       value: House_2 (1)
@@ -3992,6 +4132,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 72771d8b8c3b02446adfbf5ec97f6d84, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 72771d8b8c3b02446adfbf5ec97f6d84, type: 3}
       propertyPath: m_Name
       value: Stone_1 (2)
@@ -4070,6 +4214,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 9c407fd92b024004484edc0900bc7fb2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 9c407fd92b024004484edc0900bc7fb2, type: 3}
       propertyPath: m_Name
       value: Bush_4 (1)
@@ -4148,6 +4296,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: fe60d0d91ba89b3458fe17e0236755fc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: fe60d0d91ba89b3458fe17e0236755fc, type: 3}
       propertyPath: m_Name
       value: Flowers_3
@@ -4226,6 +4378,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: fe60d0d91ba89b3458fe17e0236755fc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: fe60d0d91ba89b3458fe17e0236755fc, type: 3}
       propertyPath: m_Name
       value: Flowers_3 (2)
@@ -4304,6 +4460,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 5fedc56b2b1ffd04bb3b73afaaef6d36, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 5fedc56b2b1ffd04bb3b73afaaef6d36, type: 3}
       propertyPath: m_Name
       value: Flowers_2 (1)
@@ -4385,7 +4545,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: ab6ae9d5fcb8d7f4a8ceb451ac63b255, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9536a069ca99f9c4a8373de994ba17ee, type: 2}
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: ab6ae9d5fcb8d7f4a8ceb451ac63b255, type: 3}
       propertyPath: m_Name
       value: Fence_1 (1)
@@ -4464,6 +4624,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 7065eaf4a337f514ea374e8dcd98714f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 7065eaf4a337f514ea374e8dcd98714f, type: 3}
       propertyPath: m_Name
       value: Stone_2
@@ -4545,7 +4709,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 1ba641ffa5e68f7458350e8596dc2894, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9536a069ca99f9c4a8373de994ba17ee, type: 2}
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 1ba641ffa5e68f7458350e8596dc2894, type: 3}
       propertyPath: m_Name
       value: Bush_2
@@ -4624,6 +4788,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 5fedc56b2b1ffd04bb3b73afaaef6d36, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 5fedc56b2b1ffd04bb3b73afaaef6d36, type: 3}
       propertyPath: m_Name
       value: Flowers_2 (2)
@@ -4702,6 +4870,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 9ef61e1b458020a40a451e74dec5befe, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 9ef61e1b458020a40a451e74dec5befe, type: 3}
       propertyPath: m_Name
       value: House_1
@@ -4780,6 +4952,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e63a9e40fbc529f4893a7535abadf96e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: e63a9e40fbc529f4893a7535abadf96e, type: 3}
       propertyPath: m_Name
       value: Oak_1 (3)
@@ -4858,6 +5034,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 1ba641ffa5e68f7458350e8596dc2894, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 1ba641ffa5e68f7458350e8596dc2894, type: 3}
       propertyPath: m_Name
       value: Bush_2 (2)
@@ -4940,6 +5120,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d388827cff06e4f4384c2534653842e8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: d388827cff06e4f4384c2534653842e8, type: 3}
       propertyPath: m_Name
       value: Stone_road (3)
@@ -5018,6 +5202,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 180cc2f088f94ec41a38ee78a8dc27f9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 180cc2f088f94ec41a38ee78a8dc27f9, type: 3}
       propertyPath: m_Name
       value: Well
@@ -5096,6 +5284,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 5255c4666de2f0546877c535b66f7315, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 5255c4666de2f0546877c535b66f7315, type: 3}
       propertyPath: m_Name
       value: Sawmill
@@ -5174,6 +5366,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 5fedc56b2b1ffd04bb3b73afaaef6d36, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 5fedc56b2b1ffd04bb3b73afaaef6d36, type: 3}
       propertyPath: m_Name
       value: Flowers_2
@@ -5252,6 +5448,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 4f57ef37aea2b9b42941f1f5ec8e519f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 4f57ef37aea2b9b42941f1f5ec8e519f, type: 3}
       propertyPath: m_Name
       value: Oak_2

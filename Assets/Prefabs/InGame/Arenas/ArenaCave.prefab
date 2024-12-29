@@ -205,7 +205,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 86112389c85281441b812d799deff739, type: 2}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -291,6 +291,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 3201491b40093b845a4fb4bc47cfa340, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 3201491b40093b845a4fb4bc47cfa340, type: 3}
       propertyPath: m_Name
       value: Mountain_2 (1)
@@ -369,6 +373,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 1ba641ffa5e68f7458350e8596dc2894, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 1ba641ffa5e68f7458350e8596dc2894, type: 3}
       propertyPath: m_Name
       value: Bush_2
@@ -447,6 +455,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 4730ba5eb0b07b747bb47673ce85c05e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 4730ba5eb0b07b747bb47673ce85c05e, type: 3}
       propertyPath: m_Name
       value: Bush_5
@@ -525,6 +537,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: c97da987bc8d4bf4abfd81bd111aeb10, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: c97da987bc8d4bf4abfd81bd111aeb10, type: 3}
       propertyPath: m_Name
       value: Mushrooms_2 (1)
@@ -603,6 +619,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 212d3e23d55cc754da3e07d87b659992, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 212d3e23d55cc754da3e07d87b659992, type: 3}
       propertyPath: m_Name
       value: Mountain_4 (1)
@@ -681,6 +701,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 212d3e23d55cc754da3e07d87b659992, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 212d3e23d55cc754da3e07d87b659992, type: 3}
       propertyPath: m_Name
       value: Mountain_4
@@ -759,6 +783,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 5b0c180f6d013b744a5c00ec23f14ba6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 5b0c180f6d013b744a5c00ec23f14ba6, type: 3}
       propertyPath: m_Name
       value: Mushrooms_1 (1)
@@ -837,6 +865,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 212d3e23d55cc754da3e07d87b659992, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 212d3e23d55cc754da3e07d87b659992, type: 3}
       propertyPath: m_Name
       value: Mountain_4 (2)
@@ -915,6 +947,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: c97da987bc8d4bf4abfd81bd111aeb10, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: c97da987bc8d4bf4abfd81bd111aeb10, type: 3}
       propertyPath: m_Name
       value: Mushrooms_2
@@ -993,6 +1029,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f7623db67c38f52499c4d0c963662bd4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: f7623db67c38f52499c4d0c963662bd4, type: 3}
       propertyPath: m_Name
       value: Mountain_3
@@ -1071,6 +1111,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 78a0ce83165da904f9f8c389c7e103ad, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 78a0ce83165da904f9f8c389c7e103ad, type: 3}
       propertyPath: m_Name
       value: Mushrooms_3 (1)
@@ -1149,6 +1193,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d1cd501719c887340a542465f2f06814, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: d1cd501719c887340a542465f2f06814, type: 3}
       propertyPath: m_Name
       value: Mountain_1
@@ -1227,6 +1275,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 3201491b40093b845a4fb4bc47cfa340, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 3201491b40093b845a4fb4bc47cfa340, type: 3}
       propertyPath: m_Name
       value: Mountain_2
@@ -1305,6 +1357,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 78a0ce83165da904f9f8c389c7e103ad, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 78a0ce83165da904f9f8c389c7e103ad, type: 3}
       propertyPath: m_Name
       value: Mushrooms_3
@@ -1383,6 +1439,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 5b0c180f6d013b744a5c00ec23f14ba6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 5b0c180f6d013b744a5c00ec23f14ba6, type: 3}
       propertyPath: m_Name
       value: Mushrooms_1
@@ -1461,6 +1521,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 22debe16e139b964e95a8467598cf0a0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 22debe16e139b964e95a8467598cf0a0, type: 3}
       propertyPath: m_Name
       value: Bush_1

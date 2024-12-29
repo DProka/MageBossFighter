@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 
 public class CameraManager : MonoBehaviour
@@ -14,23 +13,30 @@ public class CameraManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Сохраняем между сценами
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(gameObject); // Уничтожаем дублирующий объект
+            Destroy(gameObject);
         }
     }
 
-    public void SetCameraPosition(Vector3 position, Quaternion rotation, bool canvasIsActive)
+    public void SetCameraPosition(CameraSettings settings)//Vector3 position, Quaternion rotation, bool canvasIsActive)
     {
         if (mainCamera != null)
         {
-            mainCamera.transform.position = position;
+            mainCamera.transform.position = settings.position;
+
+            Quaternion rotation = Quaternion.Euler(settings.rotation.x, settings.rotation.y, settings.rotation.z);
             mainCamera.transform.rotation = rotation;
 
-            if(cameraCanvas != null)
-                cameraCanvas.enabled = canvasIsActive;
+            mainCamera.orthographic = settings.isOrthographic;
+
+            if (settings.isOrthographic)
+                mainCamera.orthographicSize = settings.size;
+
+            if (cameraCanvas != null)
+                cameraCanvas.enabled = settings.canvasIsActive;
         }
     }
 

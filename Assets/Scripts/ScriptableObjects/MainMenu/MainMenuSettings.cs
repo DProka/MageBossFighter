@@ -7,4 +7,5 @@ public class MainMenuSettings : ScriptableObject
     public MainMenuArenaBase arenaBase;
     public BossBase bossBase;
     public PlayerBase playerBase;
+    public CameraSettings cameraSettings;
 }

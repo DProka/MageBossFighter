@@ -54,7 +54,7 @@ public class GameController : MonoBehaviour
             DataHolder.statsLvls = new int[] { 1, 1, 1 };
         }
 
-        CameraManager.Instance.SetCameraPosition(new Vector3(0, 15, -18), Quaternion.Euler(45, 0, 0), false);
+        CameraManager.Instance.SetCameraPosition(settings.cameraSettings);//new Vector3(0, 15, -18), Quaternion.Euler(45, 0, 0), false);
         LoadLevel();
     }
 
@@ -77,7 +77,7 @@ public class GameController : MonoBehaviour
     {
         player = arenaManager.SpawnPlayer(0);
 
-        arenaManager.SpawnArena(currentLvlNum);
+        //arenaManager.SpawnArena(currentLvlNum);
         enemy = arenaManager.SpawnBoss(currentLvlNum);
         uiController.SetBossName(enemy._settings.bossName);
 

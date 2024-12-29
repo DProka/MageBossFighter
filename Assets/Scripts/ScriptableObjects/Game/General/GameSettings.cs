@@ -10,4 +10,5 @@ public class GameSettings : ScriptableObject
     public ArenaBase arenaBase;
     public BossBase bossBase;
     public VfxBase vfxBase;
+    public CameraSettings cameraSettings;
 }

@@ -15,3 +15,4 @@ MonoBehaviour:
   arenaBase: {fileID: 11400000, guid: 60242833dc5c4394fa72cb5b0be25ec9, type: 2}
   bossBase: {fileID: 11400000, guid: b03d570b1af4dbb449ccb3c57593ee36, type: 2}
   playerBase: {fileID: 11400000, guid: 397fc92a9129dca46a946402bbb5ca38, type: 2}
+  cameraSettings: {fileID: 11400000, guid: 0882cb9f38a33fd458f633c295ed00ef, type: 2}

@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class PlayerMovement
 {
-    public bool isMoving { get; private set; }
     public MovePointPrefabScript targetPoint { get; private set; }
+
+    public bool isMoving { get; private set; }
+    public int lastPoint { get; private set; }
 
     private PlayerScript player;
     private PlayerSettings settings;
@@ -15,7 +17,6 @@ public class PlayerMovement
     private float moveTimer;
 
     private int nextPoint = 0;
-    private int lastPoint = 0;
 
     public PlayerMovement(PlayerScript playerController, PlayerSettings _settings, Transform _enemyPoint)
     {
@@ -25,6 +26,7 @@ public class PlayerMovement
 
         targetPoint = GameController.Instance.points[nextPoint];
 
+        lastPoint = 0;
         moveTimer = 0;
     }
 
