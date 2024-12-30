@@ -50,7 +50,7 @@ public class BossBehaviourSpiralAttack : IBossBehaviour
     private void Shoot()
     {
         //GameController.Instance.InstantiateProjectile(unit._shootPoint.position, GameController.Instance.points[nextPointNum].transform.position, false);
-        unit.SpawnProjectile(GameController.Instance.points[nextPointNum].transform.position);
+        unit.SpawnProjectile(GameController.Instance.movePointsArray[nextPointNum].transform.position);
         attackTimer = settings.attackSpeed;
 
         //int nextNum = clockwise ? -1 : 1;
@@ -63,7 +63,7 @@ public class BossBehaviourSpiralAttack : IBossBehaviour
 
     private void CheckNextNum()
     {
-        if (nextPointNum >= GameController.Instance.points.Length)
+        if (nextPointNum >= GameController.Instance.movePointsArray.Length)
             nextPointNum = 0;
         
         else if (nextPointNum < 0)
@@ -84,7 +84,7 @@ public class BossBehaviourSpiralAttack : IBossBehaviour
 
     private void Rotate()
     {
-        Vector3 direction = (GameController.Instance.points[nextPointNum].transform.position - unit.transform.position).normalized;
+        Vector3 direction = (GameController.Instance.movePointsArray[nextPointNum].transform.position - unit.transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         unit.transform.rotation = Quaternion.Lerp(unit.transform.rotation, lookRotation, Time.deltaTime * unit._settings.rotateSpeed);
     }

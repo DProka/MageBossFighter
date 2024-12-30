@@ -19,17 +19,20 @@ public class PlayerScript : UnitGeneral
     [SerializeField] Transform shootPoint;
 
     private PlayerMovement movementScript;
-    private PlayerShooting shootingScript;
+    private PlayerAttack attackScript;
     private PlayerStatus statusScript;
     private BossScript enemy;
 
     private bool movementIsClockwise;
 
+    private float damage;
+    private int damageComboPoints;
+
     public void Init(BossScript _enemy)
     {
         enemy = _enemy;
         movementScript = new PlayerMovement(this, settings, enemy.transform);
-        shootingScript = new PlayerShooting(this, settings, shootPoint);
+        attackScript = new PlayerAttack(this);
         playerAnimator = new PlayerAnimator(animator);
         statusScript = new PlayerStatus(this, settings);
 
@@ -43,10 +46,12 @@ public class PlayerScript : UnitGeneral
         if (isAlive)
         {
             movementScript.UpdateScript();
-            shootingScript.UpdateScript();
+            attackScript.UpdateScript();
             statusScript.UpdateScript();
         }
     }
+
+    #region Health
 
     public override void GetHit(float damage)
     {
@@ -65,14 +70,52 @@ public class PlayerScript : UnitGeneral
             }
 
             UIController.Instance.UpdateHealthBar(true, settings.maxHealth, currentHealth);
+            ResetComboPoints();
         }
     }
 
-    public void SpawnProjectile() => GameController.Instance.InstantiatePlayerProjectile(shootPoint.position);
-    
+    #endregion
+
+    #region Attack
+
+    public void SpawnProjectile()
+    {
+        float comboMultiplier = (damage / 100) * damageComboPoints;
+        float statsMultiplier = (damage / 100) * DataHolder.statsLvls[1];
+        float finalDamage = Mathf.Round(damage + statsMultiplier + comboMultiplier);
+
+        GameController.Instance.InstantiatePlayerProjectile(shootPoint.position, finalDamage);
+    }
+
+    public float GetAttackSpeed()
+    {
+        float speedMultiplier = (settings.attackDelay / 100) * DataHolder.statsLvls[2];
+        float attackSpeed = settings.attackDelay - speedMultiplier;
+        float attackDelay = isFreeze ? (attackSpeed * settings.freezeSpeedFactor) : attackSpeed;
+
+        return attackDelay;
+    }
+
+    public void GetComboPoint()
+    {
+        if(damageComboPoints < 50)
+        {
+            damageComboPoints += 1;
+            UIController.Instance.UpdateComboBar(50, damageComboPoints);
+        }
+    }
+
+    public void ResetComboPoints()
+    {
+        damageComboPoints = 0;
+        UIController.Instance.UpdateComboBar(50, 0);
+    }
+
+    #endregion
+
     public void CheckWaypointStatus()
     {
-        MovePointPrefabScript.Status pointStatus = movementScript.targetPoint.pointStatus;
+        MovePointPrefabScript.Status pointStatus = movementScript.targetPoint.currentStatus;
         currentPointNum = movementScript.targetPoint.id;
 
         switch (pointStatus)
@@ -93,14 +136,23 @@ public class PlayerScript : UnitGeneral
 
     public void ResetPlayer()
     {
+        ResetStats();
+
         isAlive = true;
-        
+
         float healthMultiplier = (settings.maxHealth / 100) * DataHolder.statsLvls[0];
         currentHealth = Mathf.Round(settings.maxHealth + healthMultiplier);
 
         UIController.Instance.UpdateHealthBar(true, settings.maxHealth, currentHealth);
         movementScript.ResetWayPoint();
         playerAnimator.StartAnimation(PlayerAnimator.Clip.Idle);
+    }
+
+    private void ResetStats()
+    {
+        damage = settings.damage;
+
+        
     }
 
     private void SetDead()
@@ -112,17 +164,17 @@ public class PlayerScript : UnitGeneral
 
     #region Controls
 
-    public void Attack() 
-    { 
-        if(!isMoving)
-            shootingScript.UIAttack(); 
+    public void Attack()
+    {
+        if (!isMoving)
+            attackScript.UIAttack();
     }
-    
+
     public void MovePlayer(float direction)
     {
-        if(direction > 0)
+        if (direction > 0)
             MoveRight();
-        
+
         else
             MoveLeft();
     }

@@ -78,6 +78,6 @@ public class UIJoyStick : MonoBehaviour
         transform.position = initialBackPosition;
         stickTransform.position = initialStickPosition;
 
-        GameController.Instance.player.CheckMovePoint();
+        //GameController.Instance.player.CheckMovePoint();
     }
 }

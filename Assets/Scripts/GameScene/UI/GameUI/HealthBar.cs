@@ -8,9 +8,9 @@ public class HealthBar : MonoBehaviour
     [SerializeField] Image frontImage;
     [SerializeField] float animationTime = 0.3f;
 
-    public void SetHealth(float maxHealth, float currentHealth)
+    public void SetFillAmount(float maxValue, float currentValue)
     {
-        float percentage = currentHealth / maxHealth;
+        float percentage = currentValue / maxValue;
         frontImage.DOFillAmount(percentage, animationTime);
     }
 

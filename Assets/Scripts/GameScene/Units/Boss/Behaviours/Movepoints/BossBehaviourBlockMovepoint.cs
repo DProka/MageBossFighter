@@ -37,11 +37,17 @@ public class BossBehaviourBlockMovepoint : IBossBehaviour
 
     private void BlockPoint()
     {
-        attackTimer = settings.attackSpeed;
-        List<MovePointPrefabScript> points = GameController.Instance.GetEmptyMovepointsList();
+        //attackTimer = settings.attackSpeed;
+        //List<MovePointPrefabScript> points = GameController.Instance.GetEmptyMovepointsList();
 
-        int random = Random.Range(0, points.Count);
-        MovePointPrefabScript targetPoint = points[random];
+        //int random = Random.Range(0, points.Count);
+        //MovePointPrefabScript targetPoint = points[random];
+        //targetPoint.SetNewStatus(MovePointPrefabScript.Status.Blocked);
+
+        attackTimer = settings.attackSpeed;
+        int[] points = MovePointsSupport.GetTwoNextClosestPoints();
+        int random = Random.Range(0, points.Length);
+        MovePointPrefabScript targetPoint = GameController.Instance.movePointsArray[points[random]];
         targetPoint.SetNewStatus(MovePointPrefabScript.Status.Blocked);
 
         GameController.Instance.InstantiateEnemyPointProjectile(targetPoint.transform.position, 1);

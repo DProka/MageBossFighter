@@ -44,6 +44,10 @@ public class Projectile : MonoBehaviour
         if (distance < 1.2f)
         {
             target.GetHit(damage);
+
+            if (isPlayer)
+                GameController.Instance.player.GetComboPoint();
+
             DestroyBullet();
         }
         else if (lifeTimer <= 0)

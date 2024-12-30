@@ -11,9 +11,8 @@ public class UIController : MonoBehaviour
 
     [Header("Player UI")]
 
-    [SerializeField] HealthBar playerHB;
+    [SerializeField] UIPlayerInfo playerInfoPart;
     [SerializeField] UIPlayerControls playerControls;
-    [SerializeField] UIPlayerStatusManager playerStatusManager;
     [SerializeField] GameObject tutorialPart;
 
     [Header("Boss")]
@@ -46,8 +45,7 @@ public class UIController : MonoBehaviour
         mainCanvas = GetComponent<Canvas>();
 
         playerControls.Init(this);
-        playerStatusManager.Init();
-
+        playerInfoPart.Init(this);
         endRoundScreen.Init();
         pauseScreen.Init();
     }
@@ -55,11 +53,7 @@ public class UIController : MonoBehaviour
     public void UpdateUI()
     {
         fpsMeter.ShowFPS();
-
-        //if (gameController.gameIsActive)
-        //{
-            playerControls.UpdateScript();
-        //}
+        playerControls.UpdateScript();
     }
 
     #region Game
@@ -101,20 +95,22 @@ public class UIController : MonoBehaviour
     public void UpdateHealthBar(bool isPlayer, float maxHealth, float currentHealth)
     {
         if (isPlayer)
-            playerHB.SetHealth(maxHealth, currentHealth);
+            playerInfoPart.UpdateHealthBar(maxHealth, currentHealth);
         else
-            bossHB.SetHealth(maxHealth, currentHealth);
+            bossHB.SetFillAmount(maxHealth, currentHealth);
     }
 
     public void SetBossName(string name) => bossNameText.text = name;
 
     #endregion
 
-    #region Statuses
+    #region Player Info
 
-    public void UpdateStatus(PlayerStatus.Status type, float time) => playerStatusManager.UpdateStatus(type, time);
+    public void UpdateStatus(PlayerStatus.Status type, float time) => playerInfoPart.UpdateStatus(type, time);
 
-    public void SetStatusVisibility(PlayerStatus.Status type, bool isVisible) => playerStatusManager.SetStatusVisibility(type, isVisible);
+    public void SetStatusVisibility(PlayerStatus.Status type, bool isVisible) => playerInfoPart.SetStatusVisibility(type, isVisible);
+
+    public void UpdateComboBar(float maxHealth, float currentHealth) => playerInfoPart.UpdateComboBar(maxHealth, currentHealth);
 
     #endregion
 

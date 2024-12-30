@@ -64,7 +64,7 @@ public class ArenaManager : MonoBehaviour
 
         for (int i = 0; i < movePointsArray.Length; i++)
         {
-            if (movePointsArray[i].pointStatus == MovePointPrefabScript.Status.NoStatus && !blockedNumbers.Contains(i))
+            if (movePointsArray[i].currentStatus == MovePointPrefabScript.Status.NoStatus && !blockedNumbers.Contains(i))
                 list.Add(movePointsArray[i]);
         }
 

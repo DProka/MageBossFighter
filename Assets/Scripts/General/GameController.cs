@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour
     public PlayerScript player { get; private set; }
     public BossScript enemy { get; private set; }
 
-    public MovePointPrefabScript[] points => arenaManager.movePointsArray;
+    public MovePointPrefabScript[] movePointsArray => arenaManager.movePointsArray;
 
     [SerializeField] GameSettings settings;
 
@@ -29,6 +29,7 @@ public class GameController : MonoBehaviour
     [SerializeField] ProjectileManagerSettings projectileManagerSettings;
 
     private ProjectileManager projectileManager;
+    private BoosterManager boosterManager;
     private VfxManager vfxManager;
 
     private bool timerIsActive;
@@ -42,19 +43,20 @@ public class GameController : MonoBehaviour
 
         GameEventBus.OnSomeoneDies += CheckWinner;
 
+        arenaManager.Init(settings);
+        uiController.Init(this);
+
         projectileManager = new ProjectileManager(projectileManagerSettings, projectileParent);
         vfxManager = new VfxManager(settings.vfxBase);
-
+        boosterManager = new BoosterManager(arenaManager.movePointsArray);
         currentLvlNum = DataHolder.gameLevel;
-        uiController.Init(this);
-        arenaManager.Init(settings);
 
         if(DataHolder.statsLvls == null)
         {
             DataHolder.statsLvls = new int[] { 1, 1, 1 };
         }
 
-        CameraManager.Instance.SetCameraPosition(settings.cameraSettings);//new Vector3(0, 15, -18), Quaternion.Euler(45, 0, 0), false);
+        CameraManager.Instance.SetCameraPosition(settings.cameraSettings);
         LoadLevel();
     }
 
@@ -105,7 +107,7 @@ public class GameController : MonoBehaviour
 
     public Transform GetNextWayPoint(int pointNum)
     {
-        return points[pointNum].transform;
+        return movePointsArray[pointNum].transform;
     }
 
     public List<MovePointPrefabScript> GetEmptyMovepointsList() { return arenaManager.GetEmptyMovepointsList(player.currentPointNum); }
@@ -149,11 +151,8 @@ public class GameController : MonoBehaviour
         projectileManager.ClearList();
     }
 
-    public void InstantiatePlayerProjectile(Vector3 startPosition)
+    public void InstantiatePlayerProjectile(Vector3 startPosition, float damage)
     {
-        float multiplier = (player._settings.damage / 100) * DataHolder.statsLvls[1];
-        float damage = Mathf.Round(player._settings.damage + multiplier);
-
         projectileManager.InstantiatePlayerProjectile(startPosition, enemy.transform.position, damage, player._settings.projectileSpeed);
     }
     

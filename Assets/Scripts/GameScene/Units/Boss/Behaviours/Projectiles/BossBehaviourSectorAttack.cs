@@ -48,7 +48,7 @@ public class BossBehaviourSectorAttack : IBossBehaviour
     {
         attackTimer = settings.attackSpeed;
 
-        MovePointPrefabScript[] points = GameController.Instance.points;
+        MovePointPrefabScript[] points = GameController.Instance.movePointsArray;
 
         if (attackCounter == 0)
         {
@@ -69,33 +69,14 @@ public class BossBehaviourSectorAttack : IBossBehaviour
     private void SetPointNumbers()
     {
         startNum = unit.target.currentPointNum;
-        leftPoints = new int[2];
-        rightPoints = new int[2];
-
-        for (int i = 0; i < leftPoints.Length; i++)
-        {
-            int newNum = startNum + i + 1;
-
-            if (newNum >= GameController.Instance.points.Length)
-                newNum = 0 + i;
-
-            leftPoints[i] = newNum;
-        }
-
-        for (int i = 0; i < rightPoints.Length; i++)
-        {
-            int newNum = startNum - i - 1;
-
-            if (newNum < 0)
-                newNum = GameController.Instance.points.Length - 1 - i;
-
-            rightPoints[i] = newNum;
-        }
+        int[] sectorPoint = MovePointsSupport.GetThreePointSector();
+        leftPoints = new int[] { sectorPoint[0], sectorPoint[1] };
+        rightPoints = new int[] { sectorPoint[3], sectorPoint[4] };
     }
 
     private void Rotate()
     {
-        Vector3 direction = (GameController.Instance.points[startNum].transform.position - unit.transform.position).normalized;
+        Vector3 direction = (GameController.Instance.movePointsArray[startNum].transform.position - unit.transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         unit.transform.rotation = Quaternion.Lerp(unit.transform.rotation, lookRotation, Time.deltaTime * unit._settings.rotateSpeed);
     }

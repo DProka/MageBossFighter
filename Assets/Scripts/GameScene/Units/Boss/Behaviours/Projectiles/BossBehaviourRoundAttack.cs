@@ -36,7 +36,7 @@ public class BossBehaviourRoundAttack : IBossBehaviour
 
     private void FreezePoint()
     {
-        MovePointPrefabScript[] points = GameController.Instance.points;
+        MovePointPrefabScript[] points = GameController.Instance.movePointsArray;
 
         foreach(MovePointPrefabScript point in points)
         {
@@ -51,7 +51,7 @@ public class BossBehaviourRoundAttack : IBossBehaviour
 
     private void Rotate()
     {
-        Vector3 direction = (GameController.Instance.points[0].transform.position - unit.transform.position).normalized;
+        Vector3 direction = (GameController.Instance.movePointsArray[0].transform.position - unit.transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         unit.transform.rotation = Quaternion.Lerp(unit.transform.rotation, lookRotation, Time.deltaTime * unit._settings.rotateSpeed);
     }

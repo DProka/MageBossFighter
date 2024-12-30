@@ -24,7 +24,7 @@ public class PlayerMovement
         settings = _settings;
         enemyPoint = _enemyPoint;
 
-        targetPoint = GameController.Instance.points[nextPoint];
+        targetPoint = GameController.Instance.movePointsArray[nextPoint];
 
         lastPoint = 0;
         moveTimer = 0;
@@ -41,7 +41,7 @@ public class PlayerMovement
     public void ResetWayPoint()
     {
         nextPoint = 0;
-        targetPoint = GameController.Instance.points[nextPoint];
+        targetPoint = GameController.Instance.movePointsArray[nextPoint];
         player.transform.position = targetPoint.transform.position;
     }
 
@@ -139,8 +139,8 @@ public class PlayerMovement
 
     private void SetNewPointByNum(int num)
     {
-        MovePointPrefabScript newPoint = GameController.Instance.points[num];
-        if (newPoint.pointStatus != MovePointPrefabScript.Status.Blocked)
+        MovePointPrefabScript newPoint = GameController.Instance.movePointsArray[num];
+        if (newPoint.currentStatus != MovePointPrefabScript.Status.Blocked)
         {
             targetPoint = newPoint;
             player.CheckWaypointStatus();

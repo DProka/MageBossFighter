@@ -5,7 +5,8 @@ using DG.Tweening;
 public class MovePointPrefabScript : MonoBehaviour
 {
     public int id { get; private set; }
-    public Status pointStatus { get; private set; }
+    public Status currentStatus { get; private set; }
+    public BoosterManager.Booster currentBooster { get; private set; }
 
     [SerializeField] MeshRenderer meshRenderer;
     [SerializeField] SpriteRenderer circleRenderer;
@@ -14,6 +15,8 @@ public class MovePointPrefabScript : MonoBehaviour
     private Material currentMaterial;
 
     private float statusTimer;
+
+    private float boosterTimer;
 
     public void Init(MovePointSettings _settings, int _id)
     {
@@ -29,17 +32,20 @@ public class MovePointPrefabScript : MonoBehaviour
     public void UpdateScript()
     {
         CheckStatus();
+        UpdateBoosterTimer();
     }
 
     public void SetPlayer()
     {
-        if (pointStatus == Status.NoStatus)
+        if (currentStatus == Status.NoStatus)
             SetNewStatus(Status.Player);
     }
 
+    #region Statuses
+
     public void SetNewStatus(Status status)
     {
-        pointStatus = status;
+        currentStatus = status;
 
         switch (status)
         {
@@ -86,7 +92,7 @@ public class MovePointPrefabScript : MonoBehaviour
 
     private void CheckStatus()
     {
-        if (pointStatus != Status.NoStatus)
+        if (currentStatus != Status.NoStatus)
         {
             if (statusTimer > 0)
                 statusTimer -= Time.deltaTime;
@@ -94,6 +100,52 @@ public class MovePointPrefabScript : MonoBehaviour
                 SetNewStatus(Status.NoStatus);
         }
     }
+
+    #endregion
+
+    #region Boosters
+
+    public void SetBooster(BoosterManager.Booster booster)
+    {
+        currentBooster = booster;
+
+        switch (booster)
+        {
+            case BoosterManager.Booster.Health:
+                boosterTimer = settings.healthTime;
+                break;
+        
+            case BoosterManager.Booster.AttackDamage:
+                boosterTimer = settings.attackDamageTime;
+                break;
+        
+            case BoosterManager.Booster.AttackSpeed:
+                boosterTimer = settings.attackSpeedTime;
+                break;
+        
+            case BoosterManager.Booster.Defence:
+                boosterTimer = settings.defenceTime;
+                break;
+        }
+    }
+
+    private void UpdateBoosterTimer()
+    {
+        if(currentBooster != BoosterManager.Booster.Empty)
+        {
+            if (boosterTimer > 0)
+                boosterTimer -= Time.deltaTime;
+            else
+                ResetBooster();
+        }
+    }
+
+    private void ResetBooster()
+    {
+        currentBooster = BoosterManager.Booster.Empty;
+    }
+
+    #endregion
 
     #region Attack Animation
 

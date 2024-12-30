@@ -51,8 +51,8 @@ public class BossBehaviourDoubleSpiralAttack : IBossBehaviour
     {
         //GameController.Instance.InstantiateProjectile(unit._shootPoint.position, GameController.Instance.points[frontPointNum].transform.position, false);
         //GameController.Instance.InstantiateProjectile(unit._shootPoint.position, GameController.Instance.points[backPointNum].transform.position, false);
-        unit.SpawnProjectile(GameController.Instance.points[frontPointNum].transform.position);
-        unit.SpawnProjectile(GameController.Instance.points[backPointNum].transform.position);
+        unit.SpawnProjectile(GameController.Instance.movePointsArray[frontPointNum].transform.position);
+        unit.SpawnProjectile(GameController.Instance.movePointsArray[backPointNum].transform.position);
 
         attackTimer = settings.attackSpeed;
 
@@ -76,7 +76,7 @@ public class BossBehaviourDoubleSpiralAttack : IBossBehaviour
 
     private int CheckPointNum(int pointNum)
     {
-        if (pointNum >= GameController.Instance.points.Length)
+        if (pointNum >= GameController.Instance.movePointsArray.Length)
             pointNum = 0;
         
         else if (pointNum < 0)
@@ -87,7 +87,7 @@ public class BossBehaviourDoubleSpiralAttack : IBossBehaviour
 
     private void Rotate()
     {
-        Vector3 direction = (GameController.Instance.points[frontPointNum].transform.position - unit.transform.position).normalized;
+        Vector3 direction = (GameController.Instance.movePointsArray[frontPointNum].transform.position - unit.transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         unit.transform.rotation = Quaternion.Lerp(unit.transform.rotation, lookRotation, Time.deltaTime * unit._settings.rotateSpeed);
     }

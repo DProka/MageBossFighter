@@ -1,20 +1,16 @@
 
 using UnityEngine;
 
-public class PlayerShooting
+public class PlayerAttack
 {
     private PlayerScript player;
-    private PlayerSettings settings;
-    private Transform shootPoint;
     private bool canShoot;
 
     private float attackTimer;
 
-    public PlayerShooting(PlayerScript playerController, PlayerSettings playerSettings, Transform _shootPoint)
+    public PlayerAttack(PlayerScript playerController)
     {
         player = playerController;
-        settings = playerSettings;
-        shootPoint = _shootPoint;
         canShoot = true;
     }
 
@@ -47,10 +43,7 @@ public class PlayerShooting
     
     private void Attack()
     {
-        float speedMultiplier = (settings.attackDelay / 100) * DataHolder.statsLvls[2];
-        float attackSpeed = settings.attackDelay - speedMultiplier;
-        float attackDelay = player.isFreeze ? (attackSpeed * settings.freezeSpeedFactor) : attackSpeed;
-        attackTimer = attackDelay;
+        attackTimer = player.GetAttackSpeed();
         player.SpawnProjectile();
         player.playerAnimator.StartAnimation(PlayerAnimator.Clip.Attack);
     }
