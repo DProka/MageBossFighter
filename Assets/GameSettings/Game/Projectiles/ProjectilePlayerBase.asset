@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: ProjectilePlayerBase
   m_EditorClassIdentifier: 
   projectilePrefabArray:
-  - {fileID: 120953658269311104, guid: 390eb244f1bc01b4e89f122b59ee4efb, type: 3}
-  - {fileID: 120953658269311104, guid: 390eb244f1bc01b4e89f122b59ee4efb, type: 3}
-  - {fileID: 120953658269311104, guid: 390eb244f1bc01b4e89f122b59ee4efb, type: 3}
-  - {fileID: 120953658269311104, guid: 390eb244f1bc01b4e89f122b59ee4efb, type: 3}
-  - {fileID: 120953658269311104, guid: 390eb244f1bc01b4e89f122b59ee4efb, type: 3}
-  projectileSettingsArray: []
+  - {fileID: 120953658269311104, guid: bb821231801363941a839fea48170207, type: 3}
+  - {fileID: 120953658269311104, guid: bb821231801363941a839fea48170207, type: 3}
+  - {fileID: 120953658269311104, guid: bb821231801363941a839fea48170207, type: 3}
+  - {fileID: 120953658269311104, guid: bb821231801363941a839fea48170207, type: 3}
+  - {fileID: 120953658269311104, guid: bb821231801363941a839fea48170207, type: 3}
+  projectilePointPrefabArray: []

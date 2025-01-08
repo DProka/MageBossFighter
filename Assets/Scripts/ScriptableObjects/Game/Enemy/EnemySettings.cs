@@ -15,6 +15,9 @@ public class EnemySettings : ScriptableObject
     public float delayBeforeAttack = 2f;
     public float projectileSpeed = 10f;
 
+    public Projectile attackProjectilePrefab;
+    public ProjectilePoint pointProjectilePrefab;
+
     [Header("Moving")]
 
     public float rotateSpeed;

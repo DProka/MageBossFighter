@@ -139,14 +139,23 @@ public class BossBehaviourManager
 
     private EnemySkillSettings GetBehaviourSettings(Behaviour behaviour)
     {
-        EnemySkillSettings newSettings = settings.skillSettingsArray[0];
-
-        if (settings.skillTypesArray.Contains(behaviour))
+        if(settings.skillSettingsArray.Length > 0)
         {
-            int index = Array.FindIndex(settings.skillTypesArray, n => n == behaviour);
-            newSettings = settings.skillSettingsArray[index];
+            EnemySkillSettings newSettings = settings.skillSettingsArray[0];
+
+            if (settings.skillTypesArray.Contains(behaviour))
+            {
+                int index = Array.FindIndex(settings.skillTypesArray, n => n == behaviour);
+                newSettings = settings.skillSettingsArray[index];
+            }
+
+            return newSettings;
         }
-        
-        return newSettings;
+        else
+        {
+            EnemySkillSettings newSettings = new EnemySkillSettings();
+
+            return newSettings;
+        }
     }
 }

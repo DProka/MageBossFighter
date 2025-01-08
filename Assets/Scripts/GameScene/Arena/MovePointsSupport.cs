@@ -1,6 +1,5 @@
-using System.Collections;
+
 using System.Collections.Generic;
-using UnityEngine;
 
 public static class MovePointsSupport
 {
@@ -22,6 +21,30 @@ public static class MovePointsSupport
     {
         int startNum = GameController.Instance.player.currentPointNum;
         return GetPointSector(startNum, 5);
+    }
+
+    public static int CheckNum(int num, int count)
+    {
+        int newNum = num;
+
+        if (newNum >= 12)
+            newNum = 0 + count;
+
+        else if (newNum < 0)
+            newNum = 11 - count;
+
+        return newNum;
+    }
+
+    public static int CheckNextNum(int pointNum)
+    {
+        if (pointNum >= GameController.Instance.movePointsArray.Length)
+            pointNum = 0;
+
+        else if (pointNum < 0)
+            pointNum = 11;
+
+        return pointNum;
     }
 
     private static int[] GetPointSector(int startNum, int sectorSize)
@@ -50,18 +73,5 @@ public static class MovePointsSupport
         newList.AddRange(rightPoints);
 
         return newList.ToArray();
-    }
-
-    private static int CheckNum(int num, int count)
-    {
-        int newNum = num;
-
-        if (newNum >= 12)
-            newNum = 0 + count;
-
-        else if (newNum < 0)
-            newNum = 11 - count;
-
-        return newNum;
     }
 }
