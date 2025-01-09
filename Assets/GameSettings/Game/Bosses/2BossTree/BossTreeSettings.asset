@@ -17,7 +17,7 @@ MonoBehaviour:
   damage: 12
   delayBeforeAttack: 1.5
   projectileSpeed: 10
-  attackProjectilePrefab: {fileID: 2119841008982677909, guid: a9f0261e084baba47888d7b07a063ded, type: 3}
+  attackProjectilePrefab: {fileID: 2356239988289351776, guid: a4e1b1e7399578e48aab709d247119dc, type: 3}
   pointProjectilePrefab: {fileID: 7699164690339733446, guid: 4d7f10de1625142418ff8ea8d58140c5, type: 3}
   rotateSpeed: 5
   startBehaviour: 11

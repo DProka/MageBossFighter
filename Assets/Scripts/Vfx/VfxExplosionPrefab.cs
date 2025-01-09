@@ -16,6 +16,4 @@ public class VfxExplosionPrefab : MonoBehaviour
 
         DOVirtual.DelayedCall(1f, () => Destroy(gameObject));
     }
-
-
 }

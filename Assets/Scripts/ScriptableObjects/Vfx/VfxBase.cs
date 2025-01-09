@@ -5,4 +5,5 @@ using UnityEngine;
 public class VfxBase : ScriptableObject
 {
     public VfxExplosionPrefab explosionPrefab;
+    public VfxExplosionPrefab explosionSmallPrefab;
 }

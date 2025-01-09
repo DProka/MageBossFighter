@@ -15,8 +15,8 @@ public class VfxManager
         vfxBase = _vfxBase;
     }
 
-    public void StartExplosion(Vector3 position)
+    public void StartExplosion(Vector3 position, bool isBig)
     {
-        Object.Instantiate(vfxBase.explosionPrefab, position, Quaternion.identity, parentTransform);
+        Object.Instantiate(isBig ? vfxBase.explosionPrefab : vfxBase.explosionSmallPrefab, position, Quaternion.identity, parentTransform);
     }
 }

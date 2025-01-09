@@ -6,6 +6,10 @@ public class PlayerScript : UnitGeneral
     public PlayerAnimator playerAnimator { get; private set; }
     public bool isAlive { get; private set; }
     public int currentPointNum { get; private set; }
+
+    public bool comboSkill1IsActive { get; private set; }
+    public bool comboSkill2IsActive { get; private set; }
+
     public float _currentHealth => currentHealth;
 
     public PlayerSettings _settings => settings;
@@ -26,7 +30,7 @@ public class PlayerScript : UnitGeneral
     private bool movementIsClockwise;
 
     private float damage;
-    private int damageComboPoints;
+    private int comboPoints;
 
     public void Init(BossScript _enemy)
     {
@@ -80,8 +84,12 @@ public class PlayerScript : UnitGeneral
 
     public void SpawnProjectile()
     {
-        float comboMultiplier = (damage / 100) * damageComboPoints;
         float statsMultiplier = (damage / 100) * DataHolder.statsLvls[1];
+
+        float comboMultiplier = 0;
+        if (comboSkill1IsActive)
+            comboMultiplier = damage / 2;
+
         float finalDamage = Mathf.Round(damage + statsMultiplier + comboMultiplier);
 
         GameController.Instance.InstantiatePlayerProjectile(shootPoint.position, finalDamage);
@@ -90,7 +98,12 @@ public class PlayerScript : UnitGeneral
     public float GetAttackSpeed()
     {
         float speedMultiplier = (settings.attackDelay / 100) * DataHolder.statsLvls[2];
-        float attackSpeed = settings.attackDelay - speedMultiplier;
+        
+        float comboMultiplier = 0;
+        if (comboSkill2IsActive)
+            comboMultiplier = settings.attackDelay / 2;
+        
+        float attackSpeed = settings.attackDelay - speedMultiplier - comboMultiplier;
         float attackDelay = isFreeze ? (attackSpeed * settings.freezeSpeedFactor) : attackSpeed;
 
         return attackDelay;
@@ -98,17 +111,27 @@ public class PlayerScript : UnitGeneral
 
     public void GetComboPoint()
     {
-        if(damageComboPoints < 50)
+        if (comboPoints < settings.maxComboPoints)
         {
-            damageComboPoints += 1;
-            UIController.Instance.UpdateComboBar(50, damageComboPoints);
+            comboPoints += 1;
+            CheckComboSkills();
+
+            UIController.Instance.UpdateComboBar(settings.maxComboPoints, comboPoints);
         }
     }
 
     public void ResetComboPoints()
     {
-        damageComboPoints = 0;
-        UIController.Instance.UpdateComboBar(50, 0);
+        comboPoints = 0;
+        CheckComboSkills();
+
+        UIController.Instance.UpdateComboBar(settings.maxComboPoints, 0);
+    }
+
+    private void CheckComboSkills()
+    {
+        comboSkill1IsActive = comboPoints >= settings.maxComboPoints / 2;
+        comboSkill2IsActive = comboPoints >= settings.maxComboPoints;
     }
 
     #endregion
@@ -152,7 +175,7 @@ public class PlayerScript : UnitGeneral
     {
         damage = settings.damage;
 
-        
+
     }
 
     private void SetDead()

@@ -158,13 +158,11 @@ public class GameController : MonoBehaviour
     
     public void InstantiateEnemyProjectile(Vector3 startPosition, Vector3 targetPosition)
     {
-        //projectileManager.InstantiateEnemyProjectile(startPosition, targetPosition, currentLvlNum, enemy._settings.damage, enemy._settings.projectileSpeed);
         projectileManager.InstantiateEnemyProjectile(startPosition, targetPosition, enemy._settings.attackProjectilePrefab, enemy._settings.damage, enemy._settings.projectileSpeed);
     }
     
     public void InstantiateEnemyPointProjectile(Vector3 targetPosition, int num)
     {
-        //projectileManager.InstantiateEnemyPointProjectile(targetPosition, num, enemy._settings.damage);
         projectileManager.InstantiateEnemyPointProjectile(targetPosition, enemy._settings.pointProjectilePrefab, enemy._settings.damage);
     }
 

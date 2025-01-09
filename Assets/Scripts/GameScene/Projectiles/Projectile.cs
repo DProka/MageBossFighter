@@ -67,7 +67,12 @@ public class Projectile : MonoBehaviour
     private void StartVfx()
     {
         if (isPlayer)
-            VfxManager.Instance.StartExplosion(transform.position);
+        {
+            if (GameController.Instance.player.comboSkill1IsActive)
+                VfxManager.Instance.StartExplosion(transform.position, true);
+            else
+                VfxManager.Instance.StartExplosion(transform.position, false);
+        }
     }
 
     private void OnDestroy()

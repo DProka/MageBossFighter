@@ -45,7 +45,7 @@ public class BossBehaviourBlockMovepoint : IBossBehaviour
         //targetPoint.SetNewStatus(MovePointPrefabScript.Status.Blocked);
 
         attackTimer = settings.attackSpeed;
-        int[] points = MovePointsSupport.GetTwoNextClosestPoints();
+        int[] points = ArenaSupportScript.GetTwoNextClosestPoints();
         int random = Random.Range(0, points.Length);
         MovePointPrefabScript targetPoint = GameController.Instance.movePointsArray[points[random]];
         targetPoint.SetNewStatus(MovePointPrefabScript.Status.Blocked);

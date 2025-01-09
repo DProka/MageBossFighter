@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: VfxBase
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 525959925193784808, guid: 07ccc19f83ae6c84c9114bbfb18cd1e3, type: 3}
+  explosionSmallPrefab: {fileID: 525959925193784808, guid: 98e2ac5cc199b924eb3e8d1c0d60e652, type: 3}

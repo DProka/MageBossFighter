@@ -1,13 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
-using TMPro;
 
 public class UIPlayerInfo : MonoBehaviour
 {
     [SerializeField] HealthBar playerHealthBar;
-    [SerializeField] HealthBar playerComboBar;
-    [SerializeField] TextMeshProUGUI comboText;
+    [SerializeField] PlayerComboPart comboPart;
     //[SerializeField] UIPlayerControls playerControls;
     [SerializeField] UIPlayerStatusManager playerStatusManager;
 
@@ -19,20 +16,12 @@ public class UIPlayerInfo : MonoBehaviour
 
         //playerControls.Init(uIController);
         playerStatusManager.Init();
-
+        comboPart.Init();
     }
 
     public void UpdateHealthBar(float maxHealth, float currentHealth) => playerHealthBar.SetFillAmount(maxHealth, currentHealth);
 
-    public void UpdateComboBar(float maxValue, float currentValue)
-    {
-        playerComboBar.SetFillAmount(maxValue, currentValue);
-
-        if(currentValue != 0)
-            comboText.text = "Combo X" + currentValue;
-        else
-            comboText.text = "Combo";
-    }
+    public void UpdateComboBar(float maxValue, float currentValue) => comboPart.UpdateComboBar(maxValue, currentValue);
 
     #region Statuses
 

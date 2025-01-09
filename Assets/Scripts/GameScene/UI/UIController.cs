@@ -13,7 +13,8 @@ public class UIController : MonoBehaviour
 
     [SerializeField] UIPlayerInfo playerInfoPart;
     [SerializeField] UIPlayerControls playerControls;
-    [SerializeField] GameObject tutorialPart;
+    [SerializeField] TutorialGamePart tutorialGamePart;
+    //[SerializeField] GameObject tutorialPart;
 
     [Header("Boss")]
 
@@ -124,7 +125,8 @@ public class UIController : MonoBehaviour
 
     public void SwitchTutorialPart(bool isActive)
     {
-        tutorialPart.SetActive(isActive);
+        //tutorialPart.SetActive(isActive);
+        tutorialGamePart.SwitchTutorial(isActive);
         SwitchControlsActive(!isActive);
     }
 

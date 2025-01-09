@@ -69,8 +69,8 @@ public class BossBehaviourSectorAttack : IBossBehaviour
     private void SetPointNumbers()
     {
         startNum = unit.target.currentPointNum;
-        int[] sectorPoint = MovePointsSupport.GetThreePointSector();
-        leftPoints = new int[] { sectorPoint[0], sectorPoint[1] };
+        int[] sectorPoint = ArenaSupportScript.GetThreePointSector();
+        leftPoints = new int[] { sectorPoint[1], sectorPoint[0] };
         rightPoints = new int[] { sectorPoint[3], sectorPoint[4] };
     }
 
