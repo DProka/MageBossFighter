@@ -52,7 +52,7 @@ public class BossBehaviourQuadrupleSpiralAttack : IBossBehaviour
         {
             //targetNums[i] = ArenaSupportScript.CheckNum(targetNums[i], 0);
             targetNums[i] = ArenaSupportScript.CheckNum(targetNums[i]);
-            unit.SpawnProjectile(GameController.Instance.movePointsArray[targetNums[i]].transform.position);
+            unit.SpawnProjectile(ArenaManager.Instance.GetMovePointPositionByNum(targetNums[i]));
 
             targetNums[i] += clockwise ? 1 : -1;
             targetNums[i] = ArenaSupportScript.CheckNum(targetNums[i]);
@@ -74,7 +74,7 @@ public class BossBehaviourQuadrupleSpiralAttack : IBossBehaviour
     private void Rotate()
     {
         //Vector3 direction = (GameController.Instance.movePointsArray[frontPointNum].transform.position - unit.transform.position).normalized;
-        Vector3 direction = GameController.Instance.movePointsArray[0].transform.position.normalized;
+        Vector3 direction = ArenaManager.Instance.GetMovePointPositionByNum(0).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         unit.transform.rotation = Quaternion.Lerp(unit.transform.rotation, lookRotation, Time.deltaTime * unit._settings.rotateSpeed);
     }

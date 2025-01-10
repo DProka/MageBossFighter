@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BossMushroomSettings
   m_EditorClassIdentifier: 
   bossName: Skeletronus
-  maxHealth: 500
+  maxHealth: 650
   damage: 18
   delayBeforeAttack: 1.5
   projectileSpeed: 10

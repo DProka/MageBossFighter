@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BossSceletonSettings
   m_EditorClassIdentifier: 
   bossName: Skeletronus
-  maxHealth: 700
+  maxHealth: 500
   damage: 10
   delayBeforeAttack: 1.5
   projectileSpeed: 10

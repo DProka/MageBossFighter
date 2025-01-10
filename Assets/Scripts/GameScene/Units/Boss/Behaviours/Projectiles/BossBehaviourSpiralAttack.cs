@@ -25,8 +25,6 @@ public class BossBehaviourSpiralAttack : IBossBehaviour
         attackCounter = settings.attackCounter;
 
         nextPointNum = 0;
-        //nextPointNum = clockwise ? 3 : 9;
-        //nextPointNum = clockwise ? 0 : 11;
     }
 
     public void Exit()
@@ -49,11 +47,9 @@ public class BossBehaviourSpiralAttack : IBossBehaviour
 
     private void Shoot()
     {
-        //GameController.Instance.InstantiateProjectile(unit._shootPoint.position, GameController.Instance.points[nextPointNum].transform.position, false);
-        unit.SpawnProjectile(GameController.Instance.movePointsArray[nextPointNum].transform.position);
+        unit.SpawnProjectile(ArenaManager.Instance.GetMovePointPositionByNum(nextPointNum));
         attackTimer = settings.attackSpeed;
 
-        //int nextNum = clockwise ? -1 : 1;
         int nextNum = clockwise ? 1 : -1;
         nextPointNum += nextNum;
 
@@ -63,7 +59,7 @@ public class BossBehaviourSpiralAttack : IBossBehaviour
 
     private void CheckNextNum()
     {
-        if (nextPointNum >= GameController.Instance.movePointsArray.Length)
+        if (nextPointNum >= 12)
             nextPointNum = 0;
         
         else if (nextPointNum < 0)
@@ -73,18 +69,15 @@ public class BossBehaviourSpiralAttack : IBossBehaviour
     private void UpdateCounter()
     {
         if (attackCounter < 1)
-        {
             unit.SetRandomBehaviour();
-        }
+        
         else
-        {
             attackCounter--;
-        }
     }
 
     private void Rotate()
     {
-        Vector3 direction = (GameController.Instance.movePointsArray[nextPointNum].transform.position - unit.transform.position).normalized;
+        Vector3 direction = (ArenaManager.Instance.GetMovePointPositionByNum(nextPointNum) - unit.transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         unit.transform.rotation = Quaternion.Lerp(unit.transform.rotation, lookRotation, Time.deltaTime * unit._settings.rotateSpeed);
     }

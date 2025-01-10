@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4
   m_IsActive: 1
 --- !u!4 &1598349547532176068
 Transform:
@@ -52,7 +52,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4
   m_IsActive: 1
 --- !u!4 &697821146990208795
 Transform:
@@ -123,7 +123,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4
   m_IsActive: 1
 --- !u!4 &7701035264706591920
 Transform:
@@ -166,7 +166,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4
   m_IsActive: 1
 --- !u!4 &7992457466096191994
 Transform:
@@ -328,6 +328,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mountain_4 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 212d3e23d55cc754da3e07d87b659992, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -410,6 +414,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1ba641ffa5e68f7458350e8596dc2894, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -484,6 +492,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree_1
       objectReference: {fileID: 0}
+    - target: {fileID: 603848614267333887, guid: e66004800dcd54947b45a64e8d65e471, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 933593205412783971, guid: e66004800dcd54947b45a64e8d65e471, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12
@@ -520,6 +532,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7876ba9fc71bebb44a32f7b87b900777, type: 2}
+    - target: {fileID: 6426116842793156403, guid: e66004800dcd54947b45a64e8d65e471, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -601,6 +617,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 5b0c180f6d013b744a5c00ec23f14ba6, type: 3}
       propertyPath: m_Name
       value: Mushrooms_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5b0c180f6d013b744a5c00ec23f14ba6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -684,6 +704,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pine_1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: db4faf5f344fb5b4a8a64d95531753a0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -765,6 +789,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 22debe16e139b964e95a8467598cf0a0, type: 3}
       propertyPath: m_Name
       value: Bush_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 22debe16e139b964e95a8467598cf0a0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -848,6 +876,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1ba641ffa5e68f7458350e8596dc2894, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -929,6 +961,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d1cd501719c887340a542465f2f06814, type: 3}
       propertyPath: m_Name
       value: Mountain_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d1cd501719c887340a542465f2f06814, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1012,6 +1048,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mountain_3 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f7623db67c38f52499c4d0c963662bd4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1093,6 +1133,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 78a0ce83165da904f9f8c389c7e103ad, type: 3}
       propertyPath: m_Name
       value: Mushrooms_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 78a0ce83165da904f9f8c389c7e103ad, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1176,6 +1220,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pine_1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: db4faf5f344fb5b4a8a64d95531753a0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1257,6 +1305,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f7623db67c38f52499c4d0c963662bd4, type: 3}
       propertyPath: m_Name
       value: Mountain_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f7623db67c38f52499c4d0c963662bd4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1340,6 +1392,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mountain_3 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f7623db67c38f52499c4d0c963662bd4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1421,6 +1477,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 212d3e23d55cc754da3e07d87b659992, type: 3}
       propertyPath: m_Name
       value: Mountain_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 212d3e23d55cc754da3e07d87b659992, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1504,6 +1564,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mountain_2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3201491b40093b845a4fb4bc47cfa340, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1585,6 +1649,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 78a0ce83165da904f9f8c389c7e103ad, type: 3}
       propertyPath: m_Name
       value: Mushrooms_3 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 78a0ce83165da904f9f8c389c7e103ad, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1668,6 +1736,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mushrooms_2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c97da987bc8d4bf4abfd81bd111aeb10, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1749,6 +1821,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4730ba5eb0b07b747bb47673ce85c05e, type: 3}
       propertyPath: m_Name
       value: Bush_5
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4730ba5eb0b07b747bb47673ce85c05e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1832,6 +1908,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_3
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8dec8625fb6b4a34f9d552a5ce0fdbe0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1853,6 +1933,10 @@ PrefabInstance:
     - target: {fileID: 58206779321097538, guid: ee36635beca00ad42b2fea660172214b, type: 3}
       propertyPath: m_Name
       value: Tree_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 58206779321097538, guid: ee36635beca00ad42b2fea660172214b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 260093047647278123, guid: ee36635beca00ad42b2fea660172214b, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1913,6 +1997,10 @@ PrefabInstance:
     - target: {fileID: 830098763891886072, guid: ee36635beca00ad42b2fea660172214b, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 990732767548693680, guid: ee36635beca00ad42b2fea660172214b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8221958650489217632, guid: ee36635beca00ad42b2fea660172214b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2031,6 +2119,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c97da987bc8d4bf4abfd81bd111aeb10, type: 3}
       propertyPath: m_Name
       value: Mushrooms_2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c97da987bc8d4bf4abfd81bd111aeb10, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

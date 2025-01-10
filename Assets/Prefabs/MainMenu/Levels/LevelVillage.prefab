@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: abbdc6300e27b2e44b43a9cfc21e2869, type: 2}
+  - {fileID: 2100000, guid: 7ca7c346bcadf6a41bd77a3b944fb5a7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -92,8 +92,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6073585403064015386}
-  - component: {fileID: 6073585403064015387}
-  - component: {fileID: 6073585403064015384}
   m_Layer: 0
   m_Name: LevelVillage
   m_TagString: Untagged
@@ -127,56 +125,6 @@ Transform:
   - {fileID: 1451677783538803905}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &6073585403064015387
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6073585403064015390}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &6073585403064015384
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6073585403064015390}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: abbdc6300e27b2e44b43a9cfc21e2869, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &7745614633839529378
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,6 +272,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 180cc2f088f94ec41a38ee78a8dc27f9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2986bf062015ff44b910000056e00cd4, type: 2}
     - target: {fileID: 919132149155446097, guid: 180cc2f088f94ec41a38ee78a8dc27f9, type: 3}
       propertyPath: m_Name
       value: Well
@@ -402,6 +354,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 1ba641ffa5e68f7458350e8596dc2894, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2986bf062015ff44b910000056e00cd4, type: 2}
     - target: {fileID: 919132149155446097, guid: 1ba641ffa5e68f7458350e8596dc2894, type: 3}
       propertyPath: m_Name
       value: Bush_2
@@ -480,6 +436,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d07f8ba0496682944beeea106cbcf984, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2986bf062015ff44b910000056e00cd4, type: 2}
     - target: {fileID: 919132149155446097, guid: d07f8ba0496682944beeea106cbcf984, type: 3}
       propertyPath: m_Name
       value: Flowers_1
@@ -558,6 +518,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: db4faf5f344fb5b4a8a64d95531753a0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2986bf062015ff44b910000056e00cd4, type: 2}
     - target: {fileID: 919132149155446097, guid: db4faf5f344fb5b4a8a64d95531753a0, type: 3}
       propertyPath: m_Name
       value: Pine_1
@@ -636,6 +600,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 8dec8625fb6b4a34f9d552a5ce0fdbe0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2986bf062015ff44b910000056e00cd4, type: 2}
     - target: {fileID: 919132149155446097, guid: 8dec8625fb6b4a34f9d552a5ce0fdbe0, type: 3}
       propertyPath: m_Name
       value: Bush_3
@@ -714,6 +682,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 9ef61e1b458020a40a451e74dec5befe, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2986bf062015ff44b910000056e00cd4, type: 2}
     - target: {fileID: 919132149155446097, guid: 9ef61e1b458020a40a451e74dec5befe, type: 3}
       propertyPath: m_Name
       value: House_1
@@ -792,6 +764,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 4c3e6fd6c13de534588318fc60795b67, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2986bf062015ff44b910000056e00cd4, type: 2}
     - target: {fileID: 919132149155446097, guid: 4c3e6fd6c13de534588318fc60795b67, type: 3}
       propertyPath: m_Name
       value: House_2
@@ -870,6 +846,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: fe60d0d91ba89b3458fe17e0236755fc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2986bf062015ff44b910000056e00cd4, type: 2}
     - target: {fileID: 919132149155446097, guid: fe60d0d91ba89b3458fe17e0236755fc, type: 3}
       propertyPath: m_Name
       value: Flowers_3
@@ -948,6 +928,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 5fedc56b2b1ffd04bb3b73afaaef6d36, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2986bf062015ff44b910000056e00cd4, type: 2}
     - target: {fileID: 919132149155446097, guid: 5fedc56b2b1ffd04bb3b73afaaef6d36, type: 3}
       propertyPath: m_Name
       value: Flowers_2

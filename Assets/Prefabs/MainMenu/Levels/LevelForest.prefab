@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: abbdc6300e27b2e44b43a9cfc21e2869, type: 2}
+  - {fileID: 2100000, guid: 7ca7c346bcadf6a41bd77a3b944fb5a7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -92,8 +92,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6073585403064015386}
-  - component: {fileID: 6073585403064015387}
-  - component: {fileID: 6073585403064015384}
   m_Layer: 0
   m_Name: LevelForest
   m_TagString: Untagged
@@ -123,56 +121,6 @@ Transform:
   - {fileID: 1361541257487046315}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &6073585403064015387
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6073585403064015390}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &6073585403064015384
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6073585403064015390}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: abbdc6300e27b2e44b43a9cfc21e2869, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &7745614633839529378
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,7 +271,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 4f57ef37aea2b9b42941f1f5ec8e519f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9536a069ca99f9c4a8373de994ba17ee, type: 2}
+      objectReference: {fileID: 2100000, guid: 2986bf062015ff44b910000056e00cd4, type: 2}
     - target: {fileID: 919132149155446097, guid: 4f57ef37aea2b9b42941f1f5ec8e519f, type: 3}
       propertyPath: m_Name
       value: Oak_2
@@ -405,7 +353,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 78a0ce83165da904f9f8c389c7e103ad, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9536a069ca99f9c4a8373de994ba17ee, type: 2}
+      objectReference: {fileID: 2100000, guid: 2986bf062015ff44b910000056e00cd4, type: 2}
     - target: {fileID: 919132149155446097, guid: 78a0ce83165da904f9f8c389c7e103ad, type: 3}
       propertyPath: m_Name
       value: Mushrooms_3
@@ -487,7 +435,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: f7623db67c38f52499c4d0c963662bd4, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9536a069ca99f9c4a8373de994ba17ee, type: 2}
+      objectReference: {fileID: 2100000, guid: 2986bf062015ff44b910000056e00cd4, type: 2}
     - target: {fileID: 919132149155446097, guid: f7623db67c38f52499c4d0c963662bd4, type: 3}
       propertyPath: m_Name
       value: Mountain_3
@@ -569,7 +517,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 1ba641ffa5e68f7458350e8596dc2894, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9536a069ca99f9c4a8373de994ba17ee, type: 2}
+      objectReference: {fileID: 2100000, guid: 2986bf062015ff44b910000056e00cd4, type: 2}
     - target: {fileID: 919132149155446097, guid: 1ba641ffa5e68f7458350e8596dc2894, type: 3}
       propertyPath: m_Name
       value: Bush_2
@@ -651,10 +599,14 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 4730ba5eb0b07b747bb47673ce85c05e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9536a069ca99f9c4a8373de994ba17ee, type: 2}
+      objectReference: {fileID: 2100000, guid: 2986bf062015ff44b910000056e00cd4, type: 2}
     - target: {fileID: 919132149155446097, guid: 4730ba5eb0b07b747bb47673ce85c05e, type: 3}
       propertyPath: m_Name
       value: Bush_5
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4730ba5eb0b07b747bb47673ce85c05e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

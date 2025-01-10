@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class ArenaManager : MonoBehaviour
 {
+    public static ArenaManager Instance;
+
     public MovePointPrefabScript[] movePointsArray { get; private set; }
 
     [Header("Move Point Settings")]
@@ -20,10 +22,14 @@ public class ArenaManager : MonoBehaviour
 
     private GameSettings settings;
 
+    private PointStatus[] pointStatusArray;
+
     public void Init(GameSettings _settings)
     {
+        Instance = this;
+
         settings = _settings;
-        PrepareArena();
+        PrepareMovePoints();
     }
 
     public void UpdateArena()
@@ -31,8 +37,11 @@ public class ArenaManager : MonoBehaviour
         UpdateMovePoints();
     }
 
-    public void SpawnArena(int arenaNum) => Instantiate(settings.arenaBase.arenaPrefabsArray[arenaNum], arenaParent.position, Quaternion.identity, arenaParent);
-    
+    public void SpawnArena(int arenaNum)
+    {
+        Instantiate(settings.arenaBase.arenaPrefabsArray[arenaNum], arenaParent.position, Quaternion.identity, arenaParent);
+    }
+
     public PlayerScript SpawnPlayer(int prefNum)
     {
         GameObject pref = Instantiate(settings.playerPrefab[prefNum], movePointsArray[0].transform.position, Quaternion.Euler(0, 0, 0), playerParent);
@@ -49,8 +58,12 @@ public class ArenaManager : MonoBehaviour
         return enemy;
     }
 
-    public List<MovePointPrefabScript> GetEmptyMovepointsList(int playerPointNum)
+    #region MovePoints
+
+    public List<MovePointPrefabScript> GetEmptyMovepointsList()
     {
+        int playerPointNum = GameController.Instance.player.currentPointNum;
+
         List<MovePointPrefabScript> list = new List<MovePointPrefabScript>();
 
         int[] blockedNumbers = new int[] { playerPointNum - 1, playerPointNum, playerPointNum + 1 };
@@ -64,22 +77,38 @@ public class ArenaManager : MonoBehaviour
 
         for (int i = 0; i < movePointsArray.Length; i++)
         {
-            if (movePointsArray[i].currentStatus == MovePointPrefabScript.Status.NoStatus && !blockedNumbers.Contains(i))
+            if (movePointsArray[i].currentStatus == PointStatus.NoStatus && !blockedNumbers.Contains(i))
                 list.Add(movePointsArray[i]);
         }
 
         return list;
     }
 
-    private void PrepareArena()
-    {
-        movePointsArray = new MovePointPrefabScript[pointsParent.childCount];
+    public MovePointPrefabScript GetMovePointByNum(int num) { return movePointsArray[num]; }
+    
+    public Vector3 GetMovePointPositionByNum(int num) { return movePointsArray[num].transform.position; }
 
-        for (int i = 0; i < pointsParent.childCount; i++)
-        {
-            movePointsArray[i] = pointsParent.GetChild(i).GetComponent<MovePointPrefabScript>();
-            movePointsArray[i].Init(movePointSettings, i);
-        }
+    public Vector3 GetPlayerMovePointPosition() { return movePointsArray[GameController.Instance.player.currentPointNum].transform.position; }
+
+    public void SetNewStatusToPointByNum(int num, PointStatus status)
+    {
+        pointStatusArray[num] = status;
+        movePointsArray[num].SetNewStatus(status);
+    }
+
+    public PointStatus GetMovePointStatusByNum(int num) { return movePointsArray[num].currentStatus; }
+
+    public bool CheckPointIsBlockedByNum(int num) { return movePointsArray[num].currentStatus == PointStatus.Blocked; }
+
+    public enum PointStatus
+    {
+        NoStatus,
+        Burn,
+        Freeze,
+        Blocked,
+        Attack,
+
+        Player
     }
 
     private void UpdateMovePoints()
@@ -89,4 +118,19 @@ public class ArenaManager : MonoBehaviour
             point.UpdateScript();
         }
     }
+
+    private void PrepareMovePoints()
+    {
+        movePointsArray = new MovePointPrefabScript[pointsParent.childCount];
+
+        for (int i = 0; i < pointsParent.childCount; i++)
+        {
+            movePointsArray[i] = pointsParent.GetChild(i).GetComponent<MovePointPrefabScript>();
+            movePointsArray[i].Init(movePointSettings, i);
+        }
+
+        pointStatusArray = new PointStatus[movePointsArray.Length];
+    }
+
+    #endregion
 }

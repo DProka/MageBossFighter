@@ -21,3 +21,10 @@ MonoBehaviour:
   freezeColor: {r: 0, g: 1, b: 0.85882354, a: 1}
   blockedColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   attackColor: {r: 0.9245283, g: 0.9046796, b: 0.3541117, a: 1}
+  healthTime: 120
+  attackDamageTime: 30
+  attackSpeedTime: 30
+  defenceTime: 30
+  circlePunchSize: {x: 0.2, y: 0.2, z: 0.2}
+  circleAttackColor: {r: 1, g: 0.3150943, b: 0.3150943, a: 0.78431374}
+  circleBonusColor: {r: 0.2396226, g: 0.5742627, b: 1, a: 0.78431374}

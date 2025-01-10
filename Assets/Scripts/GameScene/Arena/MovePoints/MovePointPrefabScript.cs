@@ -1,15 +1,14 @@
 
 using UnityEngine;
-using DG.Tweening;
 
 public class MovePointPrefabScript : MonoBehaviour
 {
     public int id { get; private set; }
-    public Status currentStatus { get; private set; }
+    public ArenaManager.PointStatus currentStatus { get; private set; }
     public BoosterManager.Booster currentBooster { get; private set; }
 
     [SerializeField] MeshRenderer meshRenderer;
-    [SerializeField] SpriteRenderer circleRenderer;
+    [SerializeField] MovepointCirclePrefab circlePrefab;
 
     private MovePointSettings settings;
     private Material currentMaterial;
@@ -22,11 +21,11 @@ public class MovePointPrefabScript : MonoBehaviour
     {
         settings = _settings;
         id = _id;
-        currentMaterial = new Material(meshRenderer.material);
-        meshRenderer.material = currentMaterial;
+        //currentMaterial = new Material(meshRenderer.material);
+        //meshRenderer.material = currentMaterial;
 
-        SetNewStatus(Status.NoStatus);
-        ResetAnimation();
+        SetNewStatus(ArenaManager.PointStatus.NoStatus);
+        circlePrefab.Init(settings);
     }
 
     public void UpdateScript()
@@ -37,67 +36,67 @@ public class MovePointPrefabScript : MonoBehaviour
 
     public void SetPlayer()
     {
-        if (currentStatus == Status.NoStatus)
-            SetNewStatus(Status.Player);
+        if (currentStatus == ArenaManager.PointStatus.NoStatus)
+            SetNewStatus(ArenaManager.PointStatus.Player);
     }
 
     #region Statuses
 
-    public void SetNewStatus(Status status)
+    public void SetNewStatus(ArenaManager.PointStatus status)
     {
         currentStatus = status;
 
         switch (status)
         {
-            case Status.NoStatus:
-                currentMaterial.color = settings.startColor;
+            case ArenaManager.PointStatus.NoStatus:
+                //currentMaterial.color = settings.startColor;
                 break;
 
-            case Status.Burn:
-                currentMaterial.color = settings.burnColor;
+            case ArenaManager.PointStatus.Burn:
+                //currentMaterial.color = settings.burnColor;
                 statusTimer = settings.burningTime;
                 break;
 
-            case Status.Freeze:
-                currentMaterial.color = settings.freezeColor;
+            case ArenaManager.PointStatus.Freeze:
+                //currentMaterial.color = settings.freezeColor;
                 statusTimer = settings.freezeTime;
                 break;
 
-            case Status.Blocked:
-                currentMaterial.color = settings.blockedColor;
+            case ArenaManager.PointStatus.Blocked:
+                //currentMaterial.color = settings.blockedColor;
                 statusTimer = settings.blockedTime;
                 break;
         
-            case Status.Attack:
+            case ArenaManager.PointStatus.Attack:
                 //currentMaterial.color = settings.attackColor;
                 statusTimer = settings.attackTime;
-                StartAttackAnimation(2f);
+                circlePrefab.StartAttackAnimation(2f);
                 break;
         
-            case Status.Player:
+            case ArenaManager.PointStatus.Player:
                 break;
         }
     }
 
-    public enum Status
-    {
-        NoStatus,
-        Burn,
-        Freeze,
-        Blocked,
-        Attack,
+    //public enum Status
+    //{
+    //    NoStatus,
+    //    Burn,
+    //    Freeze,
+    //    Blocked,
+    //    Attack,
 
-        Player
-    }
+    //    Player
+    //}
 
     private void CheckStatus()
     {
-        if (currentStatus != Status.NoStatus)
+        if (currentStatus != ArenaManager.PointStatus.NoStatus)
         {
             if (statusTimer > 0)
                 statusTimer -= Time.deltaTime;
             else
-                SetNewStatus(Status.NoStatus);
+                SetNewStatus(ArenaManager.PointStatus.NoStatus);
         }
     }
 
@@ -147,19 +146,4 @@ public class MovePointPrefabScript : MonoBehaviour
 
     #endregion
 
-    #region Attack Animation
-
-    private void StartAttackAnimation(float animTime)
-    {
-        circleRenderer.enabled = true;
-        circleRenderer.transform.DOScale(1.5f, animTime).OnComplete(() => ResetAnimation());
-    }
-
-    private void ResetAnimation()
-    {
-        circleRenderer.enabled = false;
-        circleRenderer.transform.DOScale(4f, 0);
-    }
-
-    #endregion
 }

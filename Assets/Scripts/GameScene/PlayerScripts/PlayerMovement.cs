@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerMovement
 {
-    public MovePointPrefabScript targetPoint { get; private set; }
+    //public MovePointPrefabScript targetPoint { get; private set; }
 
     public bool isMoving { get; private set; }
     public int lastPoint { get; private set; }
@@ -11,7 +11,6 @@ public class PlayerMovement
     private PlayerScript player;
     private PlayerSettings settings;
     private Transform enemyPoint;
-    //private Transform nextWayPoint;
 
     private float mouseDeltaX;
     private float moveTimer;
@@ -24,7 +23,7 @@ public class PlayerMovement
         settings = _settings;
         enemyPoint = _enemyPoint;
 
-        targetPoint = GameController.Instance.movePointsArray[nextPoint];
+        //targetPoint = ArenaManager.Instance.GetMovePointByNum(nextPoint);
 
         lastPoint = 0;
         moveTimer = 0;
@@ -34,15 +33,15 @@ public class PlayerMovement
     {
         MovePlayer();
 
-        //UpdateMouse();
         UpdateKeyboard();
     }
 
     public void ResetWayPoint()
     {
         nextPoint = 0;
-        targetPoint = GameController.Instance.movePointsArray[nextPoint];
-        player.transform.position = targetPoint.transform.position;
+        //targetPoint = ArenaManager.Instance.GetMovePointByNum(nextPoint);
+        //player.transform.position = targetPoint.transform.position;
+        player.transform.position = ArenaManager.Instance.GetMovePointPositionByNum(nextPoint);
     }
 
     public void UIChangePointByButton(bool isLeft)
@@ -71,10 +70,11 @@ public class PlayerMovement
 
     private void MovePlayer()
     {
-        if (targetPoint == null)
-            return;
+        //if (targetPoint == null)
+        //    return;
 
-        player.transform.position = Vector3.MoveTowards(player.transform.position, targetPoint.transform.position, settings.moveSpeed * Time.deltaTime);
+        //player.transform.position = Vector3.MoveTowards(player.transform.position, targetPoint.transform.position, settings.moveSpeed * Time.deltaTime);
+        player.transform.position = Vector3.MoveTowards(player.transform.position, ArenaManager.Instance.GetMovePointPositionByNum(nextPoint), settings.moveSpeed * Time.deltaTime);
         RotatePlayer();
         CheckIsMoving();
     }
@@ -88,7 +88,8 @@ public class PlayerMovement
 
     private void CheckIsMoving()
     {
-        float distance = Vector3.Distance(player.transform.position, targetPoint.transform.position);
+        //float distance = Vector3.Distance(player.transform.position, targetPoint.transform.position);
+        float distance = Vector3.Distance(player.transform.position, ArenaManager.Instance.GetMovePointPositionByNum(nextPoint));
 
         if (distance > 0.1f)
             isMoving = true;
@@ -139,16 +140,28 @@ public class PlayerMovement
 
     private void SetNewPointByNum(int num)
     {
-        MovePointPrefabScript newPoint = GameController.Instance.movePointsArray[num];
-        if (newPoint.currentStatus != MovePointPrefabScript.Status.Blocked)
+        //MovePointPrefabScript newPoint = ArenaManager.Instance.GetMovePointByNum(num);
+        //if (newPoint.currentStatus != ArenaManager.PointStatus.Blocked)
+        //{
+        //    targetPoint = newPoint;
+        //    player.CheckWaypointStatus();
+        //    moveTimer = settings.moveDelay;
+
+        //    lastPoint = nextPoint;
+
+        //    //Debug.Log("Target Point = " + targetPoint.name);
+        //}
+        //else
+        //{
+        //    nextPoint = lastPoint;
+        //}
+        
+        if (!ArenaManager.Instance.CheckPointIsBlockedByNum(num))
         {
-            targetPoint = newPoint;
             player.CheckWaypointStatus();
             moveTimer = settings.moveDelay;
 
             lastPoint = nextPoint;
-
-            Debug.Log("Target Point = " + targetPoint.name);
         }
         else
         {

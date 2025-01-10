@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BossGolemSettings
   m_EditorClassIdentifier: 
   bossName: Mountain Golem
-  maxHealth: 450
+  maxHealth: 600
   damage: 15
   delayBeforeAttack: 1.5
   projectileSpeed: 10

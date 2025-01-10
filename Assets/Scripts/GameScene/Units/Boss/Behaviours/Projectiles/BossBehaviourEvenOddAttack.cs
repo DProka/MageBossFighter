@@ -42,12 +42,12 @@ public class BossBehaviourEvenOddAttack : IBossBehaviour
 
     private void ShootRound()
     {
-        MovePointPrefabScript[] points = GameController.Instance.movePointsArray;
+        //MovePointPrefabScript[] points = GameController.Instance.movePointsArray;
 
-        for (int i = isEven ? 0 : 1; i < points.Length; i += 2)
+        for (int i = isEven ? 0 : 1; i < 12; i += 2)
         {
             //GameController.Instance.InstantiateProjectile(unit._shootPoint.position, points[i].transform.position, false);
-            unit.SpawnProjectile(points[i].transform.position);
+            unit.SpawnProjectile(ArenaManager.Instance.GetMovePointPositionByNum(i));
         }
 
         isEven = !isEven;
@@ -63,7 +63,7 @@ public class BossBehaviourEvenOddAttack : IBossBehaviour
 
     private void Rotate()
     {
-        Vector3 direction = (GameController.Instance.movePointsArray[0].transform.position - unit.transform.position).normalized;
+        Vector3 direction = (ArenaManager.Instance.GetMovePointPositionByNum(0) - unit.transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         unit.transform.rotation = Quaternion.Lerp(unit.transform.rotation, lookRotation, Time.deltaTime * unit._settings.rotateSpeed);
     }

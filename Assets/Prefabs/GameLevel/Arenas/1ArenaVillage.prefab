@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4
   m_IsActive: 1
 --- !u!4 &1069126339571207272
 Transform:
@@ -49,7 +49,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4
   m_IsActive: 1
 --- !u!4 &6406939066965038220
 Transform:
@@ -84,7 +84,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4
   m_IsActive: 1
 --- !u!4 &9175989715219458369
 Transform:
@@ -154,7 +154,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4
   m_IsActive: 1
 --- !u!4 &4081862020904000187
 Transform:
@@ -193,7 +193,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4
   m_IsActive: 1
 --- !u!4 &3491584532599150285
 Transform:
@@ -231,7 +231,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4
   m_IsActive: 1
 --- !u!4 &3705346354332413859
 Transform:
@@ -335,7 +335,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4
   m_IsActive: 1
 --- !u!4 &2226503899770216173
 Transform:
@@ -430,6 +430,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Oak_1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e63a9e40fbc529f4893a7535abadf96e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -511,6 +515,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ab6ae9d5fcb8d7f4a8ceb451ac63b255, type: 3}
       propertyPath: m_Name
       value: Fence_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ab6ae9d5fcb8d7f4a8ceb451ac63b255, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -594,6 +602,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House_2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4c3e6fd6c13de534588318fc60795b67, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -675,6 +687,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d07f8ba0496682944beeea106cbcf984, type: 3}
       propertyPath: m_Name
       value: Flowers_1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d07f8ba0496682944beeea106cbcf984, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -758,6 +774,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_4
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9c407fd92b024004484edc0900bc7fb2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -839,6 +859,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0514fceff67ef144cb5159d0d04288b1, type: 3}
       propertyPath: m_Name
       value: Fence_2 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0514fceff67ef144cb5159d0d04288b1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -922,6 +946,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Oak_1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e63a9e40fbc529f4893a7535abadf96e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1003,6 +1031,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ab6ae9d5fcb8d7f4a8ceb451ac63b255, type: 3}
       propertyPath: m_Name
       value: Fence_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ab6ae9d5fcb8d7f4a8ceb451ac63b255, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1086,6 +1118,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flowers_3 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fe60d0d91ba89b3458fe17e0236755fc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1167,6 +1203,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c3e21e9263e442a41bfe8a3b1d5a4456, type: 3}
       propertyPath: m_Name
       value: Oak_Dry_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c3e21e9263e442a41bfe8a3b1d5a4456, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1250,6 +1290,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pine_1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: db4faf5f344fb5b4a8a64d95531753a0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1331,6 +1375,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1ba641ffa5e68f7458350e8596dc2894, type: 3}
       propertyPath: m_Name
       value: Bush_2 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1ba641ffa5e68f7458350e8596dc2894, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1414,6 +1462,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flowers_1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d07f8ba0496682944beeea106cbcf984, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1495,6 +1547,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4f57ef37aea2b9b42941f1f5ec8e519f, type: 3}
       propertyPath: m_Name
       value: Oak_2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4f57ef37aea2b9b42941f1f5ec8e519f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1578,6 +1634,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence_2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0514fceff67ef144cb5159d0d04288b1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1659,6 +1719,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9ee7a98d041cedf4695774401b19cb51, type: 3}
       propertyPath: m_Name
       value: Wooden_gate_open_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9ee7a98d041cedf4695774401b19cb51, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1742,6 +1806,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House_3
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fdbb815fcd887db4f90221e3667b8951, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1823,6 +1891,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e63a9e40fbc529f4893a7535abadf96e, type: 3}
       propertyPath: m_Name
       value: Oak_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e63a9e40fbc529f4893a7535abadf96e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1906,6 +1978,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_2 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1ba641ffa5e68f7458350e8596dc2894, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1987,6 +2063,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: fe60d0d91ba89b3458fe17e0236755fc, type: 3}
       propertyPath: m_Name
       value: Flowers_3 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fe60d0d91ba89b3458fe17e0236755fc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2070,6 +2150,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1ba641ffa5e68f7458350e8596dc2894, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2151,6 +2235,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 5fedc56b2b1ffd04bb3b73afaaef6d36, type: 3}
       propertyPath: m_Name
       value: Flowers_2 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5fedc56b2b1ffd04bb3b73afaaef6d36, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2234,6 +2322,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House_1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9ef61e1b458020a40a451e74dec5befe, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2315,6 +2407,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e63a9e40fbc529f4893a7535abadf96e, type: 3}
       propertyPath: m_Name
       value: Oak_1 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e63a9e40fbc529f4893a7535abadf96e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2398,6 +2494,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Well
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 180cc2f088f94ec41a38ee78a8dc27f9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2480,6 +2580,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sawmill
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5255c4666de2f0546877c535b66f7315, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2561,6 +2665,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4f57ef37aea2b9b42941f1f5ec8e519f, type: 3}
       propertyPath: m_Name
       value: Oak_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4f57ef37aea2b9b42941f1f5ec8e519f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

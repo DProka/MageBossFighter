@@ -40,8 +40,8 @@ public class BossBehaviourAttackMovepoint : IBossBehaviour
 
     private void SpawnProjectileOnPoint()
     {
-        MovePointPrefabScript targetPoint = GameController.Instance.movePointsArray[unit.target.currentPointNum];
-        targetPoint.SetNewStatus(MovePointPrefabScript.Status.Attack);
+        MovePointPrefabScript targetPoint = ArenaManager.Instance.GetMovePointByNum(unit.target.currentPointNum);
+        targetPoint.SetNewStatus(ArenaManager.PointStatus.Attack);
         //attackTimer = settings.attackSpeed;
         attackTimer = unit._settings.delayBeforeAttack;
         GameController.Instance.InstantiateEnemyPointProjectile(targetPoint.transform.position, 0);

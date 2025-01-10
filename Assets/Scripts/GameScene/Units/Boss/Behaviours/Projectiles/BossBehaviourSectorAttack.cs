@@ -48,17 +48,17 @@ public class BossBehaviourSectorAttack : IBossBehaviour
     {
         attackTimer = settings.attackSpeed;
 
-        MovePointPrefabScript[] points = GameController.Instance.movePointsArray;
+        //MovePointPrefabScript[] points = GameController.Instance.movePointsArray;
 
         if (attackCounter == 0)
         {
             SetPointNumbers();
-            unit.SpawnProjectile(points[startNum].transform.position);
+            unit.SpawnProjectile(ArenaManager.Instance.GetMovePointPositionByNum(startNum));
         }
         else
         {
-            unit.SpawnProjectile(points[leftPoints[attackCounter - 1]].transform.position);
-            unit.SpawnProjectile(points[rightPoints[attackCounter - 1]].transform.position);
+            unit.SpawnProjectile(ArenaManager.Instance.GetMovePointPositionByNum(leftPoints[attackCounter - 1]));
+            unit.SpawnProjectile(ArenaManager.Instance.GetMovePointPositionByNum(rightPoints[attackCounter - 1]));
         }
 
         attackCounter++;
@@ -76,7 +76,7 @@ public class BossBehaviourSectorAttack : IBossBehaviour
 
     private void Rotate()
     {
-        Vector3 direction = (GameController.Instance.movePointsArray[startNum].transform.position - unit.transform.position).normalized;
+        Vector3 direction = (ArenaManager.Instance.GetMovePointPositionByNum(startNum) - unit.transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         unit.transform.rotation = Quaternion.Lerp(unit.transform.rotation, lookRotation, Time.deltaTime * unit._settings.rotateSpeed);
     }

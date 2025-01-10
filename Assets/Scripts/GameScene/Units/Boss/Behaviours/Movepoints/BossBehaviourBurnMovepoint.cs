@@ -35,10 +35,10 @@ public class BossBehaviourBurnMovepoint : IBossBehaviour
     private void BurnPoint()
     {
         attackTimer = settings.attackSpeed;
-        List<MovePointPrefabScript> points = GameController.Instance.GetEmptyMovepointsList();
+        List<MovePointPrefabScript> points = ArenaManager.Instance.GetEmptyMovepointsList();
 
         int random = Random.Range(0, points.Count);
-        points[random].SetNewStatus(MovePointPrefabScript.Status.Burn);
+        points[random].SetNewStatus(ArenaManager.PointStatus.Burn);
 
         unit.SetRandomBehaviour();
     }

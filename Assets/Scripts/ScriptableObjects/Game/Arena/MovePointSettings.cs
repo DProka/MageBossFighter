@@ -25,4 +25,11 @@ public class MovePointSettings : ScriptableObject
     public float attackDamageTime = 30;
     public float attackSpeedTime = 30;
     public float defenceTime = 30f;
+
+    [Header("Circle Settings")]
+
+    public Vector3 circlePunchSize;
+
+    public Color circleAttackColor;
+    public Color circleBonusColor;
 }

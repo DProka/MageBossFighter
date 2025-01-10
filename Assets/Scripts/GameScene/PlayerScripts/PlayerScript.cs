@@ -5,12 +5,13 @@ public class PlayerScript : UnitGeneral
 {
     public PlayerAnimator playerAnimator { get; private set; }
     public bool isAlive { get; private set; }
-    public int currentPointNum { get; private set; }
+    //public int currentPointNum { get; private set; }
 
     public bool comboSkill1IsActive { get; private set; }
     public bool comboSkill2IsActive { get; private set; }
 
     public float _currentHealth => currentHealth;
+    public int currentPointNum => movementScript.lastPoint;
 
     public PlayerSettings _settings => settings;
     public bool isMoving => movementScript.isMoving;
@@ -101,7 +102,7 @@ public class PlayerScript : UnitGeneral
         
         float comboMultiplier = 0;
         if (comboSkill2IsActive)
-            comboMultiplier = settings.attackDelay / 2;
+            comboMultiplier = settings.attackDelay / 3;
         
         float attackSpeed = settings.attackDelay - speedMultiplier - comboMultiplier;
         float attackDelay = isFreeze ? (attackSpeed * settings.freezeSpeedFactor) : attackSpeed;
@@ -138,20 +139,21 @@ public class PlayerScript : UnitGeneral
 
     public void CheckWaypointStatus()
     {
-        MovePointPrefabScript.Status pointStatus = movementScript.targetPoint.currentStatus;
-        currentPointNum = movementScript.targetPoint.id;
+        ArenaManager.PointStatus pointStatus = ArenaManager.Instance.GetMovePointStatusByNum(currentPointNum);
+        //ArenaManager.PointStatus pointStatus = movementScript.targetPoint.currentStatus;
+        //currentPointNum = movementScript.targetPoint.id;
 
         switch (pointStatus)
         {
-            case MovePointPrefabScript.Status.NoStatus:
+            case ArenaManager.PointStatus.NoStatus:
                 //movementScript.targetPoint.SetNewStatus(MovePointPrefabScript.Status.Player);
                 break;
 
-            case MovePointPrefabScript.Status.Burn:
+            case ArenaManager.PointStatus.Burn:
                 statusScript.SetStatus(PlayerStatus.Status.Burn);
                 break;
 
-            case MovePointPrefabScript.Status.Freeze:
+            case ArenaManager.PointStatus.Freeze:
                 statusScript.SetStatus(PlayerStatus.Status.Freeze);
                 break;
         }
@@ -174,8 +176,6 @@ public class PlayerScript : UnitGeneral
     private void ResetStats()
     {
         damage = settings.damage;
-
-
     }
 
     private void SetDead()

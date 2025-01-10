@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BossDevilSettings
   m_EditorClassIdentifier: 
   bossName: Hellguy
-  maxHealth: 550
+  maxHealth: 750
   damage: 20
   delayBeforeAttack: 1.7
   projectileSpeed: 10

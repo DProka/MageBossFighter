@@ -1,5 +1,4 @@
 
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BossBehaviourBlockMovepoint : IBossBehaviour
@@ -37,18 +36,11 @@ public class BossBehaviourBlockMovepoint : IBossBehaviour
 
     private void BlockPoint()
     {
-        //attackTimer = settings.attackSpeed;
-        //List<MovePointPrefabScript> points = GameController.Instance.GetEmptyMovepointsList();
-
-        //int random = Random.Range(0, points.Count);
-        //MovePointPrefabScript targetPoint = points[random];
-        //targetPoint.SetNewStatus(MovePointPrefabScript.Status.Blocked);
-
         attackTimer = settings.attackSpeed;
         int[] points = ArenaSupportScript.GetTwoNextClosestPoints();
         int random = Random.Range(0, points.Length);
-        MovePointPrefabScript targetPoint = GameController.Instance.movePointsArray[points[random]];
-        targetPoint.SetNewStatus(MovePointPrefabScript.Status.Blocked);
+        MovePointPrefabScript targetPoint = ArenaManager.Instance.GetMovePointByNum(points[random]);
+        targetPoint.SetNewStatus(ArenaManager.PointStatus.Blocked);
 
         GameController.Instance.InstantiateEnemyPointProjectile(targetPoint.transform.position, 1);
         attackCounter--;

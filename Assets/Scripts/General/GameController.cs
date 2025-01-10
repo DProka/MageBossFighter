@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour
     public PlayerScript player { get; private set; }
     public BossScript enemy { get; private set; }
 
-    public MovePointPrefabScript[] movePointsArray => arenaManager.movePointsArray;
+    //public MovePointPrefabScript[] movePointsArray => arenaManager.movePointsArray;
 
     [SerializeField] GameSettings settings;
 
@@ -105,12 +105,12 @@ public class GameController : MonoBehaviour
         ClearArena();
     }
 
-    public Transform GetNextWayPoint(int pointNum)
-    {
-        return movePointsArray[pointNum].transform;
-    }
+    //public Transform GetNextWayPoint(int pointNum)
+    //{
+    //    return arenaManager.movePointsArray[pointNum].transform;
+    //}
 
-    public List<MovePointPrefabScript> GetEmptyMovepointsList() { return arenaManager.GetEmptyMovepointsList(player.currentPointNum); }
+    //public List<MovePointPrefabScript> GetEmptyMovepointsList() { return arenaManager.GetEmptyMovepointsList(player.currentPointNum); }
 
     public void StartArenaTimer()
     {
