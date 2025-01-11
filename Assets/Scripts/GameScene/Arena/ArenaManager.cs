@@ -21,14 +21,17 @@ public class ArenaManager : MonoBehaviour
     [SerializeField] Transform enemyParent;
 
     private GameSettings settings;
+    private MovePointBehaviourManager pointBehaviourManager;
 
     private PointStatus[] pointStatusArray;
 
     public void Init(GameSettings _settings)
     {
         Instance = this;
-
         settings = _settings;
+
+        pointBehaviourManager = new MovePointBehaviourManager(this, movePointSettings);
+
         PrepareMovePoints();
     }
 
@@ -93,8 +96,12 @@ public class ArenaManager : MonoBehaviour
     public void SetNewStatusToPointByNum(int num, PointStatus status)
     {
         pointStatusArray[num] = status;
-        movePointsArray[num].SetNewStatus(status);
+        //movePointsArray[num].SetNewStatus(status);
+
+        pointBehaviourManager.SetNewBehToPointByNum(num, status);
     }
+
+    public void ResetPointStatusByNum(int num) => SetNewStatusToPointByNum(num, PointStatus.NoStatus);
 
     public PointStatus GetMovePointStatusByNum(int num) { return movePointsArray[num].currentStatus; }
 
@@ -103,12 +110,16 @@ public class ArenaManager : MonoBehaviour
     public enum PointStatus
     {
         NoStatus,
+        Player,
+
         Burn,
         Freeze,
         Blocked,
+        Poison,
+
         Attack,
 
-        Player
+        ManaBonus,
     }
 
     private void UpdateMovePoints()

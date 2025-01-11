@@ -5,33 +5,35 @@ public class MovePointPrefabScript : MonoBehaviour
 {
     public int id { get; private set; }
     public ArenaManager.PointStatus currentStatus { get; private set; }
-    public BoosterManager.Booster currentBooster { get; private set; }
 
     [SerializeField] MeshRenderer meshRenderer;
-    [SerializeField] MovepointCirclePrefab circlePrefab;
+
+    [Header("Visualization")]
+
+    [SerializeField] MovePointCirclePrefab circlePrefab;
+    [SerializeField] VfxMovePointPrefab vfxFreeze;
 
     private MovePointSettings settings;
     private Material currentMaterial;
 
-    private float statusTimer;
-
-    private float boosterTimer;
+    private IMovePointBehaviour currentBehaviour;
 
     public void Init(MovePointSettings _settings, int _id)
     {
         settings = _settings;
         id = _id;
-        //currentMaterial = new Material(meshRenderer.material);
-        //meshRenderer.material = currentMaterial;
 
-        SetNewStatus(ArenaManager.PointStatus.NoStatus);
+        currentMaterial = new Material(meshRenderer.material);
+        meshRenderer.material = currentMaterial;
+
+        //SetNewStatus(ArenaManager.PointStatus.NoStatus);
+        ResetVfx();
         circlePrefab.Init(settings);
     }
 
     public void UpdateScript()
     {
-        CheckStatus();
-        UpdateBoosterTimer();
+        UpdateBehaviour();
     }
 
     public void SetPlayer()
@@ -42,6 +44,27 @@ public class MovePointPrefabScript : MonoBehaviour
 
     #region Statuses
 
+    public void SetNewBehaviour(ArenaManager.PointStatus newStatus, IMovePointBehaviour newBehaviour)
+    {
+        currentBehaviour = null;
+        currentStatus = newStatus;
+
+        if (currentBehaviour != newBehaviour)
+        {
+            if (currentBehaviour != null)
+                currentBehaviour.Exit();
+
+            currentBehaviour = newBehaviour;
+            currentBehaviour.Enter(this);
+        }
+    }
+
+    private void UpdateBehaviour()
+    {
+        if(currentBehaviour != null && currentStatus != ArenaManager.PointStatus.NoStatus)
+            currentBehaviour.Update();
+    }
+
     public void SetNewStatus(ArenaManager.PointStatus status)
     {
         currentStatus = status;
@@ -49,28 +72,29 @@ public class MovePointPrefabScript : MonoBehaviour
         switch (status)
         {
             case ArenaManager.PointStatus.NoStatus:
-                //currentMaterial.color = settings.startColor;
+                //StopAllVfx();
+                //currentMaterial.color = settings.cleanColor;
                 break;
 
             case ArenaManager.PointStatus.Burn:
                 //currentMaterial.color = settings.burnColor;
-                statusTimer = settings.burningTime;
+                //statusTimer = settings.burningTime;
                 break;
 
             case ArenaManager.PointStatus.Freeze:
                 //currentMaterial.color = settings.freezeColor;
-                statusTimer = settings.freezeTime;
+                //statusTimer = settings.freezeTime;
                 break;
 
             case ArenaManager.PointStatus.Blocked:
                 //currentMaterial.color = settings.blockedColor;
-                statusTimer = settings.blockedTime;
+                //statusTimer = settings.blockedTime;
                 break;
         
             case ArenaManager.PointStatus.Attack:
                 //currentMaterial.color = settings.attackColor;
-                statusTimer = settings.attackTime;
-                circlePrefab.StartAttackAnimation(2f);
+                //statusTimer = settings.attackTime;
+                //circlePrefab.StartAttackAnimation(2f);
                 break;
         
             case ArenaManager.PointStatus.Player:
@@ -78,72 +102,43 @@ public class MovePointPrefabScript : MonoBehaviour
         }
     }
 
-    //public enum Status
+    //public void ResetStatus()
     //{
-    //    NoStatus,
-    //    Burn,
-    //    Freeze,
-    //    Blocked,
-    //    Attack,
-
-    //    Player
+    //    SetNewBehaviour(ArenaManager.PointStatus.NoStatus, )
     //}
 
-    private void CheckStatus()
+    #endregion
+
+    #region Visual
+
+    public void SetVfxByStatus(ArenaManager.PointStatus status)
     {
-        if (currentStatus != ArenaManager.PointStatus.NoStatus)
+        ResetVfx();
+
+        switch (status)
         {
-            if (statusTimer > 0)
-                statusTimer -= Time.deltaTime;
-            else
-                SetNewStatus(ArenaManager.PointStatus.NoStatus);
+            case ArenaManager.PointStatus.NoStatus:
+                break;
+        
+            case ArenaManager.PointStatus.Player:
+                break;
+        
+            case ArenaManager.PointStatus.Freeze:
+                vfxFreeze.PalyVfx();
+                currentMaterial.color = settings.attentionColor;
+                break;
         }
+
+        circlePrefab.SetStatus(status);
+    }
+
+    public void ResetVfx()
+    {
+        currentMaterial.color = settings.cleanColor;
+        circlePrefab.ResetAnimation();
+
+        vfxFreeze.StopVfx();
     }
 
     #endregion
-
-    #region Boosters
-
-    public void SetBooster(BoosterManager.Booster booster)
-    {
-        currentBooster = booster;
-
-        switch (booster)
-        {
-            case BoosterManager.Booster.Health:
-                boosterTimer = settings.healthTime;
-                break;
-        
-            case BoosterManager.Booster.AttackDamage:
-                boosterTimer = settings.attackDamageTime;
-                break;
-        
-            case BoosterManager.Booster.AttackSpeed:
-                boosterTimer = settings.attackSpeedTime;
-                break;
-        
-            case BoosterManager.Booster.Defence:
-                boosterTimer = settings.defenceTime;
-                break;
-        }
-    }
-
-    private void UpdateBoosterTimer()
-    {
-        if(currentBooster != BoosterManager.Booster.Empty)
-        {
-            if (boosterTimer > 0)
-                boosterTimer -= Time.deltaTime;
-            else
-                ResetBooster();
-        }
-    }
-
-    private void ResetBooster()
-    {
-        currentBooster = BoosterManager.Booster.Empty;
-    }
-
-    #endregion
-
 }

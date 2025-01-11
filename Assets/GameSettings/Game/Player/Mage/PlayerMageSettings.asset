@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   moveSpeed: 20
-  moveDelay: 0
+  moveDelay: 0.1
   damage: 10
   attackDelay: 0.5
   deforeAttackDelay: 0.5

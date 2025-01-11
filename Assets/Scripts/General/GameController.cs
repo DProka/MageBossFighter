@@ -1,5 +1,4 @@
 
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,11 +9,8 @@ public class GameController : MonoBehaviour
     public int currentLvlNum { get; private set; }
 
     public bool gameIsActive { get; private set; }
-    public bool arenaIsActive { get; private set; }
     public PlayerScript player { get; private set; }
     public BossScript enemy { get; private set; }
-
-    //public MovePointPrefabScript[] movePointsArray => arenaManager.movePointsArray;
 
     [SerializeField] GameSettings settings;
 
@@ -29,7 +25,7 @@ public class GameController : MonoBehaviour
     [SerializeField] ProjectileManagerSettings projectileManagerSettings;
 
     private ProjectileManager projectileManager;
-    private BoosterManager boosterManager;
+    //private BoosterManager boosterManager;
     private VfxManager vfxManager;
 
     private bool timerIsActive;
@@ -38,6 +34,7 @@ public class GameController : MonoBehaviour
     void Awake()
     {
         Instance = this;
+
         gameIsActive = false;
         timerIsActive = false;
 
@@ -48,7 +45,7 @@ public class GameController : MonoBehaviour
 
         projectileManager = new ProjectileManager(projectileManagerSettings, projectileParent);
         vfxManager = new VfxManager(settings.vfxBase);
-        boosterManager = new BoosterManager(arenaManager.movePointsArray);
+        //boosterManager = new BoosterManager(arenaManager.movePointsArray);
         currentLvlNum = DataHolder.gameLevel;
 
         if(DataHolder.statsLvls == null)
@@ -87,8 +84,6 @@ public class GameController : MonoBehaviour
         enemy.Init(player);
 
         uiController.SwitchTutorialPart(true);
-
-        //StartArenaTimer();
     }
 
     private void CheckWinner()
@@ -104,13 +99,6 @@ public class GameController : MonoBehaviour
         uiController.CallEndScreen(player.isAlive);
         ClearArena();
     }
-
-    //public Transform GetNextWayPoint(int pointNum)
-    //{
-    //    return arenaManager.movePointsArray[pointNum].transform;
-    //}
-
-    //public List<MovePointPrefabScript> GetEmptyMovepointsList() { return arenaManager.GetEmptyMovepointsList(player.currentPointNum); }
 
     public void StartArenaTimer()
     {

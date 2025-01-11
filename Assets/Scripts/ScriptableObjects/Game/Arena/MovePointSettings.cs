@@ -13,11 +13,10 @@ public class MovePointSettings : ScriptableObject
 
     [Header("Status Colors")]
 
-    public Color startColor;
-    public Color burnColor;
-    public Color freezeColor;
+    public Color cleanColor;
+    public Color attentionColor;
+    public Color bonusColor;
     public Color blockedColor;
-    public Color attackColor;
 
     [Header("Booster Timers")]
 

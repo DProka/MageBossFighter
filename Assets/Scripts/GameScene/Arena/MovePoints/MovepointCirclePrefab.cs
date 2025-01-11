@@ -2,45 +2,32 @@
 using UnityEngine;
 using DG.Tweening;
 
-public class MovepointCirclePrefab : MonoBehaviour
+public class MovePointCirclePrefab : MonoBehaviour
 {
     [SerializeField] SpriteRenderer circleRenderer;
 
     private MovePointSettings settings;
 
-    public bool isPlaying;
+    private bool isPlaying;
 
     public void Init(MovePointSettings _settings)
     {
         settings = _settings;
 
-        isPlaying = false;
-
         ResetAnimation();
     }
 
-    public void StartAttackAnimation(float animTime)
+    public void SetStatus(ArenaManager.PointStatus status)
     {
-        circleRenderer.enabled = true;
-        circleRenderer.color = settings.circleAttackColor;
+        ResetAnimation();
 
-        StartZoomOutAnimation(animTime);
-    }
-    
-    public void StartStatusAnimation(float animTime)
-    {
-        circleRenderer.enabled = true;
-        circleRenderer.color = settings.circleAttackColor;
-
-        StartPunchAnimation(animTime);
-    }
-    
-    public void StartBonusAnimation(float animTime)
-    {
-        circleRenderer.enabled = true;
-        circleRenderer.color = settings.circleBonusColor;
-
-        StartPunchAnimation(animTime);
+        switch (status)
+        {
+            case ArenaManager.PointStatus.Freeze:
+                isPlaying = true;
+                StartStatusAnimation(1f);
+                break;
+        }
     }
 
     public void ResetAnimation()
@@ -48,6 +35,30 @@ public class MovepointCirclePrefab : MonoBehaviour
         circleRenderer.enabled = false;
         isPlaying = false;
         circleRenderer.transform.DOScale(4f, 0);
+    }
+
+    private void StartAttackAnimation(float animTime)
+    {
+        circleRenderer.enabled = true;
+        circleRenderer.color = settings.circleAttackColor;
+
+        StartZoomOutAnimation(animTime);
+    }
+    
+    private void StartStatusAnimation(float animTime)
+    {
+        circleRenderer.enabled = true;
+        circleRenderer.color = settings.circleAttackColor;
+
+        StartPunchAnimation(animTime);
+    }
+    
+    private void StartBonusAnimation(float animTime)
+    {
+        circleRenderer.enabled = true;
+        circleRenderer.color = settings.circleBonusColor;
+
+        StartPunchAnimation(animTime);
     }
 
     private void StartZoomOutAnimation(float animTime)

@@ -42,7 +42,7 @@ public class BoosterManager
     {
         int rendom = Random.Range(0, movePointsArray.Length);
 
-        movePointsArray[rendom].SetBooster(type);
+        //movePointsArray[rendom].SetBooster(type);
     }
 
     public void ResetBoosters()

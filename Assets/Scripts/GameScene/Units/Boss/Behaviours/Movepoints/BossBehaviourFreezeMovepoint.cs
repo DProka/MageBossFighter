@@ -41,7 +41,8 @@ public class BossBehaviourFreezeMovepoint : IBossBehaviour
         List<MovePointPrefabScript> points = ArenaManager.Instance.GetEmptyMovepointsList();
 
         int random = Random.Range(0, points.Count);
-        points[random].SetNewStatus(ArenaManager.PointStatus.Freeze);
+        //points[random].SetNewStatus(ArenaManager.PointStatus.Freeze);
+        ArenaManager.Instance.SetNewStatusToPointByNum(points[random].id, ArenaManager.PointStatus.Freeze);
         attackCounter--;
 
         if (attackCounter <= 0)

@@ -16,15 +16,14 @@ MonoBehaviour:
   freezeTime: 3
   blockedTime: 10
   attackTime: 0.5
-  startColor: {r: 0.60784316, g: 0.7882353, b: 0.30980393, a: 1}
-  burnColor: {r: 1, g: 0.0627451, b: 0, a: 1}
-  freezeColor: {r: 0, g: 1, b: 0.85882354, a: 1}
-  blockedColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
-  attackColor: {r: 0.9245283, g: 0.9046796, b: 0.3541117, a: 1}
+  cleanColor: {r: 0.6784314, g: 0.8196079, b: 0.43137258, a: 1}
+  attentionColor: {r: 0.81960785, g: 0.4755062, b: 0.43137255, a: 1}
+  bonusColor: {r: 0.43137255, g: 0.52127093, b: 0.81960785, a: 1}
+  blockedColor: {r: 0.23018861, g: 0.23018861, b: 0.23018861, a: 1}
   healthTime: 120
   attackDamageTime: 30
   attackSpeedTime: 30
   defenceTime: 30
   circlePunchSize: {x: 0.2, y: 0.2, z: 0.2}
-  circleAttackColor: {r: 1, g: 0.3150943, b: 0.3150943, a: 0.78431374}
+  circleAttackColor: {r: 1, g: 0.39215687, b: 0.39215687, a: 0.78431374}
   circleBonusColor: {r: 0.2396226, g: 0.5742627, b: 1, a: 0.78431374}

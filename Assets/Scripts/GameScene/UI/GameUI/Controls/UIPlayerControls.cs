@@ -27,10 +27,13 @@ public class UIPlayerControls : MonoBehaviour
 
     public void UpdateScript()
     {
-        attackButton.UpdateScript();
-        moveLeftButton.UpdateScript();
-        moveRightButton.UpdateScript();
-        playerJoystick.UpdateScript();
+        if (GameController.Instance.gameIsActive)
+        {
+            attackButton.UpdateScript();
+            moveLeftButton.UpdateScript();
+            moveRightButton.UpdateScript();
+            playerJoystick.UpdateScript();
+        }
     }
 
     public void SwitchPauseGame() { GameController.Instance.SwitchPauseGame(); }
